@@ -8,7 +8,6 @@ import DummyCore.Core.Core;
 import tb.api.RevolverUpgrade;
 import tb.common.enchantment.EnchantmentHandler;
 import tb.common.entity.EntityRevolverBullet;
-import tb.common.event.TBEventHandler;
 import tb.init.TBBlocks;
 import tb.init.TBEnchant;
 import tb.init.TBFociUpgrades;
@@ -68,7 +67,6 @@ public class TBCore {
 	public void init(FMLInitializationEvent event)
 	{
 		MinecraftForge.EVENT_BUS.register(new EnchantmentHandler());
-		MinecraftForge.EVENT_BUS.register(new TBEventHandler());
 		NetworkRegistry.INSTANCE.registerGuiHandler(instance, proxy);
 		
 		EntityRegistry.registerModEntity(EntityRevolverBullet.class, "revolverBullet", 0, this, 32, 1, true);

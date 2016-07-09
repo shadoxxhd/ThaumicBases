@@ -13,7 +13,6 @@ import net.minecraftforge.oredict.OreDictionary;
 import tb.common.item.ItemBloodyArmor;
 import tb.common.item.ItemCastingBracelet;
 import tb.common.item.ItemConcentratedTaint;
-import tb.common.item.ItemHerobrinesScythe;
 import tb.common.item.ItemKnoseFragment;
 import tb.common.item.ItemKnoseSeeds;
 import tb.common.item.ItemMortarAndPestle;
@@ -99,8 +98,6 @@ public class TBItems {
 	
 	public static Item nodeFoci = new ItemNodeFoci().setUnlocalizedName("nodeFoci.");
 	
-	public static Item herobrinesScythe = new ItemHerobrinesScythe().setUnlocalizedName("herobrinesScythe").setTextureName("thaumicbases:herobrinesScythe");
-	
 	public static Item voidShears = new ItemVoidShears().setTextureName("thaumicbases:shears").setUnlocalizedName("tb.voidShears").setFull3D().setMaxDamage(184).setFull3D().setMaxStackSize(1);
 	public static Item voidFAS = new ItemVoidFlintAndSteel().setTextureName("thaumicbases:flint_and_steel").setUnlocalizedName("tb.voidFAS").setFull3D().setMaxDamage(184).setFull3D().setMaxStackSize(1);
 	
@@ -145,9 +142,6 @@ public class TBItems {
 		ItemRegistry.registerItem(fociDrain, "fociDrain",core);
 		ItemRegistry.registerItem(fociExperience, "fociExperience",core);
 		ItemRegistry.registerItem(fociFlux, "fociFlux",core);
-		
-
-		ItemRegistry.registerItem(herobrinesScythe, "herobrinesScythe",core);
 		
 		
 		if (TBConfig.allowTobacco) {
