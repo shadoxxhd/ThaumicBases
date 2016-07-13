@@ -32,7 +32,7 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
 public class TBThaumonomicon {
 	
 	public static final String catName = "THAUMICBASES";
-	public static final ResourceLocation icon = new ResourceLocation("thaumicbases","textures/thaumonomicon/bases2.png");
+	public static final ResourceLocation icon = new ResourceLocation("thaumicbases","textures/thaumonomicon/bases1.png");
 	public static final ResourceLocation back = new ResourceLocation("thaumicbases","textures/thaumonomicon/background.png");
 
 	@SuppressWarnings({ "unchecked" })
@@ -346,16 +346,7 @@ public class TBThaumonomicon {
 			new ItemStack(ConfigBlocks.blockCosmeticSolid,1,4)
 		});
 		
-		InfusionRecipe entityDeconstructorRec = new InfusionRecipe("TB.EntityDec",new ItemStack(TBBlocks.entityDeconstructor,1,0),4,new AspectList().add(Aspect.DEATH, 16).add(Aspect.SOUL, 4).add(Aspect.MIND, 16),new ItemStack(ConfigItems.itemThaumometer),new ItemStack[]{
-			new ItemStack(Blocks.light_weighted_pressure_plate),
-			new ItemStack(Blocks.light_weighted_pressure_plate),
-			new ItemStack(Blocks.heavy_weighted_pressure_plate),
-			new ItemStack(Blocks.heavy_weighted_pressure_plate),
-			new ItemStack(ConfigItems.itemResource,1,9),
-			new ItemStack(ConfigItems.itemResource,1,9),
-			new ItemStack(ConfigItems.itemResource,1,15),
-			new ItemStack(ConfigItems.itemResource,1,15)
-		});
+
 		
 		
 		ShapedArcaneRecipe relocatorRec = new ShapedArcaneRecipe("TB.Relocator",new ItemStack(TBBlocks.relocator,1,0),new AspectList().add(Aspect.AIR, 5).add(Aspect.EARTH, 15).add(Aspect.WATER, 5),new Object[]{
@@ -418,6 +409,14 @@ public class TBThaumonomicon {
 			'V',new ItemStack(ConfigBlocks.blockCosmeticSolid,1,6)
 		});
 		
+		ShapedOreRecipe voidBlockRec = new ShapedOreRecipe(new ItemStack(TBBlocks.voidBlock,1,0),new Object[]{
+			"###",
+			"###",
+			"###",
+			'#',new ItemStack(ConfigItems.itemResource,1,16)
+		});
+		
+		ShapelessOreRecipe voidIngotRec = new ShapelessOreRecipe(new ItemStack(ConfigItems.itemResource,9,16),new ItemStack(TBBlocks.voidBlock));
 		
 		
 		//TODO recipes
@@ -736,24 +735,6 @@ public class TBThaumonomicon {
 			new ResearchPage("tb.rec.overchanter.page.1"),
 			new ResearchPage("tb.rec.overchanter.page.2"),
 			new ResearchPage(overchanterRec)
-			).registerResearchItem();
-		
-		new ResearchItem("TB.EntityDec",catName,new AspectList().add(Aspect.MIND, 8).add(Aspect.DEATH, 8).add(Aspect.SOUL, 8),3,-2,1,new ItemStack(TBBlocks.entityDeconstructor,1,0))
-		.setParents("TB.INFUSION")
-		.setSecondary()
-		.setConcealed()
-		.setPages(
-			new ResearchPage("tb.rec.eDec.page.0"),
-			new ResearchPage(entityDeconstructorRec)
-			).registerResearchItem();
-		
-		new ResearchItem("TB.EntityDecAdv",catName,new AspectList().add(Aspect.MIND, 8).add(Aspect.DEATH, 8),5,-3,1,new ItemStack(ConfigBlocks.blockCrystal,1,OreDictionary.WILDCARD_VALUE))
-		.setParents("TB.EntityDec")
-		.setSecondary()
-		.setConcealed()
-		.setPages(
-			new ResearchPage("tb.rec.eDeca.page.0"),
-			new ResearchPage("tb.rec.eDeca.page.1")
 			).registerResearchItem();
 		
 		
@@ -2263,51 +2244,74 @@ public class TBThaumonomicon {
 			
 		}
 		
-		//TODO void tools
-		if (TBConfig.enableVoidTools) {
-			
-			ShapedOreRecipe voidBlockRec = new ShapedOreRecipe(new ItemStack(TBBlocks.voidBlock,1,0),new Object[]{
-				"###",
-				"###",
-				"###",
-				'#',new ItemStack(ConfigItems.itemResource,1,16)
+		//TODO void metal stuff
+		ShapedOreRecipe voidShearsRec = new ShapedOreRecipe(new ItemStack(TBItems.voidShears),new Object[]{
+			" #",
+			"# ",
+			'#',new ItemStack(ConfigItems.itemResource,1,16)
+		});
+		
+		ShapedOreRecipe voidFlint = new ShapedOreRecipe(new ItemStack(TBItems.voidFAS),new Object[]{
+			"# ",
+			" C",
+			'#',new ItemStack(ConfigItems.itemResource,1,16),
+			'C',new ItemStack(Items.flint)
+		});
+		
+		ResearchItem voidIngot = ResearchCategories.getResearchList("ELDRITCH").research.get("VOIDMETAL");
+		
+		ResearchPage[] currentPages = voidIngot.getPages();
+		ResearchPage[] newPages = new ResearchPage[currentPages.length+4];
+		System.arraycopy(currentPages, 0, newPages, 0, currentPages.length);
+		newPages[newPages.length-4] = new ResearchPage(voidFlint);
+		newPages[newPages.length-3] = new ResearchPage(voidShearsRec);
+		newPages[newPages.length-2] = new ResearchPage(voidBlockRec);
+		newPages[newPages.length-1] = new ResearchPage(voidIngotRec);
+		voidIngot.setPages(newPages);
+		
+		CraftingManager.getInstance().getRecipeList().add(voidShearsRec);
+		CraftingManager.getInstance().getRecipeList().add(voidFlint);
+	
+		CraftingManager.getInstance().getRecipeList().add(voidBlockRec);
+		CraftingManager.getInstance().getRecipeList().add(voidIngotRec);
+		
+		
+		//TODO entity decon
+		if (TBConfig.enableEntityDecon) {
+			InfusionRecipe entityDeconstructorRec = new InfusionRecipe("TB.EntityDec",new ItemStack(TBBlocks.entityDeconstructor,1,0),4,new AspectList().add(Aspect.DEATH, 16).add(Aspect.SOUL, 4).add(Aspect.MIND, 16),new ItemStack(ConfigItems.itemThaumometer),new ItemStack[]{
+				new ItemStack(Blocks.light_weighted_pressure_plate),
+				new ItemStack(Blocks.light_weighted_pressure_plate),
+				new ItemStack(Blocks.heavy_weighted_pressure_plate),
+				new ItemStack(Blocks.heavy_weighted_pressure_plate),
+				new ItemStack(ConfigItems.itemResource,1,9),
+				new ItemStack(ConfigItems.itemResource,1,9),
+				new ItemStack(ConfigItems.itemResource,1,15),
+				new ItemStack(ConfigItems.itemResource,1,15)
 			});
 			
-			ShapelessOreRecipe voidIngotRec = new ShapelessOreRecipe(new ItemStack(ConfigItems.itemResource,9,16),new ItemStack(TBBlocks.voidBlock));
+			new ResearchItem("TB.EntityDec",catName,new AspectList().add(Aspect.MIND, 8).add(Aspect.DEATH, 8).add(Aspect.SOUL, 8),3,-2,1,new ItemStack(TBBlocks.entityDeconstructor,1,0))
+			.setParents("TB.INFUSION")
+			.setSecondary()
+			.setConcealed()
+			.setPages(
+				new ResearchPage("tb.rec.eDec.page.0"),
+				new ResearchPage(entityDeconstructorRec)
+				).registerResearchItem();
 			
-			ShapedOreRecipe voidShearsRec = new ShapedOreRecipe(new ItemStack(TBItems.voidShears),new Object[]{
-				" #",
-				"# ",
-				'#',new ItemStack(ConfigItems.itemResource,1,16)
-			});
+			new ResearchItem("TB.EntityDecAdv",catName,new AspectList().add(Aspect.MIND, 8).add(Aspect.DEATH, 8),5,-3,1,new ItemStack(ConfigBlocks.blockCrystal,1,OreDictionary.WILDCARD_VALUE))
+			.setParents("TB.EntityDec")
+			.setSecondary()
+			.setConcealed()
+			.setPages(
+				new ResearchPage("tb.rec.eDeca.page.0"),
+				new ResearchPage("tb.rec.eDeca.page.1")
+				).registerResearchItem();
 			
-			ShapedOreRecipe voidFlint = new ShapedOreRecipe(new ItemStack(TBItems.voidFAS),new Object[]{
-				"# ",
-				" C",
-				'#',new ItemStack(ConfigItems.itemResource,1,16),
-				'C',new ItemStack(Items.flint)
-			});
-			
-			ResearchItem voidIngot = ResearchCategories.getResearchList("ELDRITCH").research.get("VOIDMETAL");
-			
-			ResearchPage[] currentPages = voidIngot.getPages();
-			ResearchPage[] newPages = new ResearchPage[currentPages.length+4];
-			System.arraycopy(currentPages, 0, newPages, 0, currentPages.length);
-			newPages[newPages.length-4] = new ResearchPage(voidFlint);
-			newPages[newPages.length-3] = new ResearchPage(voidShearsRec);
-			newPages[newPages.length-2] = new ResearchPage(voidBlockRec);
-			newPages[newPages.length-1] = new ResearchPage(voidIngotRec);
-			voidIngot.setPages(newPages);
-			
-			
-			CraftingManager.getInstance().getRecipeList().add(voidBlockRec);
-			CraftingManager.getInstance().getRecipeList().add(voidIngotRec);
-			
-			CraftingManager.getInstance().getRecipeList().add(voidShearsRec);
-			CraftingManager.getInstance().getRecipeList().add(voidFlint);
+			ThaumcraftApi.getCraftingRecipes().add(entityDeconstructorRec);
 		}
 		
-
+			
+			
 		ThaumcraftApi.getCraftingRecipes().add(drainFociRec);
 		ThaumcraftApi.getCraftingRecipes().add(expFociRec);
 		ThaumcraftApi.getCraftingRecipes().add(fluxFociRec);
@@ -2316,7 +2320,7 @@ public class TBThaumonomicon {
 		ThaumcraftApi.getCraftingRecipes().add(advFurnaceRecipe);
 		ThaumcraftApi.getCraftingRecipes().add(cryingObsidianRec);
 		ThaumcraftApi.getCraftingRecipes().add(overchanterRec);
-		ThaumcraftApi.getCraftingRecipes().add(entityDeconstructorRec);
+	
 
 		ThaumcraftApi.getCraftingRecipes().add(relocatorRec);
 		ThaumcraftApi.getCraftingRecipes().add(irelocatorRec);

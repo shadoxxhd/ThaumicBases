@@ -65,6 +65,8 @@ forge*
 CREDITS*
 MinecraftForge*
 README.txt
+*.psd
+*.pdn
 
 ##API
 /src/api

@@ -143,7 +143,7 @@ public class TBBlocks {
 		cryingObsidian.setHarvestLevel("pickaxe", 3);
 
 		BlocksRegistry.registerBlock(advAlchFurnace, "advAlchFurnace",core,ItemBlock.class);
-		BlocksRegistry.registerBlock(entityDeconstructor, "entityDeconstructor",core,ItemBlock.class);
+	
 		
 		//levitator
 		BlocksRegistry.registerBlock(relocator, "relocator",core,ItemBlockMetadata.class);
@@ -238,6 +238,11 @@ public class TBBlocks {
 			//node
 			BlocksRegistry.registerBlock(nodeManipulator, "nodeManipulator",core,ItemBlockModeManipulator.class);
 			BlocksRegistry.registerBlock(nodeLinker, "nodeLinker",core,ItemBlock.class);
+		}
+		
+		if (TBConfig.enableEntityDecon) {
+			//Ent Decon
+			BlocksRegistry.registerBlock(entityDeconstructor, "entityDeconstructor",core,ItemBlock.class);
 		}
 
 		

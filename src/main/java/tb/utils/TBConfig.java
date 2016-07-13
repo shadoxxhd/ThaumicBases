@@ -31,7 +31,8 @@ public class TBConfig implements IDummyConfig{
 	public static boolean enableBracelets;
 	public static boolean enableFlora;
 	public static boolean enableBloodyMess;
-	public static boolean enableVoidTools;
+	//public static boolean enableVoidTools;
+	public static boolean enableEntityDecon;
 
 	public static int minBlazePowderFromPyrofluid;
 	public static int maxBlazePowderFromPyrofluid;
@@ -97,9 +98,12 @@ public class TBConfig implements IDummyConfig{
 		enableBloodyMess = cfg.getBoolean("enableBloodyMess", "General", true, 
 				"If set to false the spikes and bloody robes will be disabled - there will be no recipes/no entries in Thaumonomicon");
 		
-		enableVoidTools = cfg.getBoolean("enableVoidTools", "General", true, 
+		/*enableVoidTools = cfg.getBoolean("enableVoidTools", "General", true, 
 				"If set to false the void shears and igniter will be disabled - there will be no recipes/no entries in Thaumonomicon");
+		*/
 		
+		enableEntityDecon = cfg.getBoolean("enableEntityDecon", "General", false,
+				"Enables the Entity Deconstructor. Warning: Buggy piece of shit that crashes if you go too far from it.");
 		
 		//pyrofluid
 		minBlazePowderFromPyrofluid = cfg.getInt("minBlazePowderFromPyrofluid", "Pyrofluid", 5, 0, Integer.MAX_VALUE, "");

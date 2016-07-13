@@ -185,10 +185,10 @@ public class TBItems {
 			ItemRegistry.registerItem(revolver, "revolver",core);
 		}
 		
-		if (TBConfig.enableVoidTools) {
-			ItemRegistry.registerItem(voidShears, "voidShears",core);
-			ItemRegistry.registerItem(voidFAS, "voidFAS",core);
-		}
+
+		ItemRegistry.registerItem(voidShears, "voidShears",core);
+		ItemRegistry.registerItem(voidFAS, "voidFAS",core);
+
 		
 		
 		OreDictionary.registerOre("ingotThauminite", new ItemStack(resource,1,1));
