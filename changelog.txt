@@ -1,0 +1,21 @@
+1.3.1710.4
+	Last version for 1.7.10
+
+1.4.1710.0
+	Start of fork, keeping same versioning
+	Added configs for more modules of the mod
+		Node modifier/linker
+		Bracelets
+		Spikes +bloody robes
+		Flora (all plants)
+		Revolver
+
+1.4.1710.1
+	Restructured TC tab layout
+	Changed some tab icons
+	
+1.4.1710.2
+	Added module config for Entity deconstructor - disabled by default
+	Changed aurelia behviour
+		Reduced petal spawn radius from 8 to 5
+		Petals will now only spawn on grass or dirt type blocks
