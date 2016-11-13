@@ -7,6 +7,10 @@ import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.ChatStyle;
+import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
 public class BlockEntityDeconstructor extends BlockContainer{
@@ -114,8 +118,13 @@ public class BlockEntityDeconstructor extends BlockContainer{
 	    			}
     		}
     	}
+    	if(p.worldObj.isRemote)
+			p.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("tb.txt.linkEntDecon")).setChatStyle(new ChatStyle().setItalic(true).setColor(EnumChatFormatting.AQUA)));
+    	
     	TileEntityDeconstructor.class.cast(w.getTileEntity(x, y, z)).placerName = p.getCommandSenderName();
     	return true;
+    	
+    	
     }
 
 }

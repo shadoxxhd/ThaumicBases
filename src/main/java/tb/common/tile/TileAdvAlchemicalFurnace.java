@@ -31,7 +31,7 @@ public class TileAdvAlchemicalFurnace extends TileAlchemyFurnace{
 		}
 		try
 		{
-			if(this.isFuelAlumentum || !TBConfig.makeRequireAlumentium)
+			if(this.isFuelAlumentum || !TBConfig.makeRequireAlumentum)
 			{
 				Class<TileAlchemyFurnace> furnace = TileAlchemyFurnace.class;
 				Field count = furnace.getDeclaredField("count");

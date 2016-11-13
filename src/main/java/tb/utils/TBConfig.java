@@ -38,7 +38,7 @@ public class TBConfig implements IDummyConfig{
 	public static int maxBlazePowderFromPyrofluid;
 	
 	public static int speedMultiplierForFurnace;
-	public static boolean makeRequireAlumentium;
+	public static boolean makeRequireAlumentum;
 	
 
 	@Override
@@ -50,7 +50,7 @@ public class TBConfig implements IDummyConfig{
 				"speedMultiplierForFurnace", "Advanced Alchemy Furnace", 2, 0, Integer.MAX_VALUE, 
 				"This is the speed of the Advanced Alchamical Furnace. TC's basic has 1.");
 		
-		makeRequireAlumentium = cfg.getBoolean(
+		makeRequireAlumentum = cfg.getBoolean(
 				"makeRequireAlumentium", "Advanced Alchemy Furnace", true, 
 				"Does the Advanced Alchemical Furnace requires Alumentum to work faster");
 		
@@ -102,8 +102,9 @@ public class TBConfig implements IDummyConfig{
 				"If set to false the void shears and igniter will be disabled - there will be no recipes/no entries in Thaumonomicon");
 		*/
 		
-		enableEntityDecon = cfg.getBoolean("enableEntityDecon", "General", false,
-				"Enables the Entity Deconstructor. Warning: Buggy piece of shit that WILL crash you.");
+		//TODO ent decon
+		enableEntityDecon = cfg.getBoolean("enableEntityDecon", "General", true,
+				"Enables the Entity Deconstructor. Config will probably be phased out now that bugs are fixed");
 		
 		//pyrofluid
 		minBlazePowderFromPyrofluid = cfg.getInt("minBlazePowderFromPyrofluid", "Pyrofluid", 5, 0, Integer.MAX_VALUE, "");

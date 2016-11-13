@@ -203,7 +203,8 @@ public class TBBlocks {
 			BlocksRegistry.registerBlock(spike, "spike",core,ItemBlockSpike.class);
 		}
 		
-		if (TBConfig.enableFlora) {
+		//TODO flora
+		/*if (TBConfig.enableFlora) {*/
 			//flora
 			BlocksRegistry.registerBlock(plax, "plax",core,ItemBlock.class);
 			BlocksRegistry.registerBlock(aureliaPetal, "aureliaPetal",core,ItemBlock.class);
@@ -232,7 +233,7 @@ public class TBBlocks {
 			Blocks.fire.setFireInfo(genLogs, 5, 5);
 			Blocks.fire.setFireInfo(genLeaves, 30, 60);
 			Blocks.fire.setFireInfo(enderPlanks, 5, 20);
-		}
+		//}
 		
 		if (TBConfig.enableNodeTools) {
 			//node

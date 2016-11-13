@@ -137,11 +137,10 @@ public class TileEntityDeconstructor extends TileEntity{
 										if(player != null)
 										{
 											double distance = player.getDistance(xCoord+0.5D, yCoord, zCoord+0.5D);
-											if(additionalStability < 6)
-												if(this.worldObj.rand.nextInt(MathHelper.floor_double(Math.max(1, (128+additionalStability*10)-distance))) == 0)
-													TBUtils.addWarpToPlayer(EntityPlayerMP.class.cast(e), 1, 0);
-											
-											TBUtils.addAspectToKnowledgePool(player, a, (short) 1);
+
+											if(distance < 32+(additionalStability*8)) {
+												TBUtils.addAspectToKnowledgePool(player, a, (short) 1);
+											}
 										}
 									}
 								}
@@ -177,11 +176,11 @@ public class TileEntityDeconstructor extends TileEntity{
 								if(player != null)
 								{
 									double distance = player.getDistance(xCoord+0.5D, yCoord, zCoord+0.5D);
-									if(additionalStability < 6)
-										if(this.worldObj.rand.nextInt(MathHelper.floor_double(Math.max(1, (128+additionalStability*10)-distance))) == 0)
-											TBUtils.addWarpToPlayer(EntityPlayerMP.class.cast(e), 1, 0);
 									
-									TBUtils.addAspectToKnowledgePool(player, a, (short) 1);
+									if(distance < 32+(additionalStability*8)) {
+										TBUtils.addAspectToKnowledgePool(player, a, (short) 1);
+									}
+										
 								}
 							}
 						}

@@ -162,7 +162,8 @@ public class TBItems {
 			ItemRegistry.registerItem(castingBracelet, "castingBracelet",core);
 		}
 		
-		if (TBConfig.enableFlora) {
+		//TODO flora
+		/*if (TBConfig.enableFlora) {*/
 			ItemRegistry.registerItem(plaxSeed, "plaxSeed",core);
 			ItemRegistry.registerItem(metalleatSeeds, "metalleatSeeds",core);
 			ItemRegistry.registerItem(lucriteSeeds, "lucriteSeeds",core);
@@ -174,7 +175,7 @@ public class TBItems {
 			ItemRegistry.registerItem(glieoniaSeed, "glieoniaSeed",core);
 			ItemRegistry.registerItem(rosehipSyrup, "rosehipSyrup",core);
 			ItemRegistry.registerItem(voidSeed, "voidSeed",core);
-		}
+		//}
 		
 		if (TBConfig.enableNodeTools) {
 			ItemRegistry.registerItem(nodeFoci, "nodeFoci",core);

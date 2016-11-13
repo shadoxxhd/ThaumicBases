@@ -1291,6 +1291,7 @@ public class TBThaumonomicon {
 			new ResearchItem("TB.Bracelet.Thaumium",catName,new AspectList().add(Aspect.METAL, 3).add(Aspect.MAGIC, 3).add(Aspect.ENERGY, 3).add(Aspect.AURA, 3),-10,11,0,new ItemStack(TBItems.castingBracelet,1,3))
 			.setConcealed()
 			.setParents("TB.Bracelet.Greatwood")
+			.setParentsHidden("TB.THAUMIUM")
 			.setPages(
 				new ResearchPage("tb.rec.bracelet.thaumium.page.0"),
 				new ResearchPage(thaumiumBraceletRec)
@@ -1307,6 +1308,7 @@ public class TBThaumonomicon {
 			new ResearchItem("TB.Bracelet.Void",catName,new AspectList().add(Aspect.VOID, 3).add(Aspect.MAGIC, 3).add(Aspect.ELDRITCH, 3).add(Aspect.AURA, 3).add(Aspect.EXCHANGE, 3),-12,11,3,new ItemStack(TBItems.castingBracelet,1,11))
 			.setConcealed()
 			.setParents("TB.Bracelet.Silverwood")
+			.setParentsHidden("TB.VOIDMETAL")
 			.setPages(
 				new ResearchPage("tb.rec.bracelet.void.page.0"),
 				new ResearchPage(voidBraceletRec)
@@ -1417,6 +1419,7 @@ public class TBThaumonomicon {
 			CrucibleRecipe flaxiumRec = new CrucibleRecipe("TB.Flaxium",new ItemStack(TBBlocks.flaxium,1,0),new ItemStack(Blocks.red_flower,1,2),new AspectList().add(Aspect.ENTROPY, 1).add(Aspect.MAGIC, 2));
 			CrucibleRecipe glieoniaRec = new CrucibleRecipe("TB.Glieonia",new ItemStack(TBItems.glieoniaSeed,1,0),new ItemStack(Blocks.red_flower,1,3),new AspectList().add(Aspect.LIGHT, 8).add(Aspect.MAGIC, 6).add(Aspect.LIFE, 4));
 			CrucibleRecipe briarRec = new CrucibleRecipe("TB.Briar",new ItemStack(TBBlocks.briar,1,0),new ItemStack(Blocks.double_plant,1,4),new AspectList().add(Aspect.HEAL, 4).add(Aspect.LIFE, 4).add(Aspect.PLANT, 4));
+			
 			ShapelessArcaneRecipe rosehipRec = new ShapelessArcaneRecipe("TB.Briar",TBItems.rosehipSyrup,new AspectList().add(Aspect.FIRE, 3).add(Aspect.WATER, 5), new Object[]{
 				new ItemStack(ConfigItems.itemEssence,1,0),
 				new ItemStack(TBItems.resource,1,6),

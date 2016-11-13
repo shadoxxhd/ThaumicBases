@@ -32,7 +32,7 @@ public class RenderEntityDeconstructor extends TileEntitySpecialRenderer{
 		TileEntityDeconstructor d = (TileEntityDeconstructor) tile;
 		
 		GL11.glTranslated(screenX+0.5D, screenY, screenZ+0.5D);
-		GL11.glScalef(0.4F, 0.4F, 0.4F);
+		GL11.glScalef(0.3F, 0.4F, 0.3F);
 		Minecraft.getMinecraft().renderEngine.bindTexture(frameIcon);
 		model.renderPart("Cube_Cube.001");
 		
