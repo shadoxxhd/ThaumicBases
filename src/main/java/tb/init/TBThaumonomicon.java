@@ -1291,7 +1291,7 @@ public class TBThaumonomicon {
 			new ResearchItem("TB.Bracelet.Thaumium",catName,new AspectList().add(Aspect.METAL, 3).add(Aspect.MAGIC, 3).add(Aspect.ENERGY, 3).add(Aspect.AURA, 3),-10,11,0,new ItemStack(TBItems.castingBracelet,1,3))
 			.setConcealed()
 			.setParents("TB.Bracelet.Greatwood")
-			.setParentsHidden("TB.THAUMIUM")
+			.setParentsHidden("TB.THAUMIUM", "CAP_thauminite")
 			.setPages(
 				new ResearchPage("tb.rec.bracelet.thaumium.page.0"),
 				new ResearchPage(thaumiumBraceletRec)
