@@ -465,7 +465,7 @@ tb.rec.enchantments.ewisdom=Weapons, enchanted with Elder Wisdom will have a cha
 tb.rec.enchantments.ebane=Weapons, enchanted with Eldritch bane will deal more damage to endermen and eldritch creatures.
 tb.rec.enchantments.magictouch=Weapons, enchanted with Magic Touched will provide thaumaturge using them with more primal aspects from enemies he kills.
 tb.rec.enchantments.vaporise=Weapons, enchanted with Vaporising enchantment will have a chance to provide the thaumaturge using them with some crystallised life essentia of creatures he slays.
-tb.rec.enchantments.taint=Weapons, infused with Taint will deal additional tainted damage upon hit. They will also apply Taint Poison to their target. They will be weaker against tainted creatures. To infuse a weapon with taint a thaumaturge should drop the weapon into a center of a tainted node and wait for the node to radiate the weapon with taint. Level of the enchantment is completely random, and can get up to 3.
+tb.rec.enchantments.taint=Weapons infused with Taint will deal additional tainted damage upon hit. They will also apply Taint Poison to their target. They will be weaker against tainted creatures. 
 
 #1.1 researches
 tc.research_name.TB.EntityDecAdv=Entity Deconstructor Improvements

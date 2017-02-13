@@ -241,10 +241,10 @@ public class TBBlocks {
 			BlocksRegistry.registerBlock(nodeLinker, "nodeLinker",core,ItemBlock.class);
 		}
 		
-		if (TBConfig.enableEntityDecon) {
+		
 			//Ent Decon
 			BlocksRegistry.registerBlock(entityDeconstructor, "entityDeconstructor",core,ItemBlock.class);
-		}
+		
 
 		
 	}

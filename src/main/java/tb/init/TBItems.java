@@ -70,8 +70,11 @@ public class TBItems {
 	public static Item plaxSeed = new ItemSeeds(TBBlocks.plax, Blocks.farmland).setUnlocalizedName("plaxSeeds").setTextureName("thaumicbases:plax_seeds");
 	public static Item metalleatSeeds = new ItemSeeds(TBBlocks.metalleat, Blocks.farmland).setUnlocalizedName("metalleatSeeds").setTextureName("thaumicbases:metalleat_seeds");
 	public static Item lucriteSeeds = new ItemSeeds(TBBlocks.lucrite, Blocks.farmland).setUnlocalizedName("lucriteSeeds").setTextureName("thaumicbases:lucrite_seeds");
+	
+	//TODO ROSA
 	public static Item knoseFragment = new ItemKnoseFragment().setUnlocalizedName("knoseFragment.").setTextureName("thaumicbases:knose/");
 	public static Item knoseSeed = new ItemKnoseSeeds(TBBlocks.knose, TBBlocks.crystalBlock).setUnlocalizedName("knoseSeed").setTextureName("thaumicbases:knose_seed");
+	
 	public static Item sweedSeeds = new ItemKnoseSeeds(TBBlocks.sweed,Blocks.grass).setUnlocalizedName("sweedSeeds").setTextureName("thaumicbases:seeds_sweed");
 	public static Item lazulliaSeeds = new ItemSeeds(TBBlocks.lazullia,Blocks.farmland).setUnlocalizedName("lazulliaSeeds").setTextureName("thaumicbases:lazullia_seeds");
 	public static Item redlonSeeds = new ItemSeeds(TBBlocks.redlonStem,Blocks.farmland).setUnlocalizedName("redlonSeeds").setTextureName("thaumicbases:redlon_seed");

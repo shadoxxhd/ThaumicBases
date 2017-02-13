@@ -19,3 +19,17 @@
 	Changed aurelia behviour
 		Reduced petal spawn radius from 8 to 5
 		Petals will now only spawn on grass or dirt type blocks
+
+1.4.1710.3
+	Fixed progression bug with Thaumium/Void bracelets
+
+1.4.1710.4
+	Added missing mcmod.info file
+	
+1.4.1710.7
+	Fixed Rosa seeds being eaten by crystal blocks if one was already planted on it
+	Possibly fixed server d/c on eating last rosa fragment in a stack
+	Fixed research progression stop with Thaumic Nature
+	Minor lang file changes
+	Altered progression for bracelets slightly
+	Phased out config for entity deconstructor now that it doesn't crash

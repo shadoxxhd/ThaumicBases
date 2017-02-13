@@ -128,7 +128,12 @@ public class ItemKnoseFragment extends Item
 	    	}
     	player.inventory.decrStackSize(player.inventory.currentItem, 1);
     	
-    	return stk.stackSize <= 0 ? null : stk;
+    	//1.7 old
+    	//return stk.stackSize <= 0 ? null : stk;
+    	
+    	//1.8 change
+    	--stk.stackSize;
+    	return stk;
     }
 	
     @SuppressWarnings({ "unchecked", "rawtypes" })

@@ -1317,6 +1317,7 @@ public class TBThaumonomicon {
 			new ResearchItem("TB.Bracelet.Reed",catName,new AspectList().add(Aspect.AIR, 3).add(Aspect.MAGIC, 3).add(Aspect.CRAFT, 3).add(Aspect.AURA, 3).add(Aspect.EXCHANGE, 3),-19,6,2,new ItemStack(TBItems.castingBracelet,1,5))
 			.setConcealed()
 			.setParents("TB.ROD_reed")
+			.setParentsHidden("TB.Bracelet.Greatwood")
 			.setPages(
 				new ResearchPage("tb.rec.bracelet.reed.page.0"),
 				new ResearchPage(reedBraceletRec)
@@ -1325,6 +1326,7 @@ public class TBThaumonomicon {
 			new ResearchItem("TB.Bracelet.Blaze",catName,new AspectList().add(Aspect.FIRE, 3).add(Aspect.MAGIC, 3).add(Aspect.CRAFT, 3).add(Aspect.AURA, 3).add(Aspect.EXCHANGE, 3),-15,6,2,new ItemStack(TBItems.castingBracelet,1,8))
 			.setConcealed()
 			.setParents("TB.ROD_blaze")
+			.setParentsHidden("TB.Bracelet.Greatwood")
 			.setPages(
 				new ResearchPage("tb.rec.bracelet.blaze.page.0"),
 				new ResearchPage(blazeBraceletRec)
@@ -1333,6 +1335,7 @@ public class TBThaumonomicon {
 			new ResearchItem("TB.Bracelet.Obsidian",catName,new AspectList().add(Aspect.EARTH, 3).add(Aspect.MAGIC, 3).add(Aspect.CRAFT, 3).add(Aspect.AURA, 3).add(Aspect.EXCHANGE, 3),-19,10,2,new ItemStack(TBItems.castingBracelet,1,7))
 			.setConcealed()
 			.setParents("TB.ROD_obsidian")
+			.setParentsHidden("TB.Bracelet.Greatwood")
 			.setPages(
 				new ResearchPage("tb.rec.bracelet.obsidian.page.0"),
 				new ResearchPage(obsidianBraceletRec)
@@ -1341,6 +1344,7 @@ public class TBThaumonomicon {
 			new ResearchItem("TB.Bracelet.Ice",catName,new AspectList().add(Aspect.WATER, 3).add(Aspect.MAGIC, 3).add(Aspect.CRAFT, 3).add(Aspect.AURA, 3).add(Aspect.EXCHANGE, 3),-17,6,2,new ItemStack(TBItems.castingBracelet,1,9))
 			.setConcealed()
 			.setParents("TB.ROD_ice")
+			.setParentsHidden("TB.Bracelet.Greatwood")
 			.setPages(
 				new ResearchPage("tb.rec.bracelet.ice.page.0"),
 				new ResearchPage(iceBraceletRec)
@@ -1349,6 +1353,7 @@ public class TBThaumonomicon {
 			new ResearchItem("TB.Bracelet.Quartz",catName,new AspectList().add(Aspect.ORDER, 3).add(Aspect.MAGIC, 3).add(Aspect.CRAFT, 3).add(Aspect.AURA, 3).add(Aspect.EXCHANGE, 3),-17,10,2,new ItemStack(TBItems.castingBracelet,1,10))
 			.setConcealed()
 			.setParents("TB.ROD_quartz")
+			.setParentsHidden("TB.Bracelet.Greatwood")
 			.setPages(
 				new ResearchPage("tb.rec.bracelet.quartz.page.0"),
 				new ResearchPage(quartzBraceletRec)
@@ -1357,6 +1362,7 @@ public class TBThaumonomicon {
 			new ResearchItem("TB.Bracelet.Bone",catName,new AspectList().add(Aspect.ENTROPY, 3).add(Aspect.MAGIC, 3).add(Aspect.CRAFT, 3).add(Aspect.AURA, 3).add(Aspect.EXCHANGE, 3),-15,10,2,new ItemStack(TBItems.castingBracelet,1,6))
 			.setConcealed()
 			.setParents("TB.ROD_bone")
+			.setParentsHidden("TB.Bracelet.Greatwood")
 			.setPages(
 				new ResearchPage("tb.rec.bracelet.bone.page.0"),
 				new ResearchPage(boneBraceletRec)
@@ -1480,7 +1486,7 @@ public class TBThaumonomicon {
 				new ItemStack(ConfigItems.itemResource,1,1)
 			});
 			
-			new ResearchItem("TB.BasicPlants",catName,new AspectList(),-8,-2,0,new ItemStack(Items.wheat_seeds,1,0))
+			new ResearchItem("TB.BasicPlants",catName,new AspectList().add(Aspect.CROP, 2).add(Aspect.PLANT, 2),-8,-2,1,new ItemStack(Items.wheat_seeds,1,0))
 			.setParentsHidden("TB.CRUCIBLE")
 			.setRound()
 			.setPages(
@@ -2280,38 +2286,38 @@ public class TBThaumonomicon {
 		
 		
 		//TODO entity decon
-		if (TBConfig.enableEntityDecon) {
-			InfusionRecipe entityDeconstructorRec = new InfusionRecipe("TB.EntityDec",new ItemStack(TBBlocks.entityDeconstructor,1,0),4,new AspectList().add(Aspect.DEATH, 16).add(Aspect.SOUL, 4).add(Aspect.MIND, 16),new ItemStack(ConfigItems.itemThaumometer),new ItemStack[]{
-				new ItemStack(Blocks.light_weighted_pressure_plate),
-				new ItemStack(Blocks.light_weighted_pressure_plate),
-				new ItemStack(Blocks.heavy_weighted_pressure_plate),
-				new ItemStack(Blocks.heavy_weighted_pressure_plate),
-				new ItemStack(ConfigItems.itemResource,1,9),
-				new ItemStack(ConfigItems.itemResource,1,9),
-				new ItemStack(ConfigItems.itemResource,1,15),
-				new ItemStack(ConfigItems.itemResource,1,15)
-			});
-			
-			new ResearchItem("TB.EntityDec",catName,new AspectList().add(Aspect.MIND, 8).add(Aspect.DEATH, 8).add(Aspect.SOUL, 8),3,-2,1,new ItemStack(TBBlocks.entityDeconstructor,1,0))
-			.setParents("TB.INFUSION")
-			.setSecondary()
-			.setConcealed()
-			.setPages(
-				new ResearchPage("tb.rec.eDec.page.0"),
-				new ResearchPage(entityDeconstructorRec)
-				).registerResearchItem();
-			
-			new ResearchItem("TB.EntityDecAdv",catName,new AspectList().add(Aspect.MIND, 8).add(Aspect.DEATH, 8),5,-3,1,new ItemStack(ConfigBlocks.blockCrystal,1,OreDictionary.WILDCARD_VALUE))
-			.setParents("TB.EntityDec")
-			.setSecondary()
-			.setConcealed()
-			.setPages(
-				new ResearchPage("tb.rec.eDeca.page.0"),
-				new ResearchPage("tb.rec.eDeca.page.1")
-				).registerResearchItem();
-			
-			ThaumcraftApi.getCraftingRecipes().add(entityDeconstructorRec);
-		}
+		
+		InfusionRecipe entityDeconstructorRec = new InfusionRecipe("TB.EntityDec",new ItemStack(TBBlocks.entityDeconstructor,1,0),4,new AspectList().add(Aspect.DEATH, 16).add(Aspect.SOUL, 4).add(Aspect.MIND, 16),new ItemStack(ConfigItems.itemThaumometer),new ItemStack[]{
+			new ItemStack(Blocks.light_weighted_pressure_plate),
+			new ItemStack(Blocks.light_weighted_pressure_plate),
+			new ItemStack(Blocks.heavy_weighted_pressure_plate),
+			new ItemStack(Blocks.heavy_weighted_pressure_plate),
+			new ItemStack(ConfigItems.itemResource,1,9),
+			new ItemStack(ConfigItems.itemResource,1,9),
+			new ItemStack(ConfigItems.itemResource,1,15),
+			new ItemStack(ConfigItems.itemResource,1,15)
+		});
+		
+		new ResearchItem("TB.EntityDec",catName,new AspectList().add(Aspect.MIND, 8).add(Aspect.DEATH, 8).add(Aspect.SOUL, 8),3,-2,1,new ItemStack(TBBlocks.entityDeconstructor,1,0))
+		.setParents("TB.INFUSION")
+		.setSecondary()
+		.setConcealed()
+		.setPages(
+			new ResearchPage("tb.rec.eDec.page.0"),
+			new ResearchPage(entityDeconstructorRec)
+			).registerResearchItem();
+		
+		new ResearchItem("TB.EntityDecAdv",catName,new AspectList().add(Aspect.MIND, 8).add(Aspect.DEATH, 8),5,-3,1,new ItemStack(ConfigBlocks.blockCrystal,1,OreDictionary.WILDCARD_VALUE))
+		.setParents("TB.EntityDec")
+		.setSecondary()
+		.setConcealed()
+		.setPages(
+			new ResearchPage("tb.rec.eDeca.page.0"),
+			new ResearchPage("tb.rec.eDeca.page.1")
+			).registerResearchItem();
+		
+		ThaumcraftApi.getCraftingRecipes().add(entityDeconstructorRec);
+		
 		
 			
 			

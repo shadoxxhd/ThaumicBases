@@ -32,7 +32,6 @@ public class TBConfig implements IDummyConfig{
 	public static boolean enableFlora;
 	public static boolean enableBloodyMess;
 	//public static boolean enableVoidTools;
-	public static boolean enableEntityDecon;
 
 	public static int minBlazePowderFromPyrofluid;
 	public static int maxBlazePowderFromPyrofluid;
@@ -102,10 +101,7 @@ public class TBConfig implements IDummyConfig{
 				"If set to false the void shears and igniter will be disabled - there will be no recipes/no entries in Thaumonomicon");
 		*/
 		
-		//TODO ent decon
-		enableEntityDecon = cfg.getBoolean("enableEntityDecon", "General", true,
-				"Enables the Entity Deconstructor. Config will probably be phased out now that bugs are fixed");
-		
+				
 		//pyrofluid
 		minBlazePowderFromPyrofluid = cfg.getInt("minBlazePowderFromPyrofluid", "Pyrofluid", 5, 0, Integer.MAX_VALUE, "");
 		maxBlazePowderFromPyrofluid = cfg.getInt("maxBlazePowderFromPyrofluid", "Pyrofluid", 5+32, 0, Integer.MAX_VALUE, "");

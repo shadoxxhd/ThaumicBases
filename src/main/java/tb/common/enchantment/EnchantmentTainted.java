@@ -6,7 +6,7 @@ import net.minecraft.item.ItemStack;
 
 public class EnchantmentTainted extends Enchantment{
 
-	public EnchantmentTainted(int id, int weight,	EnumEnchantmentType type) 
+	public EnchantmentTainted(int id, int weight, EnumEnchantmentType type) 
 	{
 		super(id, weight, type);
 	}
@@ -21,7 +21,9 @@ public class EnchantmentTainted extends Enchantment{
     	return !(ench instanceof EnchantmentElderKnowledge) && !(ench instanceof EnchantmentMagicTouch) && !(ench instanceof EnchantmentTainted) && !(ench instanceof EnchantmentVaporising);
     }
 
-    public boolean canApply(ItemStack p_92089_1_)
+    //do I even want to know why this is here?
+    
+    public boolean canApply(ItemStack itemStack)
     {
     	return false;
     }

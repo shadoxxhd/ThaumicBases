@@ -2,44 +2,43 @@ package tb.common.item;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemSeeds;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 public class ItemKnoseSeeds extends ItemSeeds{
 
-    private Block field_150925_a;
+    private Block cropBlock;
     private Block soilBlockID;
 	
-	public ItemKnoseSeeds(Block p_i45352_1_, Block p_i45352_2_) {
-		super(p_i45352_1_, p_i45352_2_);
-        this.field_150925_a = p_i45352_1_;
-        this.soilBlockID = p_i45352_2_;
+	public ItemKnoseSeeds(Block crop, Block soil) {
+		super(crop, soil);
+        this.cropBlock = crop;
+        this.soilBlockID = soil;
 	}
 	
-    public boolean onItemUse(ItemStack p_77648_1_, EntityPlayer p_77648_2_, World p_77648_3_, int p_77648_4_, int p_77648_5_, int p_77648_6_, int p_77648_7_, float p_77648_8_, float p_77648_9_, float p_77648_10_)
+    public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, int x, int y, int z, int side, float fx, float fy, float fz)
     {
-        if (p_77648_7_ != 1)
-        {
+        if (side != 1) {
             return false;
         }
-        else if (p_77648_2_.canPlayerEdit(p_77648_4_, p_77648_5_, p_77648_6_, p_77648_7_, p_77648_1_) && p_77648_2_.canPlayerEdit(p_77648_4_, p_77648_5_ + 1, p_77648_6_, p_77648_7_, p_77648_1_))
-        {
-            if (p_77648_3_.getBlock(p_77648_4_, p_77648_5_, p_77648_6_) == soilBlockID)
-            {
-                p_77648_3_.setBlock(p_77648_4_, p_77648_5_ + 1, p_77648_6_, this.field_150925_a);
-                --p_77648_1_.stackSize;
-                return true;
+        else if (player.canPlayerEdit(x, y, z, side, itemStack) && player.canPlayerEdit(x, y + 1, z, side, itemStack)) {
+            if (world.getBlock(x, y, z) == soilBlockID) {
+            	if (world.getBlock(x, y + 1, z) == Blocks.air) {
+            		world.setBlock(x, y + 1, z, this.cropBlock);
+                    --itemStack.stackSize;
+                    return true;
+            	}
             }
-            else
-            {
+            else {
                 return false;
             }
         }
-        else
-        {
+        else {
             return false;
         }
+		return false;
     }
 
 }
