@@ -61,6 +61,10 @@ public class ItemSmokingPipe extends Item
 	public ItemStack onEaten(ItemStack stack, World w, EntityPlayer player)
 	{
 		ItemStack tobacco = getTobacco(player);
+		//1.8 NPE patch
+		if(tobacco == null)
+			return stack;
+		
 		ITobacco t = ITobacco.class.cast(tobacco.getItem());
 		t.performTobaccoEffect(player, tobacco.getItemDamage(), isSilverwood);
 		for(int i = 0; i < player.inventory.getSizeInventory(); ++i)
