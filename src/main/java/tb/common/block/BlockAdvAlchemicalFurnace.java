@@ -22,7 +22,7 @@ import thaumcraft.common.Thaumcraft;
 
 public class BlockAdvAlchemicalFurnace extends BlockContainer{
 
-	public IIcon[] icons = new IIcon[5];
+	public IIcon[] icons = new IIcon[6];
 	
 	public BlockAdvAlchemicalFurnace()
 	{
@@ -39,6 +39,7 @@ public class BlockAdvAlchemicalFurnace extends BlockContainer{
 		icons[2] = ir.registerIcon("thaumicbases:tFurnace/top_filled");
 		icons[3] = ir.registerIcon("thaumicbases:tFurnace/front_off");
 		icons[4] = ir.registerIcon("thaumicbases:tFurnace/front_on");
+		icons[5] = ir.registerIcon("thaumicbases:tFurnace/bottom");
 	}
 
 	@Override
@@ -64,6 +65,11 @@ public class BlockAdvAlchemicalFurnace extends BlockContainer{
 				return icons[3];
 			}
 		}
+		
+		if(side == 0) {
+			return icons[5];
+		}
+		
 		if(side == 1)
 		{
 			if(tile.vis > 0)

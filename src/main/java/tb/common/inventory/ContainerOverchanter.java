@@ -2,6 +2,7 @@ package tb.common.inventory;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
@@ -34,9 +35,38 @@ public class ContainerOverchanter extends Container{
 		return true;
 	}
 	
+	/*
     public ItemStack transferStackInSlot(EntityPlayer p, int slot)
     {
     	return null;
     }
+	
+    */
+	
+	  public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2)
+	  {
+	    ItemStack itemstack = null;
+	    Slot slot = (Slot)this.inventorySlots.get(par2);
+	    if ((slot != null) && (slot.getHasStack()))
+	    {
+	      ItemStack itemstack1 = slot.getStack();
+	      itemstack = itemstack1.copy();
+	      if (par2 < 1)
+	      {
+	        if (!mergeItemStack(itemstack1, 1, this.inventorySlots.size(), true)) {
+	          return null;
+	        }
+	      }
+	      else if (!mergeItemStack(itemstack1, 0, 1, false)) {
+	        return null;
+	      }
+	      if (itemstack1.stackSize == 0) {
+	        slot.putStack((ItemStack)null);
+	      } else {
+	        slot.onSlotChanged();
+	      }
+	    }
+	    return itemstack;
+	  }
 
 }

@@ -1,9 +1,11 @@
 package tb.common.block;
 
+import DummyCore.Utils.MiscUtils;
 import tb.common.tile.TileOverchanter;
 import tb.core.TBCore;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -53,6 +55,11 @@ public class BlockOverchanter extends BlockContainer{
 	@Override
 	public TileEntity createNewTileEntity(World w, int meta) {
 		return new TileOverchanter();
+	}
+	
+	public void breakBlock(World w, int x, int y, int z, Block b, int meta)
+	{
+		MiscUtils.dropItemsOnBlockBreak(w, x, y, z, b, meta);
 	}
 	
     public boolean onBlockActivated(World w, int x, int y, int z, EntityPlayer p, int side, float vecX, float vecY, float vecZ)
