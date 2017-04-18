@@ -25,7 +25,7 @@ public class ItemKnoseSeeds extends ItemSeeds{
         }
         else if (player.canPlayerEdit(x, y, z, side, itemStack) && player.canPlayerEdit(x, y + 1, z, side, itemStack)) {
             if (world.getBlock(x, y, z) == soilBlockID) {
-            	if (world.getBlock(x, y + 1, z) == Blocks.air) {
+            	if (world.isAirBlock(x, y+1, z)) { /*world.getBlock(x, y + 1, z) == Blocks.air*/
             		world.setBlock(x, y + 1, z, this.cropBlock);
                     --itemStack.stackSize;
                     return true;
