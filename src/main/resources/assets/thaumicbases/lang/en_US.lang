@@ -8,7 +8,7 @@ enchantment.tainted=Tainted
 enchantment.vaporising=Vaporising
 
 #blocks
-tile.quicksilverBlock.name=Block of Quicksilver
+tile.quicksilverBlock.name=Quicksilver Block
 tile.quicksilverBrick.name=Quicksilver Brick
 tile.crystalBlockfire.name=Fire Crystal Block
 tile.crystalBlockwater.name=Water Crystal Block
@@ -20,7 +20,7 @@ tile.crystalBlockmixed.name=Mixed Crystal Block
 tile.crystalBlocktainted.name=Tainted Crystal Block
 tile.salisMundusBlock.name=Salis Mundus Block
 tile.pyrofluid.name=Pyrofluid
-tile.thauminiteBlock.name=Block of Thauminite
+tile.thauminiteBlock.name=Thauminite Block
 tile.eldritchArk.name=Gold Etched Obsidian
 tile.ironGreatwood.name=Iron Framed Greatwood
 tile.plax.name=Plax Crop
@@ -57,6 +57,7 @@ tile.TBoldGold.name=Ancient Gold Block
 tile.TBoldLapis.name=Ancient Lapis Lazuli Block
 tile.TBoldBricks.name=Ancient Bricks
 tile.nodeManipulator.name=Node Manipulator
+
 tile.tb.slab.tile.TBoldLapis.name=Ancient Lapis Lazuli Slab
 tile.tb.slab.tile.TBoldIron.name=Ancient Iron Slab
 tile.tb.slab.tile.TBoldGold.name=Ancient Gold Slab
@@ -65,6 +66,7 @@ tile.tb.slab.tile.TBoldCobblestone.name=Ancient Cobblestone Slab
 tile.tb.slab.tile.TBoldBricks.name=Ancient Brick Slab
 tile.tb.slab.tile.TBoldCobblestoneMossy.name=Ancient Mossy Cobblestone Slab
 tile.tb.slab.tile.eldritchArk.name=Gold Etched Obsidian Slab
+
 tile.tb.crystalslab.air.name=Air Crystal Slab
 tile.tb.crystalslab.water.name=Water Crystal Slab
 tile.tb.crystalslab.fire.name=Fire Crystal Slab
@@ -73,6 +75,7 @@ tile.tb.crystalslab.order.name=Order Crystal Slab
 tile.tb.crystalslab.entropy.name=Entropy Crystal Slab
 tile.tb.crystalslab.mixed.name=Mixed Crystal Slab
 tile.tb.crystalslab.tainted.name=Tainted Crystal Slab
+
 tile.thaumicRelocator.name=Thaumic Relocator
 tile.tb.voidblock.name=Void metal Block
 tile.thaumicAnvil.intact.name=Thaumium Anvil
@@ -81,6 +84,7 @@ tile.thaumicAnvil.veryDamaged.name=Very Damaged Thaumium Anvil
 tile.voidAnvil.intact.name=Void metal Anvil
 tile.voidAnvil.slightlyDamaged.name=Slightly Damaged Void metal Anvil
 tile.voidAnvil.veryDamaged.name=Very Damaged Void metal Anvil
+
 tile.peacefullTreeSapling.name=Peaceful Sapling
 tile.netherTreeSapling.name=Nether Sapling
 tile.enderTreeSapling.name=Ender Sapling
@@ -98,6 +102,7 @@ item.resourcethauminite.thauminite_ingot.name=Thauminite Ingot
 item.resourcethaumium_wand_core.name=Thaumium Wand Core
 item.resourcevoid_wand_core.name=Void Wand Core
 item.resourceaurelia_petal.name=Aurelia Petal
+
 item.thauminiteAxe.name=Thauminite Axe
 item.thauminiteHoe.name=Thauminite Hoe
 item.thauminiteShovel.name=Thauminite Shovel
@@ -108,6 +113,7 @@ item.thauminiteHelmet.name=Thauminite Helmet
 item.thauminiteChest.name=Thauminite Chestplate
 item.thauminiteLegs.name=Thauminite Leggings
 item.thauminiteBoots.name=Thauminite Boots
+
 item.resourcethauminite.wand_cap_thauminite.name=Thauminite Cap
 item.resourcebriar_seedbag.name=Briar Seed Bag
 item.resourcetobacco_leaves.name=Tobacco Leaves Pile
@@ -115,6 +121,7 @@ item.pyrofluidBucket.name=Bucket of Incendium
 item.Wand.thauminite.cap=Thauminite Bossed
 item.Wand.tbthaumium.rod=Thaumic
 item.Wand.tbvoid.rod=Void
+
 item.plaxSeeds.name=Plax Seeds
 item.metalleatSeeds.name=Metalleat Seeds
 item.lucriteSeeds.name=Lucrite Seeds
@@ -132,6 +139,7 @@ item.lazulliaSeeds.name=Lazullia Seeds
 item.redlonSeeds.name=Redlon Seed
 item.glieoniaSeed.name=Glieonia Seed
 item.rosehipSyrup.name=Rosehip Syrup
+
 item.greatwoodPipe.name=Greatwood Smoking Pipe
 item.silverwoodPipe.name=Silverwood Smoking Pipe
 item.tobacco.tobacco_pile.name=Tobacco Pile
@@ -146,15 +154,18 @@ item.tobacco.tobacco_wispy.name=Wispy Tobacco Pile
 item.tobaccoSeeds.name=Tobacco Seeds
 item.mortar.name=Mortar and Pestle
 item.voidSeed.name=Void Plant Seed
+
 item.resourcebloodycloth.name=Bloody Enchanted Fabric
 item.bloodyChest.name=Bloodstained Thaumaturge's Robe
 item.bloodyLegs.name=Bloodstained Thaumaturge's Leggings
 item.bloodyBoots.name=Bloodstained Thaumaturge's Boots
+
 item.concentratedTaint.name=Concentrated Taint Flask
 item.activationFoci.name=Wand Focus: Activation
 item.fluxFoci.name=Wand Focus: Flux Scrubber
 item.drainFoci.name=Wand Focus: Liquid Drain
 item.experienceFoci.name=Wand Focus: Experience
+
 item.nodeFoci.speed.name=§eNode Manipulator Focus: Speed
 item.nodeFoci.brightness.name=§eNode Manipulator Focus: Brightness
 item.nodeFoci.destruction.name=§eNode Manipulator Focus: Destruction
@@ -177,7 +188,7 @@ tc.research_name.TB.AdvancedEntropy=Advanced Entropy Manufacturing
 tc.research_text.TB.AdvancedEntropy=Crucible grinding
 tb.rec.advEntr.page.0=Alchemy offers much more than you can think of! Previously you could only use Entropy to break simple items. However, you have discovered a way to add entropy to more items, than just to the most mundane ones. There must be a way to make the process more efficient, but that opportunity requires more research.
 
-Alchemy holds a lot of potential you've yet to explore
+#Alchemy holds a lot of potential you've yet to explore
 
 
 tc.research_name.TB.MasterEntropy=Entropy Manufacturing Mastered!
