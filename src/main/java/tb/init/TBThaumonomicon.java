@@ -102,7 +102,7 @@ public class TBThaumonomicon {
 		CrucibleRecipe cinnabar = new CrucibleRecipe("TB.Quicksilver",new ItemStack(ConfigItems.itemResource, 3, 3),new ItemStack(ConfigBlocks.blockMagicalLog,1,1),new AspectList().add(Aspect.ORDER, 1).add(Aspect.POISON, 1));
 		CrucibleRecipe salisMundis = new CrucibleRecipe("TB.SM",new ItemStack(ConfigItems.itemResource, 2, 14),new ItemStack(ConfigItems.itemResource, 1, 14),new AspectList().add(primals(2)).add(Aspect.MAGIC, 3));
 		
-		CrucibleRecipe chiseledBricks = new CrucibleRecipe("TB.AlchemyRestoration",new ItemStack(Blocks.stonebrick,1,3),new ItemStack(Blocks.stonebrick,1,OreDictionary.WILDCARD_VALUE),new AspectList().add(Aspect.ORDER, 1));
+		CrucibleRecipe chiseledBricks = new CrucibleRecipe("TB.AlchemyRestoration",new ItemStack(Blocks.stonebrick,1,3),new ItemStack(Blocks.stonebrick,1,0),new AspectList().add(Aspect.ORDER, 1));
 		CrucibleRecipe gravel2Cobble = new CrucibleRecipe("TB.AlchemyRestoration",new ItemStack(Blocks.cobblestone,1,0),new ItemStack(Blocks.gravel,1,0),new AspectList().add(Aspect.ORDER, 1));
 		CrucibleRecipe icePacking = new CrucibleRecipe("TB.AlchemyRestoration",new ItemStack(Blocks.packed_ice,1,0),new ItemStack(Blocks.ice,1,0),new AspectList().add(Aspect.EARTH, 1));
 		
