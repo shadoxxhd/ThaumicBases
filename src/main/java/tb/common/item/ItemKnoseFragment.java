@@ -126,7 +126,7 @@ public class ItemKnoseFragment extends Item
 	    			if(w.rand.nextFloat() <= 0.1F)
 	    				TBUtils.addWarpToPlayer(player, 1, w.rand.nextFloat() <= 0.15F ? 0 : 1);
 	    	}
-    	player.inventory.decrStackSize(player.inventory.currentItem, 1);
+    	//player.inventory.decrStackSize(player.inventory.currentItem, 1);
     	
     	//1.7 old
     	//return stk.stackSize <= 0 ? null : stk;
