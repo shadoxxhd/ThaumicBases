@@ -53,7 +53,7 @@ public class ItemHerobrinesScythe extends ItemSword implements IRepairable,IWarp
 	@SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer player, List lst, boolean held) 
     {
-    	lst.add(EnumChatFormatting.ITALIC+"Well, they’re nothing..."); //Do not translate this line, it is a reference to TheAtlanticCraft's song - The Herobrine
+    	lst.add(EnumChatFormatting.ITALIC+"Well, they're nothing..."); //Do not translate this line, it is a reference to TheAtlanticCraft's song - The Herobrine
     }
 	
 	public void onUpdate(ItemStack stk, World w, Entity entity, int slot, boolean held)

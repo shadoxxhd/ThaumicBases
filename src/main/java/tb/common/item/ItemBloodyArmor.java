@@ -14,6 +14,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
@@ -44,6 +45,12 @@ public class ItemBloodyArmor extends ItemArmor implements IRepairable, IVisDisco
 	@Override
 	public int getRunicCharge(ItemStack itemstack) {
 		return 0;
+	}
+	
+	@Override
+	public EnumRarity getRarity(ItemStack itemstack)
+	{
+		return EnumRarity.uncommon; //
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
