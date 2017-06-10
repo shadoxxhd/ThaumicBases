@@ -125,10 +125,12 @@ public class BlockPyrofluid extends Block{
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void getSubBlocks(Item par1, CreativeTabs par2CreativeTabs, List par3List)
 	{
-		for(int i = 0; i < 8; ++i)
-			par3List.add(new ItemStack(par1,1,i));
+		/*for(int i = 0; i < 8; ++i)
+			par3List.add(new ItemStack(par1,1,i));*/
 		
-		par3List.add(new ItemStack(par1,1,15));
+		par3List.add(new ItemStack(par1,1,0));
+		
+		//par3List.add(new ItemStack(par1,1,15));
 	}
 	
     @SideOnly(Side.CLIENT)

@@ -1,7 +1,7 @@
 package tb.init;
 
 import tb.common.tile.TileAdvAlchemicalFurnace;
-import tb.common.tile.TileBraizer;
+import tb.common.tile.TileBrazier;
 import tb.common.tile.TileCampfire;
 import tb.common.tile.TileEntityDeconstructor;
 import tb.common.tile.TileNodeLinker;
@@ -21,7 +21,7 @@ public class TBTiles {
 		GameRegistry.registerTileEntity(TileRelocator.class, "tb.relocator");
 		GameRegistry.registerTileEntity(TileNodeLinker.class, "tb.nodeLinker");
 		GameRegistry.registerTileEntity(TileCampfire.class, "tb.campfire");
-		GameRegistry.registerTileEntity(TileBraizer.class, "tb.brazier");
+		GameRegistry.registerTileEntity(TileBrazier.class, "tb.brazier");
 	}
 
 }

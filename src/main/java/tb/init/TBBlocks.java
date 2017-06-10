@@ -5,7 +5,7 @@ import tb.common.block.BlockAdvAlchemicalFurnace;
 import tb.common.block.BlockAshroom;
 import tb.common.block.BlockAureliaLeaf;
 import tb.common.block.BlockAureliaPlant;
-import tb.common.block.BlockBraizer;
+import tb.common.block.BlockBrazier;
 import tb.common.block.BlockBriar;
 import tb.common.block.BlockCampfire;
 import tb.common.block.BlockCryingObelisk;
@@ -114,7 +114,7 @@ public class TBBlocks {
 	public static Block enderPlanks = new TBBlockDeco(Material.wood, false).setBlockName("enderPlanks").setBlockTextureName("thaumicbases:enderTree/planks").setHardness(2).setResistance(45).setStepSound(Block.soundTypeWood);
 	public static Block nodeLinker = new BlockNodeLinker().setBlockName("nodeLinker").setHardness(1);
 	public static Block campfire = new BlockCampfire().setBlockName("tb.campfire").setBlockTextureName("thaumicbases:campfire").setLightLevel(1);
-	public static Block braizer = new BlockBraizer().setBlockName("tb.brazier").setBlockTextureName("cobblestone").setLightLevel(1);
+	public static Block braizer = new BlockBrazier().setBlockName("tb.brazier").setBlockTextureName("cobblestone").setLightLevel(1);
 	
 	
 	public static void setup()

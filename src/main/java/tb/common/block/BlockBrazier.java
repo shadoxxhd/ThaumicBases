@@ -1,18 +1,22 @@
 package tb.common.block;
 
+import java.util.List;
 import java.util.Random;
 
-import tb.common.tile.TileBraizer;
+import tb.common.tile.TileBrazier;
 import DummyCore.Utils.MathUtils;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockBraizer extends BlockContainer
+public class BlockBrazier extends BlockContainer
 {
 
-	public BlockBraizer()
+	public BlockBrazier()
 	{
 		super(Material.rock);
 		setHardness(1F);
@@ -22,7 +26,7 @@ public class BlockBraizer extends BlockContainer
 	@Override
 	public TileEntity createNewTileEntity(World w, int meta) 
 	{
-		return new TileBraizer();
+		return new TileBrazier();
 	}
 	
     public boolean isOpaqueCube()
@@ -42,7 +46,8 @@ public class BlockBraizer extends BlockContainer
 
     public void randomDisplayTick(World w, int x, int y, int z, Random r)
     {
-    	if(w.getBlockMetadata(x, y, z) > 0)
+    	TileEntity tile = w.getTileEntity(x, y, z);
+    	if(tile != null && tile instanceof TileBrazier && ((TileBrazier)tile).burning)
     	{
     		w.spawnParticle("flame", x+0.5D+MathUtils.randomDouble(r)/4, y+0.6D, z+0.5D+MathUtils.randomDouble(r)/4, 0, 0.04D, 0);
     		for(int i = 0; i < 10; ++i)
@@ -50,5 +55,16 @@ public class BlockBraizer extends BlockContainer
     		
     		w.playSound(x+0.5D, y+0.5D, z+0.5D, "thaumicbases:fire.loop", 0.1F, 0.1F, false);
     	}
+    }
+    
+    public void addCollisionBoxesToList(final World world, final int i, final int j, final int k, final AxisAlignedBB axisalignedbb, final List arraylist, final Entity par7Entity) {
+        this.setBlockBounds(0.0625f, 0.0f, 0.0625f, 0.9375f, 0.875f, 0.9375f);
+        super.addCollisionBoxesToList(world, i, j, k, axisalignedbb, arraylist, par7Entity);
+    }
+    
+    public void setBlockBoundsBasedOnState(final IBlockAccess world, final int i, final int j, final int k) {
+
+        this.setBlockBounds(0.0625f, 0.0f, 0.0625f, 0.9375f, 0.85f, 0.9375f);
+        super.setBlockBoundsBasedOnState(world, i, j, k);
     }
 }

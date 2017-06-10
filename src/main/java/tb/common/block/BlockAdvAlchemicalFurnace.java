@@ -1,5 +1,7 @@
 package tb.common.block;
 
+import java.util.Random;
+
 import DummyCore.Utils.MiscUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
@@ -19,6 +21,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import tb.common.tile.TileAdvAlchemicalFurnace;
 import thaumcraft.common.Thaumcraft;
+import thaumcraft.common.tiles.TileAlchemyFurnace;
 
 public class BlockAdvAlchemicalFurnace extends BlockContainer{
 
@@ -187,5 +190,36 @@ public class BlockAdvAlchemicalFurnace extends BlockContainer{
             w.setBlockMetadataWithNotify(x, y, z, 4, 2);
         }
     }
+    
+    
+    @SideOnly(Side.CLIENT)
+    public void randomDisplayTick(final World w, final int x, final int y, final int z, final Random r) {
+        final TileEntity te = w.getTileEntity(x, y, z);
+        if (te != null && te instanceof TileAlchemyFurnace && ((TileAlchemyFurnace)te).isBurning()) {
+            final float f = x + 0.5f;
+            final float f2 = y + 0.2f + r.nextFloat() * 5.0f / 16.0f;
+            final float f3 = z + 0.5f;
+            final float f4 = 0.52f;
+            final float f5 = r.nextFloat() * 0.5f - 0.25f;
+            
+            if (w.getBlockMetadata(x, y, z) == 4) { 
+            	w.spawnParticle("smoke", (double)(f - f4), (double)f2, (double)(f3 + f5), 0.0, 0.0, 0.0);
+            	w.spawnParticle("flame", (double)(f - f4), (double)f2, (double)(f3 + f5), 0.0, 0.0, 0.0);
+            }
+            if (w.getBlockMetadata(x, y, z) == 5) {
+            	w.spawnParticle("smoke", (double)(f + f4), (double)f2, (double)(f3 + f5), 0.0, 0.0, 0.0);
+            	w.spawnParticle("flame", (double)(f + f4), (double)f2, (double)(f3 + f5), 0.0, 0.0, 0.0);
+            }
+            if (w.getBlockMetadata(x, y, z) == 2) {
+            	w.spawnParticle("smoke", (double)(f + f5), (double)f2, (double)(f3 - f4), 0.0, 0.0, 0.0);
+            	w.spawnParticle("flame", (double)(f + f5), (double)f2, (double)(f3 - f4), 0.0, 0.0, 0.0);
+            }
+            if (w.getBlockMetadata(x, y, z) == 3) {
+            	w.spawnParticle("smoke", (double)(f + f5), (double)f2, (double)(f3 + f4), 0.0, 0.0, 0.0);
+                w.spawnParticle("flame", (double)(f + f5), (double)f2, (double)(f3 + f4), 0.0, 0.0, 0.0);
+            }
+        }
+    }
+    
 	
 }

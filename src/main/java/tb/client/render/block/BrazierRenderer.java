@@ -2,11 +2,13 @@ package tb.client.render.block;
 
 import org.lwjgl.opengl.GL11;
 
+import tb.common.tile.TileBrazier;
 import thaumcraft.common.config.ConfigBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.init.Blocks;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.IBlockAccess;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
@@ -96,7 +98,9 @@ public class BrazierRenderer implements ISimpleBlockRenderingHandler{
 		renderer.setRenderBounds(0.3D, 0.61D, 0.3D, 0.7D, 0.75D, 0.7D);
 		renderer.renderStandardBlock(Blocks.stone, x, y, z);
 		
-		if(world.getBlockMetadata(x, y, z) == 1)
+		
+		TileEntity tile = world.getTileEntity(x, y, z);
+		if(tile != null && tile instanceof TileBrazier && ((TileBrazier)tile).burning)
 		{
 			renderer.setOverrideBlockTexture(Blocks.fire.getIcon(2, 0));
 			Tessellator.instance.setBrightness(247);

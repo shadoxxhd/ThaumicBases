@@ -1,14 +1,18 @@
 package tb.common.block;
 
+import java.util.List;
 import java.util.Random;
 
 import tb.common.tile.TileCampfire;
 import DummyCore.Utils.MathUtils;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockCampfire extends BlockContainer
@@ -77,4 +81,15 @@ public class BlockCampfire extends BlockContainer
     	
     	return false;
     }
+    
+    public void addCollisionBoxesToList(final World world, final int i, final int j, final int k, final AxisAlignedBB axisalignedbb, final List arraylist, final Entity par7Entity) { 
+        this.setBlockBounds(0.0625f, 0.0f, 0.0625f, 0.9375f, 0.5f, 0.9375f); 
+        super.addCollisionBoxesToList(world, i, j, k, axisalignedbb, arraylist, par7Entity); 
+    } 
+     
+    public void setBlockBoundsBasedOnState(final IBlockAccess world, final int i, final int j, final int k) { 
+ 
+        this.setBlockBounds(0.0625f, 0.0f, 0.0625f, 0.9375f, 0.5f, 0.9375f); 
+        super.setBlockBoundsBasedOnState(world, i, j, k); 
+    } 
 }

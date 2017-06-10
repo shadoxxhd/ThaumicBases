@@ -15,10 +15,16 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraftforge.common.util.ForgeDirection;
 
-public class TileBraizer extends TileEntity
+public class TileBrazier extends TileEntity
 {
 	public int burnTime;
 	public int uptime;
+	public boolean burning;
+	
+	
+	public TileBrazier() {
+		this.burning = false;
+	}
 	
     public void readFromNBT(NBTTagCompound tag)
     {
@@ -37,7 +43,7 @@ public class TileBraizer extends TileEntity
 	{
 		++uptime;
 		
-		if(burnTime > 0)
+		if(burnTime >= 0)
 		{
 			--burnTime;
 		}else
@@ -45,21 +51,22 @@ public class TileBraizer extends TileEntity
 			if(EssentiaHandler.drainEssentia(this, Aspect.FIRE, ForgeDirection.UNKNOWN, 6, false))
 			{
 				burnTime = 1600;
-				this.worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, 1, 3);
+				this.burning = true;
+				this.markDirty();
+				this.worldObj.markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);
 			}
 		}
 		
-		if(!this.worldObj.isRemote)
+		if(burnTime == -1)
 		{
-			if(burnTime <= 0)
-			{
-				int metadata = this.worldObj.getBlockMetadata(xCoord, yCoord, zCoord);
-				if(metadata == 1)
-					this.worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, 0, 3);
-				
-				return;
-			}
+			this.burning = false;
+			this.markDirty();
+			this.worldObj.markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);
+			return;
 		}
+		
+		
+		//System.out.println("burn" + burnTime);
 
 		
 		if(!this.worldObj.isRemote)
