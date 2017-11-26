@@ -512,36 +512,7 @@ tc.research_text.TB.PeacefulSapling=More life
 tb.rec.peacefulTree.page.0=You have noticed that the animals of all kind are attracted to the light. You have also noticed that they can appear in different places out of nowhere. You have studied that effect, and have managed to create a tree that will attract animals of all kind towards itself. The animals, corresponding to the biome the tree grows in will randomly appear beneath it's leaves. You should however keep control over the population, since animals will come endlessly!
 
 #Research from TC4
-tc.research_name.TB.INFUSIONENCHANTMENT=Infusion Enchantment
-tc.research_text.TB.INFUSIONENCHANTMENT=Enchanting with Essentia
-tc.research_name.TB.THAUMIUM=Magical Metallurgy
-tc.research_text.TB.THAUMIUM=Where metals meet magic
-tc.research_name.TB.VOIDMETAL=Void metal
-tc.research_text.TB.VOIDMETAL=Strange, it should feel cold...
-tc.research_name.TB.INFUSION=Infusion
-tc.research_text.TB.INFUSION=Mystical fusion
-tc.research_name.TB.ENCHFABRIC=Enchanted Fabric
-tc.research_text.TB.ENCHFABRIC=Silky and Stylish
-tc.research_name.TB.FOCUSEXCAVATION=Wand Focus: Excavation
-tc.research_text.TB.FOCUSEXCAVATION=Terra Terror
-tc.research_name.TB.JARVOID=Void Jar
-tc.research_text.TB.JARVOID=Too much essentia? Impossible!
-tc.research_name.TB.FLUXSCRUB=Flux Scrubber
-tc.research_text.TB.FLUXSCRUB=A boon for the messy thaumaturge
-tc.research_name.TB.MIRRORHAND=Magical hand Mirror
-tc.research_text.TB.MIRRORHAND=Personal reflection
-tc.research_name.TB.DISTILESSENTIA=Essentia Distillation
-tc.research_text.TB.DISTILESSENTIA=Harvesting essentia
-tc.research_name.TB.BELLOWS=Arcane Bellows
-tc.research_text.TB.BELLOWS=Stoking the flames
-tc.research_name.TB.NODESTABILIZERADV=Advanced Node Stabilizer
-tc.research_text.TB.NODESTABILIZERADV=Selective stabilisation
-tc.research_name.TB.VISPOWER=Harnessing Vis
-tc.research_text.TB.VISPOWER=Power to the People
-tc.research_name.TB.PRIMPEARL=Primordial Pearl
-tc.research_text.TB.PRIMPEARL=What came before
-tc.research_name.TB.LEVITATOR=Arcane Levitator
-tc.research_text.TB.LEVITATOR=Next best thing to flying
+#no longer needed
 
 #Enchantment researches
 tc.research_name.TB.ElderKnowledge=Elder Wisdom
@@ -761,27 +732,7 @@ tc.research_name.TB.Bracelet.Primal=Primal Bracelets
 tc.research_text.TB.Bracelet.Primal=The ultimate way
 tb.rec.bracelet.primal.page.0=Using your knowledge of the Staff core of the Primal you have created a bracelet that shares the same functionality. It will slowly regenerate all aspects within itself up to 10%. It also holds the most vis out of all bracelets and offers the best discount. Lastly, similar to the primal staff core it will automatically add 1 level of Potency to any foci used with it.
 
-#vanilla tc researches
-tc.research_name.TB.CAP_gold=Gold Wand Caps
-tc.research_text.TB.CAP_gold=Capping things off with style
-tc.research_name.TB.ROD_greatwood=Greatwood Wand Core
-tc.research_text.TB.ROD_greatwood=Repository of magical energy
-tc.research_name.TB.ROD_silverwood=Silverwood Wand Core
-tc.research_text.TB.ROD_silverwood=Magical to the core
-tc.research_name.TB.ROD_obsidian=Obsidian Wand Core
-tc.research_text.TB.ROD_obsidian=Earthen vis storage
-tc.research_name.TB.ROD_bone=Bone Wand Core
-tc.research_text.TB.ROD_bone=Entropic vis storage
-tc.research_name.TB.ROD_blaze=Blaze Rod Wand Core
-tc.research_text.TB.ROD_blaze=Fiery vis storage
-tc.research_name.TB.ROD_ice=Icy Wand Core
-tc.research_text.TB.ROD_ice=Icy vis storage
-tc.research_name.TB.ROD_quartz=Quartz Wand Core
-tc.research_text.TB.ROD_quartz=Ordered vis storage
-tc.research_name.TB.ROD_reed=Reed Wand Core
-tc.research_text.TB.ROD_reed=Airy vis storage
-tc.research_name.TB.ROD_primal_staff=Staff Core of the Primal
-tc.research_text.TB.ROD_primal_staff=Elemental power combined
+
 
 #Chat notifications
 tb.txt.linkStarted=Link Started

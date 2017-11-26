@@ -422,23 +422,26 @@ public class TBThaumonomicon {
 		//TODO recipes
 		
 		
-		copy(ResearchCategories.getResearchList("ALCHEMY").research.get("CRUCIBLE"),"TB.CRUCIBLE",catName,0,3).setConcealed().setHidden().registerResearchItem();
+		//copy(ResearchCategories.getResearchList("ALCHEMY").research.get("CRUCIBLE"),"TB.CRUCIBLE",catName,0,3).setConcealed().setHidden().registerResearchItem();
+		//copy(ResearchCategories.getResearchList("ALCHEMY").research.get("THAUMIUM"),"TB.THAUMIUM",catName,8,0).setConcealed().setHidden().registerResearchItem();
+		//copy(ResearchCategories.getResearchList("ALCHEMY").research.get("DISTILESSENTIA"),"TB.DISTILESSENTIA",catName,6,2).setConcealed().setHidden().registerResearchItem();	
 		
-		copy(ResearchCategories.getResearchList("ALCHEMY").research.get("THAUMIUM"),"TB.THAUMIUM",catName,8,0).setConcealed().setHidden().registerResearchItem();
+		//copy(ResearchCategories.getResearchList("ARTIFICE").research.get("INFUSION"),"TB.INFUSION",catName,0,-3).setConcealed().setHidden().registerResearchItem();
+		//copy(ResearchCategories.getResearchList("ARTIFICE").research.get("BELLOWS"),"TB.BELLOWS",catName,6,3).setConcealed().setHidden().registerResearchItem();
+		//copy(ResearchCategories.getResearchList("ARTIFICE").research.get("LEVITATOR"),"TB.LEVITATOR",catName,6,5).setConcealed().setHidden().registerResearchItem();
 		
-		copy(ResearchCategories.getResearchList("ALCHEMY").research.get("DISTILESSENTIA"),"TB.DISTILESSENTIA",catName,6,2).setConcealed().setHidden().registerResearchItem();
-			
+		//copy(ResearchCategories.getResearchList("ELDRITCH").research.get("VOIDMETAL"),"TB.VOIDMETAL",catName,15,1).setConcealed().setHidden().registerResearchItem();
 		
-		copy(ResearchCategories.getResearchList("ARTIFICE").research.get("INFUSION"),"TB.INFUSION",catName,0,-3).setConcealed().setHidden().registerResearchItem();
+		new FakeResearchItem("TB.CRUCIBLE", "THAUMICBASES", "CRUCIBLE", "ALCHEMY", 0, 3, ResearchCategories.getResearch("CRUCIBLE").icon_item).registerResearchItem();
+		new FakeResearchItem("TB.THAUMIUM", "THAUMICBASES", "THAUMIUM", "ALCHEMY", 8, 0, ResearchCategories.getResearch("THAUMIUM").icon_item).registerResearchItem();
+		new FakeResearchItem("TB.DISTILESSENTIA", "THAUMICBASES", "DISTILESSENTIA", "ALCHEMY", 6, 2, ResearchCategories.getResearch("DISTILESSENTIA").icon_item).registerResearchItem();
 		
-		copy(ResearchCategories.getResearchList("ARTIFICE").research.get("BELLOWS"),"TB.BELLOWS",catName,6,3).setConcealed().setHidden().registerResearchItem();
+		new FakeResearchItem("TB.INFUSION", "THAUMICBASES", "INFUSION", "ARTIFICE", 0, -3, ResearchCategories.getResearch("INFUSION").icon_item).registerResearchItem();
+		new FakeResearchItem("TB.BELLOWS", "THAUMICBASES", "BELLOWS", "ARTIFICE", 6, 3, ResearchCategories.getResearch("BELLOWS").icon_item).registerResearchItem();
+		new FakeResearchItem("TB.LEVITATOR", "THAUMICBASES", "LEVITATOR", "ARTIFICE", 6, 5, ResearchCategories.getResearch("LEVITATOR").icon_item).registerResearchItem();
 		
-		copy(ResearchCategories.getResearchList("ARTIFICE").research.get("LEVITATOR"),"TB.LEVITATOR",catName,6,5).setConcealed().setHidden().registerResearchItem();
-		
-		
-		copy(ResearchCategories.getResearchList("ELDRITCH").research.get("VOIDMETAL"),"TB.VOIDMETAL",catName,15,1).setConcealed().setHidden().registerResearchItem();
-		
-		
+		new FakeResearchItem("TB.VOIDMETAL", "THAUMICBASES", "VOIDMETAL", "ELDRITCH", 15, 1, ResearchCategories.getResearch("VOIDMETAL").icon_item).registerResearchItem();
+
 		
 		//-2,-18
 		//5,-3
@@ -614,7 +617,9 @@ public class TBThaumonomicon {
 			).registerResearchItem();
 		
 		
-		copy(ResearchCategories.getResearchList("ARTIFICE").research.get("INFUSIONENCHANTMENT"), "TB.INFUSIONENCHANTMENT", catName, 0, 8).setHidden().registerResearchItem();
+		//copy(ResearchCategories.getResearchList("ARTIFICE").research.get("INFUSIONENCHANTMENT"), "TB.INFUSIONENCHANTMENT", catName, 0, 8).setHidden().registerResearchItem();
+		
+		new FakeResearchItem("TB.INFUSIONENCHANTMENT", "THAUMICBASES", "INFUSIONENCHANTMENT", "ARTIFICE", 0, 8, ResearchCategories.getResearch("INFUSIONENCHANTMENT").icon_resource).registerResearchItem();
 		
 		new ResearchItem("TB.ElderKnowledge",catName,new AspectList().add(Aspect.MAGIC, 8).add(Aspect.MIND, 8).add(Aspect.WEAPON, 8),-2,8,1,new ResourceLocation("thaumicbases","textures/enchantments/elder_knowledge.png"))
 		.setParents("TB.INFUSIONENCHANTMENT")
@@ -1034,7 +1039,10 @@ public class TBThaumonomicon {
 		//TODO BloodyMess
 		if (TBConfig.enableBloodyMess) {
 			
-			copy(ResearchCategories.getResearchList("ARTIFICE").research.get("ENCHFABRIC"),"TB.ENCHFABRIC",catName,8,-3).setConcealed().setHidden().registerResearchItem();
+			//copy(ResearchCategories.getResearchList("ARTIFICE").research.get("ENCHFABRIC"),"TB.ENCHFABRIC",catName,8,-3).setConcealed().setHidden().registerResearchItem();
+			
+			new FakeResearchItem("TB.ENCHFABRIC", "THAUMICBASES", "ENCHFABRIC", "ARTIFICE", 8, -3, ResearchCategories.getResearch("ENCHFABRIC").icon_item).registerResearchItem();
+			
 			ThaumcraftApi.addWarpToResearch("TB.BloodyRobes", 2);
 			
 			ShapedArcaneRecipe bloodyChestRec = new ShapedArcaneRecipe("TB.BloodyRobes",new ItemStack(TBItems.bloodyChest,1,0),new AspectList().add(Aspect.AIR, 5), new Object[]{
@@ -1135,19 +1143,38 @@ public class TBThaumonomicon {
 		//TODO Bracelets
 		if (TBConfig.enableBracelets) {
 			
-			copy(ResearchCategories.getResearchList("THAUMATURGY").research.get("CAP_gold"),"TB.CAP_gold",catName,-8,10).setConcealed().setHidden().registerResearchItem();
-			copy(ResearchCategories.getResearchList("THAUMATURGY").research.get("ROD_greatwood"),"TB.ROD_greatwood",catName,-10,6).setConcealed().setHidden().registerResearchItem();
-			copy(ResearchCategories.getResearchList("THAUMATURGY").research.get("ROD_silverwood"),"TB.ROD_silverwood",catName,-12,6).setConcealed().setHidden().registerResearchItem();
+			//copy(ResearchCategories.getResearchList("THAUMATURGY").research.get("CAP_gold"),"TB.CAP_gold",catName,-8,10).setConcealed().setHidden().registerResearchItem();
+			//copy(ResearchCategories.getResearchList("THAUMATURGY").research.get("ROD_greatwood"),"TB.ROD_greatwood",catName,-10,6).setConcealed().setHidden().registerResearchItem();
+			//copy(ResearchCategories.getResearchList("THAUMATURGY").research.get("ROD_silverwood"),"TB.ROD_silverwood",catName,-12,6).setConcealed().setHidden().registerResearchItem();
 			
-			copy(ResearchCategories.getResearchList("THAUMATURGY").research.get("ROD_reed"),"TB.ROD_reed",catName,-19,5).setConcealed().setHidden().registerResearchItem();
-			copy(ResearchCategories.getResearchList("THAUMATURGY").research.get("ROD_blaze"),"TB.ROD_blaze",catName,-15,5).setConcealed().setHidden().registerResearchItem();
-			copy(ResearchCategories.getResearchList("THAUMATURGY").research.get("ROD_obsidian"),"TB.ROD_obsidian",catName,-19,11).setConcealed().setHidden().registerResearchItem();
-			copy(ResearchCategories.getResearchList("THAUMATURGY").research.get("ROD_ice"),"TB.ROD_ice",catName,-17,5).setConcealed().setHidden().registerResearchItem();
-			copy(ResearchCategories.getResearchList("THAUMATURGY").research.get("ROD_quartz"),"TB.ROD_quartz",catName,-17,11).setConcealed().setHidden().registerResearchItem();
-			copy(ResearchCategories.getResearchList("THAUMATURGY").research.get("ROD_bone"),"TB.ROD_bone",catName,-15,11).setConcealed().setHidden().registerResearchItem();
+			//copy(ResearchCategories.getResearchList("THAUMATURGY").research.get("ROD_reed"),"TB.ROD_reed",catName,-19,5).setConcealed().setHidden().registerResearchItem();
+			//copy(ResearchCategories.getResearchList("THAUMATURGY").research.get("ROD_blaze"),"TB.ROD_blaze",catName,-15,5).setConcealed().setHidden().registerResearchItem();
+			//copy(ResearchCategories.getResearchList("THAUMATURGY").research.get("ROD_obsidian"),"TB.ROD_obsidian",catName,-19,11).setConcealed().setHidden().registerResearchItem();
+			//copy(ResearchCategories.getResearchList("THAUMATURGY").research.get("ROD_ice"),"TB.ROD_ice",catName,-17,5).setConcealed().setHidden().registerResearchItem();
+			//copy(ResearchCategories.getResearchList("THAUMATURGY").research.get("ROD_quartz"),"TB.ROD_quartz",catName,-17,11).setConcealed().setHidden().registerResearchItem();
+			//copy(ResearchCategories.getResearchList("THAUMATURGY").research.get("ROD_bone"),"TB.ROD_bone",catName,-15,11).setConcealed().setHidden().registerResearchItem();
 			
-			copy(ResearchCategories.getResearchList("ELDRITCH").research.get("ROD_primal_staff"),"TB.ROD_primal_staff",catName,-19,8).setConcealed().setHidden().registerResearchItem();
-						
+			//copy(ResearchCategories.getResearchList("ELDRITCH").research.get("ROD_primal_staff"),"TB.ROD_primal_staff",catName,-19,8).setConcealed().setHidden().registerResearchItem();
+			
+			
+			new FakeResearchItem("TB.CAP_gold", "THAUMICBASES", "CAP_gold", "THAUMATURGY", -8, 10, ResearchCategories.getResearch("CAP_gold").icon_item).registerResearchItem();
+			new FakeResearchItem("TB.ROD_greatwood", "THAUMICBASES", "ROD_greatwood", "THAUMATURGY", -10, 6, ResearchCategories.getResearch("ROD_greatwood").icon_item).registerResearchItem();
+			new FakeResearchItem("TB.ROD_silverwood", "THAUMICBASES", "ROD_silverwood", "THAUMATURGY", -12, 6, ResearchCategories.getResearch("ROD_silverwood").icon_item).registerResearchItem();
+			
+			new FakeResearchItem("TB.ROD_reed", "THAUMICBASES", "ROD_reed", "THAUMATURGY", -19, 5, ResearchCategories.getResearch("ROD_reed").icon_item).registerResearchItem();
+			new FakeResearchItem("TB.ROD_blaze", "THAUMICBASES", "ROD_blaze", "THAUMATURGY", -15, 5, ResearchCategories.getResearch("ROD_blaze").icon_item).registerResearchItem();
+			new FakeResearchItem("TB.ROD_obsidian", "THAUMICBASES", "ROD_obsidian", "THAUMATURGY", -19, 11, ResearchCategories.getResearch("ROD_obsidian").icon_item).registerResearchItem();
+			new FakeResearchItem("TB.ROD_ice", "THAUMICBASES", "ROD_ice", "THAUMATURGY", -17, 5, ResearchCategories.getResearch("ROD_ice").icon_item).registerResearchItem();
+			new FakeResearchItem("TB.ROD_quartz", "THAUMICBASES", "ROD_quartz", "THAUMATURGY", -17, 11, ResearchCategories.getResearch("ROD_quartz").icon_item).registerResearchItem();
+			new FakeResearchItem("TB.ROD_bone", "THAUMICBASES", "ROD_bone", "THAUMATURGY", -15, 11, ResearchCategories.getResearch("ROD_bone").icon_item).registerResearchItem();
+			
+			new FakeResearchItem("TB.ROD_primal_staff", "THAUMICBASES", "ROD_primal_staff", "THAUMATURGY", -19, 8, ResearchCategories.getResearch("ROD_primal_staff").icon_item).registerResearchItem();
+			
+			
+			
+			
+			
+			
 			ThaumcraftApi.addWarpToResearch("TB.Bracelet.Void", 2);
 			ThaumcraftApi.addWarpToResearch("TB.Bracelet.Bone", 1);
 			ThaumcraftApi.addWarpToResearch("TB.Bracelet.Primal", 4);
@@ -1663,9 +1690,12 @@ public class TBThaumonomicon {
 		//TODO nodes
 		if (TBConfig.enableNodeTools) {
 			
-			copy(ResearchCategories.getResearchList("THAUMATURGY").research.get("NODESTABILIZERADV"),"TB.NODESTABILIZERADV",catName,-2,-7).setConcealed().setHidden().registerResearchItem();
+			//copy(ResearchCategories.getResearchList("THAUMATURGY").research.get("NODESTABILIZERADV"),"TB.NODESTABILIZERADV",catName,-2,-7).setConcealed().setHidden().registerResearchItem();
+			//copy(ResearchCategories.getResearchList("THAUMATURGY").research.get("VISPOWER"),"TB.VISPOWER",catName,2,-7).setConcealed().setHidden().registerResearchItem();
 			
-			copy(ResearchCategories.getResearchList("THAUMATURGY").research.get("VISPOWER"),"TB.VISPOWER",catName,2,-7).setConcealed().setHidden().registerResearchItem();
+			new FakeResearchItem("TB.NODESTABILIZERADV", "THAUMICBASES", "NODESTABILIZERADV", "THAUMATURGY", -2, -7, ResearchCategories.getResearch("NODESTABILIZERADV").icon_item).registerResearchItem();
+			new FakeResearchItem("TB.VISPOWER", "THAUMICBASES", "VISPOWER", "THAUMATURGY", 2, -7, ResearchCategories.getResearch("VISPOWER").icon_item).registerResearchItem();
+			
 			
 			ThaumcraftApi.addWarpToResearch("TB.NodeMan", 1);
 			ThaumcraftApi.addWarpToResearch("TB.NodeFoci.Destr", 2);
@@ -1822,8 +1852,11 @@ public class TBThaumonomicon {
 				new ResearchPage(nodeManipulatorRec)
 				).registerResearchItem();
 			
-			if(flag)
-				copy(ResearchCategories.getResearchList("ELDRITCH").research.get("PRIMPEARL"),"TB.PRIMPEARL",catName,0,-13).setConcealed().setHidden().registerResearchItem();
+			if(flag){
+				//copy(ResearchCategories.getResearchList("ELDRITCH").research.get("PRIMPEARL"),"TB.PRIMPEARL",catName,0,-13).setConcealed().setHidden().registerResearchItem();
+				
+				new FakeResearchItem("TB.PRIMPEARL", "THAUMICBASES", "PRIMPEARL", "ELDRITCH", 0, -13, ResearchCategories.getResearch("PRIMPEARL").icon_item).registerResearchItem();
+			}
 			
 			String[] bParents = flag ? new String[]{"TB.NodeMan","TB.PRIMPEARL"} : new String[]{"TB.NodeMan"};
 			
@@ -2385,6 +2418,7 @@ public class TBThaumonomicon {
 		return new AspectList().add(Aspect.AIR, amount).add(Aspect.WATER, amount).add(Aspect.EARTH, amount).add(Aspect.FIRE, amount).add(Aspect.ORDER, amount).add(Aspect.ENTROPY, amount);
 	}
 	
+	/*
 	public static ResearchItem copy(ResearchItem res, String newKey, String newCat, int dC, int dR)
 	{
 		ResearchItem rItem;
@@ -2441,6 +2475,6 @@ public class TBThaumonomicon {
 		}
 		
 		return rItem;
-	}
+	}*/
 	
 }
