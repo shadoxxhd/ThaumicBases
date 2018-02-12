@@ -199,17 +199,20 @@ public class TileNodeManipulator extends TileEntity implements IWandable
 				}
 				if(effect == 5)
 				{
-					if(node.getNodeType() == NodeType.NORMAL)
-					{
-						if(workTime > 3*60*20)
-						{
-							workTime = 0;
-							node.setNodeType(NodeType.PURE);
-						}else
-						{
-							++workTime;
+						if(node.getNodeType() == NodeType.NORMAL) {
+							if(workTime > 3*60*20){
+								workTime = 0;
+								node.setNodeType(NodeType.PURE);
+							}
+							else ++workTime;
 						}
-					}
+						else if(node.getNodeType() == NodeType.TAINTED) {
+							if(workTime > 33*60*20){
+								workTime = 0;
+								node.setNodeType(NodeType.PURE);
+							}
+							else ++workTime;
+						}
 				}
 				if(effect == 6)
 				{
@@ -254,7 +257,7 @@ public class TileNodeManipulator extends TileEntity implements IWandable
 						maxTimeRequired = 7*60*20;
 					}
 					
-					if(node.getNodeType() == NodeType.TAINTED)
+					if(node.getNodeType() == NodeType.TAINTED || node.getNodeType() == NodeType.PURE)
 					{
 						maxTimeRequired = 30*60*20;
 					}
@@ -274,7 +277,7 @@ public class TileNodeManipulator extends TileEntity implements IWandable
 							return;
 						}
 						
-						if(node.getNodeType() == NodeType.DARK || node.getNodeType() == NodeType.HUNGRY || node.getNodeType() == NodeType.UNSTABLE || node.getNodeType() == NodeType.TAINTED)
+						if(node.getNodeType() == NodeType.DARK || node.getNodeType() == NodeType.HUNGRY || node.getNodeType() == NodeType.UNSTABLE || node.getNodeType() == NodeType.TAINTED || node.getNodeType() == NodeType.PURE)
 						{
 							node.setNodeType(NodeType.NORMAL);
 							return;

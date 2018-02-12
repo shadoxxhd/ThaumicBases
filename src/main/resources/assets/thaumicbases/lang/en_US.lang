@@ -4,7 +4,7 @@ tc.research_category.THAUMICBASES=Thaumic Bases
 enchantment.elderKnowledge=Elder Wisdom
 enchantment.eldritchBane=Eldritch Bane
 enchantment.magicTouch=Magic Touched
-enchantment.tainted=Tainted
+enchantment.tainted=tainted
 enchantment.vaporising=Vaporising
 
 #blocks
@@ -17,7 +17,7 @@ tile.crystalBlockair.name=Air Crystal Block
 tile.crystalBlockorder.name=Order Crystal Block
 tile.crystalBlockentropy.name=Entropy Crystal Block
 tile.crystalBlockmixed.name=Mixed Crystal Block
-tile.crystalBlocktainted.name=Tainted Crystal Block
+tile.crystalBlocktainted.name=tainted Crystal Block
 tile.salisMundusBlock.name=Salis Mundus Block
 tile.pyrofluid.name=Pyrofluid
 tile.thauminiteBlock.name=Thauminite Block
@@ -74,7 +74,7 @@ tile.tb.crystalslab.earth.name=Earth Crystal Slab
 tile.tb.crystalslab.order.name=Order Crystal Slab
 tile.tb.crystalslab.entropy.name=Entropy Crystal Slab
 tile.tb.crystalslab.mixed.name=Mixed Crystal Slab
-tile.tb.crystalslab.tainted.name=Tainted Crystal Slab
+tile.tb.crystalslab.tainted.name=tainted Crystal Slab
 
 tile.thaumicRelocator.name=Thaumic Relocator
 tile.tb.voidblock.name=Void metal Block
@@ -133,7 +133,7 @@ item.knoseFragment.air.name=Aer Fragment
 item.knoseFragment.order.name=Ordo Fragment
 item.knoseFragment.entropy.name=Perditio Fragment
 item.knoseFragment.mixed.name=Mixed Fragment
-item.knoseFragment.tainted.name=Tainted Fragment
+item.knoseFragment.tainted.name=tainted Fragment
 item.sweedSeeds.name=Sweed Seeds
 item.lazulliaSeeds.name=Lazullia Seeds
 item.redlonSeeds.name=Redlon Seed
@@ -149,7 +149,7 @@ item.tobacco.tobacco_hunger.name=Saturating Tobacco Pile
 item.tobacco.tobacco_knowledge.name=Wisdom Tobacco Pile
 item.tobacco.tobacco_mining.name=Miner's Tobacco Pile
 item.tobacco.tobacco_sanity.name=Relaxing Tobacco Pile
-item.tobacco.tobacco_tainted.name=Tainted Tobacco Pile
+item.tobacco.tobacco_tainted.name=tainted Tobacco Pile
 item.tobacco.tobacco_wispy.name=Wispy Tobacco Pile
 item.tobaccoSeeds.name=Tobacco Seeds
 item.mortar.name=Mortar and Pestle
@@ -233,7 +233,7 @@ tb.rec.backProc.page.0=Many things once broken down sadly can't be restored anym
 
 tc.research_name.TB.CrystalBlocks=Crystal Cluster Blocks
 tc.research_text.TB.CrystalBlocks=Back from the second edition!
-tb.rec.cBlocks.page.0=After researching the way Ordo interacts with blocks in the Crucible you think, that you can start a bigger project. You've found, that by mixing a crystal cluster in a crucible with some ordo, the aspect the cluster is based on and some Fabrico the cluster collapses into a solid form! It is yet to be discovered what the solid form can be used for, but it has saved all the properties of the cluster it was made from. You have also discovered, that by adding Vitium essentia during the process will taint the clusters, resulting in a Tainted Crystal Block. Their uses are yet to be discovered... All blocks can be used to stabilise the Infusion Altar.
+tb.rec.cBlocks.page.0=After researching the way Ordo interacts with blocks in the Crucible you think, that you can start a bigger project. You've found, that by mixing a crystal cluster in a crucible with some ordo, the aspect the cluster is based on and some Fabrico the cluster collapses into a solid form! It is yet to be discovered what the solid form can be used for, but it has saved all the properties of the cluster it was made from. You have also discovered, that by adding Vitium essentia during the process will taint the clusters, resulting in a tainted Crystal Block. Their uses are yet to be discovered... All blocks can be used to stabilise the Infusion Altar.
 
 tc.research_name.TB.SMB=Salis Mundus Blocks
 tc.research_text.TB.SMB=Let's be brave!
@@ -257,7 +257,7 @@ tb.rec.thaumRod.page.0=For a long time thaumaturges haven't though about using t
 
 tc.research_name.ROD_tbvoid=Void Wand Rod
 tc.research_text.ROD_tbvoid=A dangerous path
-tb.rec.voidRod.page.0=Well, after your journey to the abyssal depths of insanity you have discovered a way to make a very strange metal. You have another strange idea - what if you create a wand rod out of that void metal? You might need to add additional things to it, like make it taint proof by using the Tainted Cluster Blocks. The result is a wand, pulsating with power. This might be the most power you could get without adventuring into the darkness once more. Also, it seems to slowly accumulate aspects inside of itself - you wonder what of the components gave you that?..
+tb.rec.voidRod.page.0=Well, after your journey to the abyssal depths of insanity you have discovered a way to make a very strange metal. You have another strange idea - what if you create a wand rod out of that void metal? You might need to add additional things to it, like make it taint proof by using the tainted Cluster Blocks. The result is a wand, pulsating with power. This might be the most power you could get without adventuring into the darkness once more. Also, it seems to slowly accumulate aspects inside of itself - you wonder what of the components gave you that?..
 
 tc.research_name.TB.Plax=Plax
 tc.research_text.TB.Plax=Magical strings
@@ -340,8 +340,8 @@ tc.research_name.TB.Tobacco.Wisdom=Wisdom Tobacco
 tc.research_text.TB.Tobacco.Wisdom=Knowledge hidden in ashes
 tb.rec.witobacco.page.0=You have gone beyond the relaxing properties of the tobacco. Infusing your tobacco with knowledge sure was a great idea - you have managed to create a tobacco, which puts you in a crystal clear mind state once you smoke it. The effect lasts a mere second, though it is more than enough to make a shocking discovery or two. However, you are afraid, that you may also see something horrible there, which will corrupt your mind... Well, who does not risk - does not get his reward, right?
 
-tc.research_name.TB.Tobacco.Tainted=Tainted Tobacco
-tc.research_text.TB.Tobacco.Tainted=Mind warping
+tc.research_name.TB.Tobacco.tainted=tainted Tobacco
+tc.research_text.TB.Tobacco.tainted=Mind warping
 tb.rec.ttobacco.page.0=You are not quite sure why you have even discovered this. Sure, now you can infuse your tobacco with taint, forever changing it, so anyone, who smokes it will have his mind corrupted by taint, and all the horrors of the dark will appear in his mind, but what is it even useful for? The taint pieces also leave tiny signs on the pipe of the smoker. You are interested in the ways this will affect things like silverwood... Probably nothing good though.
 
 tc.research_name.TB.Tobacco.Saturating=Saturating Tobacco
@@ -435,11 +435,11 @@ tb.rec.foci.speed.page.0=Speed foci increases the speed at which node restores i
 
 tc.research_name.TB.NodeFoci.Sinister=Manipulator Foci: Sinister
 tc.research_text.TB.NodeFoci.Sinister=A tiny mob spawner
-tb.rec.foci.sinister.page.0=Sinister foci will make the Manipulator slowly turn the node into a Sinister Node. Will only work with Normal nodes. Takes 6 minutes to finish.
+tb.rec.foci.sinister.page.0=Sinister foci will make the Manipulator slowly turn the node into a Sinister Node. Will only work with normal nodes. Takes 6 minutes to finish.
 
 tc.research_name.TB.NodeFoci.Unstable=Manipulator Foci: Instability
 tc.research_text.TB.NodeFoci.Unstable=Shaterring the node
-tb.rec.foci.unstable.page.0=Instability foci will make the Manipulator slowly turn the node into an Unstable Node. Will only work with Normal nodes. Takes 7 minutes to finish.
+tb.rec.foci.unstable.page.0=Instability foci will make the Manipulator slowly turn the node into an Unstable Node. Will only work with normal nodes. Takes 7 minutes to finish.
 
 tc.research_name.TB.NodeFoci.Efficiency=Manipulator Foci: Efficiency
 tc.research_text.TB.NodeFoci.Efficiency=Waste nothing
@@ -447,7 +447,7 @@ tb.rec.foci.efficiency.page.0=Efficiency foci will affect the node in a very spe
 
 tc.research_name.TB.NodeFoci.Bright=Manipulator Foci: Brightness
 tc.research_text.TB.NodeFoci.Bright=Making things brigher
-tb.rec.foci.bright.page.0=Brightness foci will make the Manipulator extremely slowly turn the node into a Bright Node. Will only work with Normal nodes. Takes 20 minutes to finish.
+tb.rec.foci.bright.page.0=Brightness foci will make the Manipulator extremely slowly turn the node into a Bright Node. Will only work with normal nodes. Takes 20 minutes to finish.
 
 tc.research_name.TB.NodeFoci.Destr=Manipulator Foci: Destruction
 tc.research_text.TB.NodeFoci.Destr=Making the node weaker
@@ -455,19 +455,19 @@ tb.rec.foci.destr.page.0=Destruction foci will slowly destroy the node it is att
 
 tc.research_name.TB.NodeFoci.Hunger=Manipulator Foci: Hunger
 tc.research_text.TB.NodeFoci.Hunger=It is pretty obvious what this foci does
-tb.rec.foci.hunger.page.0=Hunger foci will make the Manipulator slowly turn the node into a Hungry Node. Will only work with Normal nodes. Note, that the manipulator can freely be eaten by the hunger node, if it chooses to do so. Takes 5 minutes to finish. Authors are in no way responsible for the possible damage done to you, your house, your world, other worlds, your pets, animals, monsters, nodes and items. By crafting the foci you agree to being fully responsible to anything, that may happen with the foci, manipulator, node and everything surrounding the node.
+tb.rec.foci.hunger.page.0=Hunger foci will make the Manipulator slowly turn the node into a Hungry Node. Will only work with normal nodes. Note, that the manipulator can freely be eaten by the hunger node, if it chooses to do so. Takes 5 minutes to finish. Authors are in no way responsible for the possible damage done to you, your house, your world, other worlds, your pets, animals, monsters, nodes and items. By crafting the foci you agree to being fully responsible to anything, that may happen with the foci, manipulator, node and everything surrounding the node.
 
 tc.research_name.TB.NodeFoci.Purity=Manipulator Foci: Purity
 tc.research_text.TB.NodeFoci.Purity=Node purification
-tb.rec.foci.pure.page.0=Purity foci will make the Manipulator slowly turn the node into a Pure Node. Will only work with Normal nodes. Takes 3 minutes to finish. Note, that the node will not recieve aspects that pure nodes usually have in them, but will still turn the biome around to Magical Forest.
+tb.rec.foci.pure.page.0=Purity foci will make the Manipulator slowly turn the node into a Pure Node. Will only work with normal or tainted nodes. Takes 3 minutes to finish with a normal node or 33 minutes with a tainted node. Note, that the node will not recieve aspects that pure nodes usually have in them, but will still turn the biome around to Magical Forest.
 
 tc.research_name.TB.NodeFoci.Stability=Manipulator Foci: Stability
 tc.research_text.TB.NodeFoci.Stability=Saving the dying nodes
-tb.rec.foci.stability.page.0=Stability foci will make the Manipulator slowly restore nodes. It will convert nodes into different types, using time. Converting a Fading node into Pale takes 5 minutes. Converting a Pale node into Normal takes 10 minutes. Removing the Sinister modifier takes 2 minutes. Removing the Unstable modifier takes 7 minutes. Removing the Hunger modifier takes 30 seconds. Removing the Taint modifier takes 30 Minutes.
+tb.rec.foci.stability.page.0=Stability foci will make the Manipulator slowly restore nodes. It will convert nodes into different types, using time. Converting a Fading node into Pale takes 5 minutes. Converting a Pale node into normal takes 10 minutes. Removing the Sinister modifier takes 2 minutes. Removing the Unstable modifier takes 7 minutes. Removing the Hunger modifier takes 30 seconds. Removing the Taint or Pure modifier takes 30 minutes.
 
 tc.research_name.TB.NodeFoci.Taint=Manipulator Foci: Taint
 tc.research_text.TB.NodeFoci.Taint=Why make everything worse?
-tb.rec.foci.taint.page.0=Taint foci will make the Manipulator slowly turn the node into a Tainted Node. Will only work with Normal nodes. Takes 6 minutes to finish. Note, that the node will not recieve aspects that tainted nodes usually have in them, but will still turn the biome around to Tainted Lands.
+tb.rec.foci.taint.page.0=Taint foci will make the Manipulator slowly turn the node into a tainted node. Will only work with normal nodes. Takes 6 minutes to finish. Note, that the node will not recieve aspects that tainted nodes usually have in them, but will still turn the biome around to tainted Lands.
 
 tc.research_name.TB.Enchantments=New Enchantments!
 tc.research_text.TB.Enchantments=Magic reborn!
@@ -495,7 +495,7 @@ tc.research_text.TB.ThaumicAnvil=Why haven't they thought about this?
 tb.rec.thaumicAnvil.page.0=You are annoyed by those anvils. They are breaking after a couple of hits and they are sapping your life force as if they were some kind of experience black hole! You have applied your knowledge of the magical metal otherwise known as thaumium to create a better anvil! The Thaumium Anvil lasts much longer than the mundane one, keeping full functionality! <BR>The Thaumium also is not your mundane iron - it can absorb much more life force at a time, increasing the maximum level the anvil can work with up to 60. It also seems that repairing items here has no cost penalty - it is always as you are repairing your pick the first time!
 
 tc.research_name.TB.VoidAnvil=Void metal Anvil
-tc.research_text.TB.VoidAnvil=Repare^2
+tc.research_text.TB.VoidAnvil=Repare²
 tb.rec.voidAnvil.page.0=Well, the Thaumium anvil is all well and good, but it also breaks. Maybe not that fast, but it still does. However, you have had an idea since you've unlocked that Void metal. What if you try to make an anvil out of that one? The results are... Interesting.<BR>First of all, your new-made anvil has kept the main property of the void metal - the ability to repair itself. The anvil will automatically repare itself, should you cause a block update right next to it. The anvil however acts much different - any operation here, no matter if you are renaming stuff or combining extremely efficient enchanted books always costs the same 7 levels of XP.
 tb.rec.voidAnvil.page.1=The anvil also seems to have no cost increase penalty, just as the thaumium one does.<BR>Whilst repairing you have seen some void metal flowing into the cracks of your tools. Sure that is nothing to worry about, right?
 
@@ -523,8 +523,8 @@ tc.research_name.TB.MagicTouch=Magic Touch
 tc.research_text.TB.MagicTouch=Touch them with magic
 tc.research_name.TB.Vaporising=Vaporising
 tc.research_text.TB.Vaporising=Portable Crystalliser
-tc.research_name.TB.Tainted=Tainted
-tc.research_text.TB.Tainted=Blight on these lands!
+tc.research_name.TB.tainted=tainted
+tc.research_text.TB.tainted=Blight on these lands!
 
 #Messages
 tb.txt.knoseFragment=Right-click to gain knowledge
@@ -588,7 +588,7 @@ revolverUpgrade.BANE_OF_ATROPODS.name=Bane of Arthropods
 revolverUpgrade.BANE_OF_ELDRITCH.name=Bane of Eldritch
 revolverUpgrade.PIERCING.name=Piercing
 revolverUpgrade.DUELING.name=Dueling
-revolverUpgrade.TAINTED.name=Tainted
+revolverUpgrade.TAINTED.name=tainted
 revolverUpgrade.PRIMAL.name=Primal
 revolverUpgrade.SPEED.name=Speed
 revolverUpgrade.EFFICIENCY.name=Efficiency
@@ -608,7 +608,7 @@ tc.research_name.TB.NodeLinker=Node Linking
 tc.research_text.TB.NodeLinker=From one source to another!
 tb.rec.nodeLink.page.0=Nodes. The things that link your world to the world of magic. They are heavily used in thaumaturgy - some devices use them to function, you need them to recharge your wands. However there is a small problem - a node can always store that much of vis and if it has, for example, no terra it it - this is it, it has no terra, and that aspect can't be gained from the node. There sure is a so called 'node bullying' - one node eating other, smaller nodes. With the discovery of the Advanced node stabiliser that can be worked with, but it takes a ridiculous amount of time and also is unreliable.
 tb.rec.nodeLink.page.1=You have discovered a device that might get the job done. The node Linking Device creates a mysterious link between 2 nodes and will move aspects from the linked one to the linker. You need 2 of this devices placed on top of nodes. Then just take your wand and right click on the receiver. After that click on the transmitter - and the link will be established. The link will firstly drain all aspects out of the transmitting node's pull, then it will draw the node's capacity and will increase the receiver’s capacity based on that. Lastly the node without any capacity left will fade away. The chance of the receiver node to increase it's aspect capacity is around 70% for each capacity decrease on the transmitting node.
-tb.rec.nodeLink.page.2=The transmission however is pretty unstable - both nodes will react to the link. This will result in a so called instability. The more time the device functions - the more instability it will have. Based on the amount of instability different things may happen - from the aspects escaping out of nodes on both ends into air in form of flux, to the complete transmitting node destruction with the explosion. The receiving node however will never get harmed in any way.
+tb.rec.nodeLink.page.2=The transmission however is pretty unstable - both nodes will react to the link. This will result in a so called instability. The more time the device functions - the more instability it will have. Based on the amount of instability different things may happen - from the aspects escaping out of nodes on both ends into air in form of flux, to the complete transmitting node destruction with the explosion. The receiving node however will never get harmed in any way. If you would only have a magic inert metal, forged from both, Nether and End, that could stabilize the link. In theory a Block of this supreme metal above this device would be sufficient.
 
 tc.research_name.TB.Revolver.Accuracy=Revolver Upgrade: Accuracy
 tc.research_text.TB.Revolver.Accuracy=Sniping from miles away
@@ -662,8 +662,8 @@ tc.research_name.TB.Revolver.Speed=Revolver Upgrade: Speed
 tc.research_text.TB.Revolver.Speed=It shoots 10 000 bullets per minute!
 tb.rec.revolver.spe.page.0=You have found a way to increase the speed at which your bullets travel. Each level of this upgrade will increase the speed of the bullets by... some amount, how can you tell? You clearly do not have any device or whatever to measure such fast movement!.<BR>Max Level: §6§l5 §r§0<BR>Conflicts with: §nEfficiency§r, §0§nAccuracy§r
 
-tc.research_name.TB.Revolver.Tainted=Revolver Upgrade: Tainted
-tc.research_text.TB.Revolver.Tainted=It's ALIVE! Kinda.
+tc.research_name.TB.Revolver.tainted=Revolver Upgrade: tainted
+tc.research_text.TB.Revolver.tainted=It's ALIVE! Kinda.
 tb.rec.revolver.tai.page.0=Imbuing your weapon with taint might not be that good of an idea, but you've tried anyways. Anyway, here are the results - this upgrade will increase the raw damage of the revolver against every creature, except for the tainted ones - for them the damage will be decreased! The bullets also will have a chance to inflict the victim with Taint Poison!<BR>Max Level: §6§l 3 §r§0<BR>Conflicts with: §nPrimal§r, §0§nKnowledge§r
 
 tc.research_name.TB.Revolver.Void=Revolver Upgrade: Void

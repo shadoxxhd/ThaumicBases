@@ -30,6 +30,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class TileNodeLinker extends TileEntity implements IWandable
 {
@@ -155,11 +156,15 @@ public class TileNodeLinker extends TileEntity implements IWandable
 			int rnd = this.worldObj.rand.nextInt(this.instability);
 			if(rnd == 49)
 			{
+				//if a block of Ichorium is above dont explode or harm node
+				if (!OreDictionary.doesOreNameExist("blockIchorium") || (OreDictionary.getOres("blockIchorium")!=null && !(OreDictionary.getOres("blockIchorium").contains(new ItemStack(this.worldObj.getBlock(this.xCoord, this.yCoord +1, this.zCoord))))))
 				instability -= explodeTransmitter();
 			}else
 			{
 				if(rnd >= 45)
 				{
+					//if a block of Ichorium is above dont explode or harm node
+					if (!OreDictionary.doesOreNameExist("blockIchorium") || (OreDictionary.getOres("blockIchorium")!=null && !(OreDictionary.getOres("blockIchorium").contains(new ItemStack(this.worldObj.getBlock(this.xCoord, this.yCoord +1, this.zCoord))))))
 					instability -= harmTransmitter();
 				}else
 				{
@@ -270,7 +275,7 @@ public class TileNodeLinker extends TileEntity implements IWandable
 		int y = side ? MathHelper.floor_double(linkCoord.y) : yCoord;
 		int z = side ? MathHelper.floor_double(linkCoord.z) : zCoord;
 		int fluxMeta = this.worldObj.rand.nextInt(8);
-		this.worldObj.setBlock(x, y+1, z, ConfigBlocks.blockFluxGas, fluxMeta, 3);
+		this.worldObj.setBlock(x, y+2, z, ConfigBlocks.blockFluxGas, fluxMeta, 3);
 		return 3;
 	}
 	
