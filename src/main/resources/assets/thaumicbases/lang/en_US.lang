@@ -4,7 +4,7 @@ tc.research_category.THAUMICBASES=Thaumic Bases
 enchantment.elderKnowledge=Elder Wisdom
 enchantment.eldritchBane=Eldritch Bane
 enchantment.magicTouch=Magic Touched
-enchantment.tainted=tainted
+enchantment.Tainted=Tainted
 enchantment.vaporising=Vaporising
 
 #blocks
@@ -17,7 +17,7 @@ tile.crystalBlockair.name=Air Crystal Block
 tile.crystalBlockorder.name=Order Crystal Block
 tile.crystalBlockentropy.name=Entropy Crystal Block
 tile.crystalBlockmixed.name=Mixed Crystal Block
-tile.crystalBlocktainted.name=tainted Crystal Block
+tile.crystalBlocktainted.name=Tainted Crystal Block
 tile.salisMundusBlock.name=Salis Mundus Block
 tile.pyrofluid.name=Pyrofluid
 tile.thauminiteBlock.name=Thauminite Block
@@ -74,7 +74,7 @@ tile.tb.crystalslab.earth.name=Earth Crystal Slab
 tile.tb.crystalslab.order.name=Order Crystal Slab
 tile.tb.crystalslab.entropy.name=Entropy Crystal Slab
 tile.tb.crystalslab.mixed.name=Mixed Crystal Slab
-tile.tb.crystalslab.tainted.name=tainted Crystal Slab
+tile.tb.crystalslab.tainted.name=Tainted Crystal Slab
 
 tile.thaumicRelocator.name=Thaumic Relocator
 tile.tb.voidblock.name=Void metal Block
@@ -133,7 +133,7 @@ item.knoseFragment.air.name=Aer Fragment
 item.knoseFragment.order.name=Ordo Fragment
 item.knoseFragment.entropy.name=Perditio Fragment
 item.knoseFragment.mixed.name=Mixed Fragment
-item.knoseFragment.tainted.name=tainted Fragment
+item.knoseFragment.tainted.name=Tainted Fragment
 item.sweedSeeds.name=Sweed Seeds
 item.lazulliaSeeds.name=Lazullia Seeds
 item.redlonSeeds.name=Redlon Seed
@@ -149,7 +149,7 @@ item.tobacco.tobacco_hunger.name=Saturating Tobacco Pile
 item.tobacco.tobacco_knowledge.name=Wisdom Tobacco Pile
 item.tobacco.tobacco_mining.name=Miner's Tobacco Pile
 item.tobacco.tobacco_sanity.name=Relaxing Tobacco Pile
-item.tobacco.tobacco_tainted.name=tainted Tobacco Pile
+item.tobacco.tobacco_tainted.name=Tainted Tobacco Pile
 item.tobacco.tobacco_wispy.name=Wispy Tobacco Pile
 item.tobaccoSeeds.name=Tobacco Seeds
 item.mortar.name=Mortar and Pestle
@@ -233,7 +233,7 @@ tb.rec.backProc.page.0=Many things once broken down sadly can't be restored anym
 
 tc.research_name.TB.CrystalBlocks=Crystal Cluster Blocks
 tc.research_text.TB.CrystalBlocks=Back from the second edition!
-tb.rec.cBlocks.page.0=After researching the way Ordo interacts with blocks in the Crucible you think, that you can start a bigger project. You've found, that by mixing a crystal cluster in a crucible with some ordo, the aspect the cluster is based on and some Fabrico the cluster collapses into a solid form! It is yet to be discovered what the solid form can be used for, but it has saved all the properties of the cluster it was made from. You have also discovered, that by adding Vitium essentia during the process will taint the clusters, resulting in a tainted Crystal Block. Their uses are yet to be discovered... All blocks can be used to stabilise the Infusion Altar.
+tb.rec.cBlocks.page.0=After researching the way Ordo interacts with blocks in the Crucible you think, that you can start a bigger project. You've found, that by mixing a crystal cluster in a crucible with some ordo, the aspect the cluster is based on and some Fabrico the cluster collapses into a solid form! It is yet to be discovered what the solid form can be used for, but it has saved all the properties of the cluster it was made from. You have also discovered, that by adding Vitium essentia during the process will taint the clusters, resulting in a Tainted Crystal Block. Their uses are yet to be discovered... All blocks can be used to stabilise the Infusion Altar.
 
 tc.research_name.TB.SMB=Salis Mundus Blocks
 tc.research_text.TB.SMB=Let's be brave!
@@ -340,8 +340,8 @@ tc.research_name.TB.Tobacco.Wisdom=Wisdom Tobacco
 tc.research_text.TB.Tobacco.Wisdom=Knowledge hidden in ashes
 tb.rec.witobacco.page.0=You have gone beyond the relaxing properties of the tobacco. Infusing your tobacco with knowledge sure was a great idea - you have managed to create a tobacco, which puts you in a crystal clear mind state once you smoke it. The effect lasts a mere second, though it is more than enough to make a shocking discovery or two. However, you are afraid, that you may also see something horrible there, which will corrupt your mind... Well, who does not risk - does not get his reward, right?
 
-tc.research_name.TB.Tobacco.tainted=tainted Tobacco
-tc.research_text.TB.Tobacco.tainted=Mind warping
+tc.research_name.TB.Tobacco.Tainted=Tainted Tobacco
+tc.research_text.TB.Tobacco.Tainted=Mind warping
 tb.rec.ttobacco.page.0=You are not quite sure why you have even discovered this. Sure, now you can infuse your tobacco with taint, forever changing it, so anyone, who smokes it will have his mind corrupted by taint, and all the horrors of the dark will appear in his mind, but what is it even useful for? The taint pieces also leave tiny signs on the pipe of the smoker. You are interested in the ways this will affect things like silverwood... Probably nothing good though.
 
 tc.research_name.TB.Tobacco.Saturating=Saturating Tobacco
@@ -523,8 +523,8 @@ tc.research_name.TB.MagicTouch=Magic Touch
 tc.research_text.TB.MagicTouch=Touch them with magic
 tc.research_name.TB.Vaporising=Vaporising
 tc.research_text.TB.Vaporising=Portable Crystalliser
-tc.research_name.TB.tainted=tainted
-tc.research_text.TB.tainted=Blight on these lands!
+tc.research_name.TB.Tainted=Tainted
+tc.research_text.TB.Tainted=Blight on these lands!
 
 #Messages
 tb.txt.knoseFragment=Right-click to gain knowledge
@@ -662,8 +662,8 @@ tc.research_name.TB.Revolver.Speed=Revolver Upgrade: Speed
 tc.research_text.TB.Revolver.Speed=It shoots 10 000 bullets per minute!
 tb.rec.revolver.spe.page.0=You have found a way to increase the speed at which your bullets travel. Each level of this upgrade will increase the speed of the bullets by... some amount, how can you tell? You clearly do not have any device or whatever to measure such fast movement!.<BR>Max Level: §6§l5 §r§0<BR>Conflicts with: §nEfficiency§r, §0§nAccuracy§r
 
-tc.research_name.TB.Revolver.tainted=Revolver Upgrade: tainted
-tc.research_text.TB.Revolver.tainted=It's ALIVE! Kinda.
+tc.research_name.TB.Revolver.Tainted=Revolver Upgrade: tainted
+tc.research_text.TB.Revolver.Tainted=It's ALIVE! Kinda.
 tb.rec.revolver.tai.page.0=Imbuing your weapon with taint might not be that good of an idea, but you've tried anyways. Anyway, here are the results - this upgrade will increase the raw damage of the revolver against every creature, except for the tainted ones - for them the damage will be decreased! The bullets also will have a chance to inflict the victim with Taint Poison!<BR>Max Level: §6§l 3 §r§0<BR>Conflicts with: §nPrimal§r, §0§nKnowledge§r
 
 tc.research_name.TB.Revolver.Void=Revolver Upgrade: Void
