@@ -55,7 +55,11 @@ public class TBCore {
 	public void preInit(FMLPreInitializationEvent event)
 	{
 		instance = this;
-		Core.registerModAbsolute(getClass(), name, event.getModConfigurationDirectory().getAbsolutePath(), cfg);
+		try {
+			Core.registerModAbsolute(getClass(), name, event.getModConfigurationDirectory().getAbsolutePath(), cfg);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		setupModInfo(event.getModMetadata());
 		TBBlocks.setup();
 		TBItems.setup();
@@ -97,6 +101,7 @@ public class TBCore {
 		ArrayList<String> authors = new ArrayList<String>();
 		authors.add("Modbder");
 		authors.add("KryptonCaptain");
+		authors.add("bartimaeusnek");
 		meta.authorList = authors;
 	}
 }

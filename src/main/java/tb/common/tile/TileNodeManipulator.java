@@ -254,6 +254,11 @@ public class TileNodeManipulator extends TileEntity implements IWandable
 						maxTimeRequired = 7*60*20;
 					}
 					
+					if(node.getNodeType() == NodeType.TAINTED)
+					{
+						maxTimeRequired = 30*60*20;
+					}
+					
 					if(workTime >= maxTimeRequired)
 					{
 						workTime = 0;
@@ -269,19 +274,7 @@ public class TileNodeManipulator extends TileEntity implements IWandable
 							return;
 						}
 						
-						if(node.getNodeType() == NodeType.DARK)
-						{
-							node.setNodeType(NodeType.NORMAL);
-							return;
-						}
-						
-						if(node.getNodeType() == NodeType.HUNGRY)
-						{
-							node.setNodeType(NodeType.NORMAL);
-							return;
-						}
-						
-						if(node.getNodeType() == NodeType.UNSTABLE)
+						if(node.getNodeType() == NodeType.DARK || node.getNodeType() == NodeType.HUNGRY || node.getNodeType() == NodeType.UNSTABLE || node.getNodeType() == NodeType.TAINTED)
 						{
 							node.setNodeType(NodeType.NORMAL);
 							return;
