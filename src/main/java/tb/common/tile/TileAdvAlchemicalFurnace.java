@@ -36,8 +36,18 @@ public class TileAdvAlchemicalFurnace extends TileAlchemyFurnace{
 				Class<TileAlchemyFurnace> furnace = TileAlchemyFurnace.class;
 				Field count = furnace.getDeclaredField("count");
 				count.setAccessible(true);
-				
-				count.setInt(this, count.getInt(this)+TBConfig.speedMultiplierForFurnace-1);
+				int furnaceUpdateStep = 20; //hardcoded in thaum to be 20 (when boosted) or 40, but let's assume 20 for simplicity
+				int currentCount = count.getInt(this);
+				//max meaningful bonus happens when (currentStep + 1 + bonus) % furnaceUpdateStep == 0, propagating us directly to next update count
+				//simple checks:
+				// if count=0, then we can add 19, thaum adds 1 and updates
+				// if count=19, then we add 0, the thaum will arrive to update at max speed without our help
+				// making sure to take remainders only from positives since java believes in negative remainders for negative dividends
+				int maxMeaningfulBonus = (furnaceUpdateStep  - (currentCount + 1) % furnaceUpdateStep)%furnaceUpdateStep;
+				int bonusCount = TBConfig.speedMultiplierForFurnace-1;
+				int nextCount = currentCount + Math.min(bonusCount, maxMeaningfulBonus);
+
+				count.setInt(this, nextCount);
 				
 				count.setAccessible(false);
 			}
