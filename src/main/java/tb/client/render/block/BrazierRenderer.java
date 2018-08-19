@@ -3,70 +3,62 @@ package tb.client.render.block;
 import org.lwjgl.opengl.GL11;
 
 import tb.common.tile.TileBrazier;
+import thaumcraft.client.renderers.block.BlockRenderer;
 import thaumcraft.common.config.ConfigBlocks;
+import thaumcraft.common.blocks.BlockCosmeticSolid;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
-public class BrazierRenderer implements ISimpleBlockRenderingHandler{
+public class BrazierRenderer extends BlockRenderer implements ISimpleBlockRenderingHandler{
 
 	@Override
 	public void renderInventoryBlock(Block block, int metadata, int modelId,RenderBlocks renderer) 
 	{
-		GL11.glTranslated(0, -0.5D, 0);
-		GL11.glPushMatrix();
-			
-			GL11.glScaled(0.95D, 0.05D, 0.95D);
-			renderer.setOverrideBlockTexture(ConfigBlocks.blockCosmeticSolid.getIcon(0, 6));
-			renderer.renderBlockAsItem(Blocks.stone, 0, 1);
-		
-		GL11.glPopMatrix();
-	
-		GL11.glTranslated(0, 0.05D, 0);
-		
-		GL11.glPushMatrix();
-		
-			GL11.glScaled(0.9D, 0.05D, 0.9D);
-			renderer.setOverrideBlockTexture(ConfigBlocks.blockCosmeticSolid.getIcon(0, 6));
-			renderer.renderBlockAsItem(Blocks.stone, 0, 1);
-	
-		GL11.glPopMatrix();
-		
-		GL11.glTranslated(0, 0.05D, 0);
-		
-		GL11.glPushMatrix();
-		
-			GL11.glScaled(0.85D, 0.05D, 0.85D);
-			renderer.setOverrideBlockTexture(ConfigBlocks.blockCosmeticSolid.getIcon(0, 6));
-			renderer.renderBlockAsItem(Blocks.stone, 0, 1);
-	
-		GL11.glPopMatrix();
-		
-		GL11.glTranslated(0, 0.20D, 0);
-		
-		GL11.glPushMatrix();
-		
-			GL11.glScaled(0.4D, 0.4D, 0.4D);
-			renderer.setOverrideBlockTexture(ConfigBlocks.blockCosmeticSolid.getIcon(0, 6));
-			renderer.renderBlockAsItem(Blocks.stone, 0, 1);
-	
-		GL11.glPopMatrix();
-		
-		GL11.glTranslated(0, 0.3D, 0);
-		
-		GL11.glPushMatrix();
-		
-		GL11.glScaled(0.6D, 0.3D, 0.6D);
-		renderer.setOverrideBlockTexture(ConfigBlocks.blockCosmeticSolid.getIcon(0, 6));
-		renderer.renderBlockAsItem(Blocks.stone, 0, 1);
-
-		GL11.glPopMatrix();
-		
-		renderer.clearOverrideBlockTexture();
+		IIcon icon = ConfigBlocks.blockCosmeticSolid.getIcon(0, 6);
+		//base1
+		block.setBlockBounds(W1, 0, W1, W15, W2, W15);
+		renderer.setRenderBoundsFromBlock(block);
+		drawFaces(renderer, block, icon, icon, icon, icon, icon, icon, true);
+		//base2
+		block.setBlockBounds(W2, W2, W2, W14, W4, W14);
+		renderer.setRenderBoundsFromBlock(block);
+		drawFaces(renderer, block, icon, icon, icon, icon, icon, icon, true);
+		//pillar
+		block.setBlockBounds(W4, W4, W4, W12, W12, W12);
+		renderer.setRenderBoundsFromBlock(block);
+		drawFaces(renderer, block, icon, icon, icon, icon, icon, icon, true);
+		//bowl base
+		block.setBlockBounds(W2, W12, W2, W14, W13, W14);
+		renderer.setRenderBoundsFromBlock(block);
+		drawFaces(renderer, block, icon, icon, icon, icon, icon, icon, true);
+		//bowl 1
+		block.setBlockBounds(W2, W13, W13, W14, 1, W14);
+		renderer.setRenderBoundsFromBlock(block);
+		drawFaces(renderer, block, icon, icon, icon, icon, icon, icon, true);
+		//bowl 2
+		block.setBlockBounds(W2, W13, W2, W14, 1, W3);
+		renderer.setRenderBoundsFromBlock(block);
+		drawFaces(renderer, block, icon, icon, icon, icon, icon, icon, true);
+		//bowl 3
+		block.setBlockBounds(W2, W13, W3, W3, 1, W13);
+		renderer.setRenderBoundsFromBlock(block);
+		drawFaces(renderer, block, icon, icon, icon, icon, icon, icon, true);
+		//bowl 4
+		block.setBlockBounds(W13, W13, W3, W14, 1, W13);
+		renderer.setRenderBoundsFromBlock(block);
+		drawFaces(renderer, block, icon, icon, icon, icon, icon, icon, true);
+	    
+	    icon = Blocks.coal_block.getIcon(0, 0);
+		//coal
+		block.setBlockBounds(W3, W13, W3, W13, W14, W13);
+		renderer.setRenderBoundsFromBlock(block);
+		drawFaces(renderer, block, icon, icon, icon, icon, icon, icon, true);
 	}
 
 	@Override
@@ -75,28 +67,34 @@ public class BrazierRenderer implements ISimpleBlockRenderingHandler{
 		renderer.renderAllFaces = true;
 		
 		renderer.setOverrideBlockTexture(ConfigBlocks.blockCosmeticSolid.getIcon(0, 6));
-		renderer.setRenderBounds(0.05D, 0, 0.05D, 0.95D, 0.05D, 0.95D);
-		renderer.renderStandardBlock(Blocks.stone, x, y, z);
-		renderer.setRenderBounds(0.1D, 0.05D, 0.1D, 0.9D, 0.1D, 0.9D);
-		renderer.renderStandardBlock(Blocks.stone, x, y, z);
-		renderer.setRenderBounds(0.15D, 0.1D, 0.15D, 0.85D, 0.15D, 0.85D);
-		renderer.renderStandardBlock(Blocks.stone, x, y, z);
-		renderer.setRenderBounds(0.3D, 0.15D, 0.3D, 0.7D, 0.6D, 0.7D);
-		renderer.renderStandardBlock(Blocks.stone, x, y, z);
-		renderer.setRenderBounds(0.2D, 0.55D, 0.2D, 0.8D, 0.61D, 0.8D);
-		renderer.renderStandardBlock(Blocks.stone, x, y, z);
-		renderer.setRenderBounds(0.2D, 0.61D, 0.2D, 0.3D, 0.85D, 0.8D);
-		renderer.renderStandardBlock(Blocks.stone, x, y, z);
-		renderer.setRenderBounds(0.7D, 0.61D, 0.2D, 0.8D, 0.85D, 0.8D);
-		renderer.renderStandardBlock(Blocks.stone, x, y, z);
-		renderer.setRenderBounds(0.3D, 0.61D, 0.2D, 0.7D, 0.85D, 0.3D);
-		renderer.renderStandardBlock(Blocks.stone, x, y, z);
-		renderer.setRenderBounds(0.3D, 0.61D, 0.7D, 0.7D, 0.85D, 0.8D);
-		renderer.renderStandardBlock(Blocks.stone, x, y, z);
-		
+		//base1
+		renderer.setRenderBounds(W1, 0, W1, W15, W2, W15);
+		renderer.renderStandardBlock(block, x, y, z);
+		//base2
+		renderer.setRenderBounds(W2, W2, W2, W14, W4, W14);
+		renderer.renderStandardBlock(block, x, y, z);
+		//pillar
+		renderer.setRenderBounds(W4, W4, W4, W12, W12, W12);
+		renderer.renderStandardBlock(block, x, y, z);
+		//bowl base
+		renderer.setRenderBounds(W2, W12, W2, W14, W13, W14);
+		renderer.renderStandardBlock(block, x, y, z);
+		//bowl 1 (s)
+		renderer.setRenderBounds(W2, W13, W13, W14, 1, W14);
+		renderer.renderStandardBlock(block, x, y, z);
+		//bowl 2 (n)
+		renderer.setRenderBounds(W2, W13, W2, W14, 1, W3);
+		renderer.renderStandardBlock(block, x, y, z);
+		//bowl 3 (w)
+		renderer.setRenderBounds(W2, W13, W3, W3, 1, W13);
+		renderer.renderStandardBlock(block, x, y, z);
+		//bowl 4 (e)
+		renderer.setRenderBounds(W13, W13, W3, W14, 1, W13);
+		renderer.renderStandardBlock(block, x, y, z);
+		//coal fill
 		renderer.setOverrideBlockTexture(Blocks.coal_block.getIcon(0, 0));
-		renderer.setRenderBounds(0.3D, 0.61D, 0.3D, 0.7D, 0.75D, 0.7D);
-		renderer.renderStandardBlock(Blocks.stone, x, y, z);
+		renderer.setRenderBounds(W3, W13, W3, W13, W14, W13);
+		renderer.renderStandardBlock(block, x, y, z);
 		
 		
 		TileEntity tile = world.getTileEntity(x, y, z);
@@ -105,7 +103,7 @@ public class BrazierRenderer implements ISimpleBlockRenderingHandler{
 			renderer.setOverrideBlockTexture(Blocks.fire.getIcon(2, 0));
 			Tessellator.instance.setBrightness(247);
 			Tessellator.instance.setColorOpaque_I(0xffffff);
-			renderer.drawCrossedSquares(Blocks.fire.getIcon(2, 0), x, y+0.7D, z, 0.5F);
+			renderer.drawCrossedSquares(Blocks.fire.getIcon(2, 0), x, y+W14, z, 0.5F);
 		}
 		
 		renderer.renderAllFaces = false;

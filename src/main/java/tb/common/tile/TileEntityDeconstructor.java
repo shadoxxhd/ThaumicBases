@@ -161,7 +161,7 @@ public class TileEntityDeconstructor extends TileEntity{
 						if(tickTime == 40)
 						{
 							tickTime = 0;
-							e.attackEntityFrom(DamageSource.outOfWorld, 1);
+							e.attackEntityFrom(DamageSource.magic, 2);
 							
 							if(e instanceof EntityPlayerMP)
 							{

@@ -49,22 +49,22 @@ public class BlockBrazier extends BlockContainer
     	TileEntity tile = w.getTileEntity(x, y, z);
     	if(tile != null && tile instanceof TileBrazier && ((TileBrazier)tile).burning)
     	{
-    		w.spawnParticle("flame", x+0.5D+MathUtils.randomDouble(r)/4, y+0.6D, z+0.5D+MathUtils.randomDouble(r)/4, 0, 0.04D, 0);
+    		w.spawnParticle("flame", x+0.5D+MathUtils.randomDouble(r)/4, y+0.875D, z+0.5D+MathUtils.randomDouble(r)/4, 0, 0.04D, 0);
     		for(int i = 0; i < 10; ++i)
-    			w.spawnParticle("smoke", x+0.5D+MathUtils.randomDouble(r)/4, y+0.7D, z+0.5D+MathUtils.randomDouble(r)/4, 0, r.nextDouble()/20, 0);
+    			w.spawnParticle("smoke", x+0.5D+MathUtils.randomDouble(r)/4, y+1D, z+0.5D+MathUtils.randomDouble(r)/4, 0, r.nextDouble()/20, 0);
     		
     		w.playSound(x+0.5D, y+0.5D, z+0.5D, "thaumicbases:fire.loop", 0.1F, 0.1F, false);
     	}
     }
     
     public void addCollisionBoxesToList(final World world, final int i, final int j, final int k, final AxisAlignedBB axisalignedbb, final List arraylist, final Entity par7Entity) {
-        this.setBlockBounds(0.0625f, 0.0f, 0.0625f, 0.9375f, 0.875f, 0.9375f);
+        this.setBlockBounds(0.0625f, 0.0f, 0.0625f, 0.9375f, 1f, 0.9375f);
         super.addCollisionBoxesToList(world, i, j, k, axisalignedbb, arraylist, par7Entity);
     }
     
     public void setBlockBoundsBasedOnState(final IBlockAccess world, final int i, final int j, final int k) {
 
-        this.setBlockBounds(0.0625f, 0.0f, 0.0625f, 0.9375f, 0.85f, 0.9375f);
+        this.setBlockBounds(0.0625f, 0.0f, 0.0625f, 0.9375f, 1f, 0.9375f);
         super.setBlockBoundsBasedOnState(world, i, j, k);
     }
 }

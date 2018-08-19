@@ -2,6 +2,7 @@ package tb.client.render.block;
 
 import java.util.Random;
 
+import thaumcraft.client.renderers.block.BlockRenderer;
 import thaumcraft.common.config.ConfigBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
@@ -10,12 +11,10 @@ import net.minecraft.init.Blocks;
 import net.minecraft.world.IBlockAccess;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
-public class CampfireRenderer implements ISimpleBlockRenderingHandler{
+public class CampfireRenderer extends BlockRenderer implements ISimpleBlockRenderingHandler{
 
 	@Override
-	public void renderInventoryBlock(Block block, int metadata, int modelId,
-			RenderBlocks renderer) {
-		// TODO Auto-generated method stub
+	public void renderInventoryBlock(Block block, int metadata, int modelId, RenderBlocks renderer) {
 		
 	}
 
@@ -23,7 +22,8 @@ public class CampfireRenderer implements ISimpleBlockRenderingHandler{
 	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z,Block block, int modelId, RenderBlocks renderer) 
 	{
 		renderer.renderAllFaces = true;
-		
+		/*
+		 * looks like shit
 		renderer.setOverrideBlockTexture(Blocks.cobblestone.getIcon(0, 0));
 		
 		Random rand = new Random(x+y+z);
@@ -36,33 +36,36 @@ public class CampfireRenderer implements ISimpleBlockRenderingHandler{
 			
 			renderer.setRenderBounds(dx, dy, dz, dx+0.1D, dy+0.1D, dz+0.1D);
 			renderer.renderStandardBlock(Blocks.stone, x, y, z);
-		}
+		}*/
 		
+		//gravel base
+		renderer.setOverrideBlockTexture(Blocks.gravel.getIcon(0, 0));
+		renderer.setRenderBounds(W1, 0, W1, W15, W1, W15);
+		renderer.renderStandardBlock(block, x, y, z);
+		
+		//coal pit
 		renderer.setOverrideBlockTexture(Blocks.coal_block.getIcon(0, 0));
+		renderer.setRenderBounds(0.25D, 0, 0.25D, 0.75D, W2-0.001, 0.75D);
+		renderer.renderStandardBlock(block, x, y, z);
 		
-		renderer.setRenderBounds(0.25D, 0, 0.25D, 0.75D, 0.06D, 0.75D);
-		renderer.renderStandardBlock(Blocks.stone, x, y, z);
-		
+		//logs
 		renderer.setOverrideBlockTexture(ConfigBlocks.blockMagicalLog.getIcon(2, 0));
 		double yIndex = 0;
 		if(world.getBlockMetadata(x, y, z) > 0)
 			for(int i = 0; i < 2; ++i)
 			{
-				renderer.setRenderBounds(0.2D, 0+yIndex+(0.1D*i), 0.1D, 0.3D, 0.11D+yIndex+(0.1D*i), 0.9D);
-				renderer.renderStandardBlock(Blocks.stone, x, y, z);
-				renderer.setRenderBounds(0.7D, 0+yIndex+(0.1D*i), 0.1D, 0.8D, 0.11D+yIndex+(0.1D*i), 0.9D);
-				renderer.renderStandardBlock(Blocks.stone, x, y, z);
+				renderer.setRenderBounds(W3, 0+yIndex+(W2*i), W2, W5, W2+yIndex+(W2*i), W14); //layer 1,1
+				renderer.renderStandardBlock(block, x, y, z);
+				renderer.setRenderBounds(W11, 0+yIndex+(W2*i), W2, W13, W2+yIndex+(W2*i), W14);//layer 1,2
+				renderer.renderStandardBlock(block, x, y, z);
 				
-				renderer.setRenderBounds(0.1D, 0.1D+yIndex+(0.1D*i), 0.2D, 0.9D, 0.21D+yIndex+(0.1D*i), 0.3D);
-				renderer.renderStandardBlock(Blocks.stone, x, y, z);
-				renderer.setRenderBounds(0.1D, 0.1D+yIndex+(0.1D*i), 0.7D, 0.9D, 0.21D+yIndex+(0.1D*i), 0.8D);
-				renderer.renderStandardBlock(Blocks.stone, x, y, z);
-				yIndex += 0.1D;
+				renderer.setRenderBounds(W2, W2+yIndex+(W2*i), W3, W14, W4+yIndex+(W2*i), W5);//layer 2,1
+				renderer.renderStandardBlock(block, x, y, z);
+				renderer.setRenderBounds(W2, W2+yIndex+(W2*i), W11, W14, W4+yIndex+(W2*i), W13);//layer 2,2
+				renderer.renderStandardBlock(block, x, y, z);
+				yIndex += W2;
 			}
 		
-		renderer.setOverrideBlockTexture(Blocks.gravel.getIcon(0, 0));
-		renderer.setRenderBounds(0.05D, 0, 0.05D, 0.95D, 0.03D, 0.95D);
-		renderer.renderStandardBlock(Blocks.stone, x, y, z);
 		
 		if(world.getBlockMetadata(x, y, z) > 1)
 		{
@@ -79,7 +82,6 @@ public class CampfireRenderer implements ISimpleBlockRenderingHandler{
 
 	@Override
 	public boolean shouldRender3DInInventory(int modelId) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
