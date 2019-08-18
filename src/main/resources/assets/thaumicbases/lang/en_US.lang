@@ -4,7 +4,7 @@ tc.research_category.THAUMICBASES=Thaumic Bases
 enchantment.elderKnowledge=Elder Wisdom
 enchantment.eldritchBane=Eldritch Bane
 enchantment.magicTouch=Magic Touched
-enchantment.tainted=Tainted
+enchantment.Tainted=Tainted
 enchantment.vaporising=Vaporising
 
 #blocks
@@ -257,7 +257,7 @@ tb.rec.thaumRod.page.0=For a long time thaumaturges haven't though about using t
 
 tc.research_name.ROD_tbvoid=Void Wand Rod
 tc.research_text.ROD_tbvoid=A dangerous path
-tb.rec.voidRod.page.0=Well, after your journey to the abyssal depths of insanity you have discovered a way to make a very strange metal. You have another strange idea - what if you create a wand rod out of that void metal? You might need to add additional things to it, like make it taint proof by using the Tainted Cluster Blocks. The result is a wand, pulsating with power. This might be the most power you could get without adventuring into the darkness once more. Also, it seems to slowly accumulate aspects inside of itself - you wonder what of the components gave you that?..
+tb.rec.voidRod.page.0=Well, after your journey to the abyssal depths of insanity you have discovered a way to make a very strange metal. You have another strange idea - what if you create a wand rod out of that void metal? You might need to add additional things to it, like make it taint proof by using the tainted Cluster Blocks. The result is a wand, pulsating with power. This might be the most power you could get without adventuring into the darkness once more. Also, it seems to slowly accumulate aspects inside of itself - you wonder what of the components gave you that?..
 
 tc.research_name.TB.Plax=Plax
 tc.research_text.TB.Plax=Magical strings
@@ -274,8 +274,8 @@ tb.rec.knose.page.1=A newborn Rosa Mysteria seems too weak for the regular soil 
 
 tc.research_name.TB.Lazullia=Lazullia
 tc.research_text.TB.Lazullia=Magic meets beauty
-tb.rec.lazullia.page.0_ec3=Sometimes a thaumaturge needs some lapis for his... thaumaturgy. And sometimes a thaumaturge is just too lazy to venture down into caves just to spend a good 5 hours searching for that blue ore. You have once again used plants to aid you with this nonsense. Lazullia will slowly grow and once fully grown can be harvested. Upon harvesting a thaumaturge will recieve some Lapis Lazuli alongside with a seed. <LINE> Funny enough the crop also follows the mythical "Enderstar Pulses", which you may or may not know of, and, therefore, will also crystallise mythriline, if the pre-requisites are correct.
-tb.rec.lazullia.page.0=Sometimes a thaumaturge needs some lapis for his... thaumaturgy. And sometimes a thaumaturge is just too lazy to venture down into caves just to spend a good 5 hours searching for that blue ore. You have once again used plants to aid you with this nonsense. Lazullia will slowly grow and once fully grown can be harvested. Upon harvesting a thaumaturge will receive some Lapis Lazuli alongside with a seed.
+tb.rec.lazullia.page.0_ec3=Sometimes a thaumaturge needs some lapis for his... thaumaturgy. And sometimes a thaumaturge is just too lazy to venture down into caves just to spend a good 5 hours searching for that blue ore. You have once again used plants to aid you with this nonsense. Lazullia will slowly grow and once fully grown can be harvested. Upon harvesting a thaumaturge will recieve some Lapis Lazuli alongside with a seed. <LINE> Funny enough the crop also follows the mythical "Enderstar Pulses", which you may or may not know of, and, therefore, will also crystallise mythriline, if the pre-requisites are correct. 
+tb.rec.lazullia.page.0=Sometimes a thaumaturge needs some lapis for his... thaumaturgy. And sometimes a thaumaturge is just too lazy to venture down into caves just to spend a good 5 hours searching for that blue ore. You have once again used plants to aid you with this nonsense. Lazullia will slowly grow and once fully grown can be harvested. Upon harvesting a thaumaturge will receive some Lapis Lazuli alongside with a seed. 
 
 tc.research_name.TB.RainbowCacti=Rainbow Cacti
 tc.research_text.TB.RainbowCacti=Grow the rainbow, taste the rainbow!
@@ -358,7 +358,7 @@ tb.rec.silverPipe.page.0=Most tobaccos what you have managed to create are safe.
 
 tc.research_name.TB.VoidSeed=Void Seeds
 tc.research_text.TB.VoidSeed=This time for real
-tb.rec.voidSeed.page.0=Those Void Seeds are created by infusing a regular seed with a bunch of Alienis and Tenebrae. However, the seed itself looses the ability to grow - you are over-infusing it. However, it might be possible to bring the seed back to life using the knowledge of plants you've just learned! By infusing a void seed with all kinds of plant life you have managed to return the ability to grow to the poor seed.
+tb.rec.voidSeed.page.0=Those Void Seeds are created by infusing a regular seed with a bunch of Alienis and Tenebrae. However, the seed itself looses the ability to grow - you are over-infusing it. However, it might be possible to bring the seed back to life using the knowledge of plants you've just learned! By infusing a void seed with all kinds of plant life you have managed to return the ability to grow to the poor seed. 
 
 tc.research_name.TB.Spike.Iron=Iron Spikes
 tc.research_text.TB.Spike.Iron=They hurt
@@ -426,7 +426,7 @@ tc.research_name.TB.NodeMan=Node Manipulation
 tc.research_text.TB.NodeMan=Full control!
 tb.rec.nodeMan.page.0=You have discovered a way to support nodes by using stabilisers. You have discovered a way to tear the node apart, opening a small rift to wherever. Is this it for the nodes? It seems unfair, there are so many types of them - tainted, pure, hungry, they can be bright or fading... But all thaumaturges stop here, without attempting to go further. You can manipulate the very fabrics of the node, making it stable. You can tear it apart, energising it. Why not use those powers in combination to change the smallest fibres of the node? Why not study this? Is there something, that stops everyone from going this way, or are they just too blind, thinking they are the masters of thaumaturgy?
 tb.rec.nodeMan.page.1=Well, so far nothing really happened. Nothing came to stop you. Nothing killed you, nothing corrupted your mind - nothing! You do not understand the others not going this way. You have discovered a way to create the device that will combine the power of the Stabiliser to make the node stand and the ability of the Transducer to move node fibres, tearing it apart. Well, it is not that simple - you also need to constantly move Vis back and forth - some mirrors are required, and some flux formes, which is critical, so Flux scrubbers must be used too. And, for this construction to be stable some Salis Mundus is alse required. And here it is - the device, that can manipulate the node itself!
-tb.rec.nodeMan.page.2=It is not really that simple, actually. Your device can only work with regular nodes, energised are too powerful to work with. It also can only operate with the node from the top due to Vis flowing downwards, so it is impossible to have both the transducer and this device. It also turned out very... mundane. It is unable to operate with the node at all, as you though it would. It has the ability to do so, but the fibres of the node are not that simple to move - a Foci is required, and you do not know how to make one. You've tried regular wand foci - not much luck, just a bunch of angry wisps. However, the foci must work the same way - harnessing the raw power of the device to work with the node.
+tb.rec.nodeMan.page.2=It is not really that simple, actually. Your device can only work with regular nodes, energised are too powerful to work with. It also can only operate with the node from the top due to Vis flowing downwards, so it is impossible to have both the transducer and this device. It also turned out very... mundane. It is unable to operate with the node at all, as you though it would. It has the ability to do so, but the fibres of the node are not that simple to move - a Foci is required, and you do not know how to make one. You've tried regular wand foci - not much luck, just a bunch of angry wisps. However, the foci must work the same way - harnessing the raw power of the device to work with the node. 
 tb.rec.nodeMan.page.3=The device itself is pretty stable, and, in fact, it does not require anything to work, which is comical due to the power of the device. The foci, should you obtain one must be simply placed in the bottom of the device, harnessing the raw power. Just click the device with the foci to put it in. Click with an empty hand to remove the foci. Click with another foci to swap between to - it is even possible to actually save the progress that way! It may require more or less time based on the action it is doing too!
 
 tc.research_name.TB.NodeFoci.Speed=Manipulator Foci: Speed
@@ -455,15 +455,15 @@ tb.rec.foci.destr.page.0=Destruction foci will slowly destroy the node it is att
 
 tc.research_name.TB.NodeFoci.Hunger=Manipulator Foci: Hunger
 tc.research_text.TB.NodeFoci.Hunger=It is pretty obvious what this foci does
-tb.rec.foci.hunger.page.0=Hunger foci will make the Manipulator slowly turn the node into a Hungry Node. Will only work with Normal nodes. Note, that the manipulator can freely be eaten by the hungry node, if it chooses to do so. Takes 5 minutes to finish. Authors are in no way responsible for the possible damage done to you, your house, your world, other worlds, your pets, animals, monsters, nodes and items. By crafting the foci you agree to being fully responsible to anything, that may happen with the foci, manipulator, node and everything surrounding the node.
+tb.rec.foci.hunger.page.0=Hunger foci will make the Manipulator slowly turn the node into a Hungry Node. Will only work with normal nodes. Note, that the manipulator can freely be eaten by the hunger node, if it chooses to do so. Takes 5 minutes to finish. Authors are in no way responsible for the possible damage done to you, your house, your world, other worlds, your pets, animals, monsters, nodes and items. By crafting the foci you agree to being fully responsible to anything, that may happen with the foci, manipulator, node and everything surrounding the node.
 
 tc.research_name.TB.NodeFoci.Purity=Manipulator Foci: Purity
 tc.research_text.TB.NodeFoci.Purity=Node purification
-tb.rec.foci.pure.page.0=Purity foci will make the Manipulator slowly turn the node into a Pure Node. Will only work with normal or tainted nodes. Takes 3 minutes to finish with a normal node or 20 minutes with a tainted node. Note, that the node will not recieve aspects that pure nodes usually have in them, but will still turn the biome around to Magical Forest.
+tb.rec.foci.pure.page.0=Purity foci will make the Manipulator slowly turn the node into a Pure Node. Will only work with normal or tainted nodes. Takes 3 minutes to finish with a normal node or 33 minutes with a tainted node. Note, that the node will not recieve aspects that pure nodes usually have in them, but will still turn the biome around to Magical Forest.
 
 tc.research_name.TB.NodeFoci.Stability=Manipulator Foci: Stability
 tc.research_text.TB.NodeFoci.Stability=Saving the dying nodes
-tb.rec.foci.stability.page.0=Stability foci will make the Manipulator slowly restore nodes. It will convert nodes into different types, using time. Converting a Fading node into Pale takes 5 minutes. Converting a Pale node into normal takes 10 minutes. Removing the Sinister modifier takes 2 minutes. Removing the Unstable modifier takes 7 minutes. Removing the Hungry modifier takes 30 seconds. Removing the Taint or Pure modifier takes 20 minutes.
+tb.rec.foci.stability.page.0=Stability foci will make the Manipulator slowly restore nodes. It will convert nodes into different types, using time. Converting a Fading node into Pale takes 5 minutes. Converting a Pale node into normal takes 10 minutes. Removing the Sinister modifier takes 2 minutes. Removing the Unstable modifier takes 7 minutes. Removing the Hunger modifier takes 30 seconds. Removing the Taint or Pure modifier takes 30 minutes.
 
 tc.research_name.TB.NodeFoci.Taint=Manipulator Foci: Taint
 tc.research_text.TB.NodeFoci.Taint=Why make everything worse?
@@ -476,7 +476,7 @@ tb.rec.enchantments.ewisdom=Weapons enchanted with Elder Wisdom have a chance to
 tb.rec.enchantments.ebane=Weapons enchanted with Eldritch bane will deal more damage to endermen and eldritch creatures.
 tb.rec.enchantments.magictouch=Weapons enchanted with Magic Touched will cause more aspect orbs to be dropped from slain creatures.
 tb.rec.enchantments.vaporise=Weapons enchanted with Vaporising enchantment have a chance to drop crystallised life essentia of creatures slain by it.
-tb.rec.enchantments.taint=Weapons infused with Taint will deal additional tainted damage upon hit. It will also apply Taint Poison to the target. This is less effective against tainted creatures.
+tb.rec.enchantments.taint=Weapons infused with Taint will deal additional tainted damage upon hit. It will also apply Taint Poison to the target. This is less effective against tainted creatures. 
 
 #1.1 researches
 tc.research_name.TB.EntityDecAdv=Entity Deconstructor Improvements
@@ -588,7 +588,7 @@ revolverUpgrade.BANE_OF_ATROPODS.name=Bane of Arthropods
 revolverUpgrade.BANE_OF_ELDRITCH.name=Bane of Eldritch
 revolverUpgrade.PIERCING.name=Piercing
 revolverUpgrade.DUELING.name=Dueling
-revolverUpgrade.TAINTED.name=Tainted
+revolverUpgrade.TAINTED.name=tainted
 revolverUpgrade.PRIMAL.name=Primal
 revolverUpgrade.SPEED.name=Speed
 revolverUpgrade.EFFICIENCY.name=Efficiency
@@ -608,7 +608,7 @@ tc.research_name.TB.NodeLinker=Node Linking
 tc.research_text.TB.NodeLinker=From one source to another!
 tb.rec.nodeLink.page.0=Nodes. The things that link your world to the world of magic. They are heavily used in thaumaturgy - some devices use them to function, you need them to recharge your wands. However there is a small problem - a node can always store that much of vis and if it has, for example, no terra it it - this is it, it has no terra, and that aspect can't be gained from the node. There sure is a so called 'node bullying' - one node eating other, smaller nodes. With the discovery of the Advanced node stabiliser that can be worked with, but it takes a ridiculous amount of time and also is unreliable.
 tb.rec.nodeLink.page.1=You have discovered a device that might get the job done. The node Linking Device creates a mysterious link between 2 nodes and will move aspects from the linked one to the linker. You need 2 of this devices placed on top of nodes. Then just take your wand and right click on the receiver. After that click on the transmitter - and the link will be established. The link will firstly drain all aspects out of the transmitting node's pull, then it will draw the node's capacity and will increase the receiver’s capacity based on that. Lastly the node without any capacity left will fade away. The chance of the receiver node to increase it's aspect capacity is around 70% for each capacity decrease on the transmitting node.
-tb.rec.nodeLink.page.2=The transmission however is pretty unstable - both nodes will react to the link. This will result in a so called instability. The more time the device functions - the more instability it will have. Based on the amount of instability different things may happen - from the aspects escaping out of nodes on both ends into air in form of flux, to the complete transmitting node destruction with the explosion. The receiving node however will never get harmed in any way.
+tb.rec.nodeLink.page.2=The transmission however is pretty unstable - both nodes will react to the link. This will result in a so called instability. The more time the device functions - the more instability it will have. Based on the amount of instability different things may happen - from the aspects escaping out of nodes on both ends into air in form of flux, to the complete transmitting node destruction with the explosion. The receiving node however will never get harmed in any way. If you would only have a magic inert metal, forged from both, Nether and End, that could stabilize the link. In theory a Block of this supreme metal above this device would be sufficient.
 
 tc.research_name.TB.Revolver.Accuracy=Revolver Upgrade: Accuracy
 tc.research_text.TB.Revolver.Accuracy=Sniping from miles away
@@ -662,7 +662,7 @@ tc.research_name.TB.Revolver.Speed=Revolver Upgrade: Speed
 tc.research_text.TB.Revolver.Speed=It shoots 10 000 bullets per minute!
 tb.rec.revolver.spe.page.0=You have found a way to increase the speed at which your bullets travel. Each level of this upgrade will increase the speed of the bullets by... some amount, how can you tell? You clearly do not have any device or whatever to measure such fast movement!.<BR>Max Level: §6§l5 §r§0<BR>Conflicts with: §nEfficiency§r, §0§nAccuracy§r
 
-tc.research_name.TB.Revolver.Tainted=Revolver Upgrade: Tainted
+tc.research_name.TB.Revolver.Tainted=Revolver Upgrade: tainted
 tc.research_text.TB.Revolver.Tainted=It's ALIVE! Kinda.
 tb.rec.revolver.tai.page.0=Imbuing your weapon with taint might not be that good of an idea, but you've tried anyways. Anyway, here are the results - this upgrade will increase the raw damage of the revolver against every creature, except for the tainted ones - for them the damage will be decreased! The bullets also will have a chance to inflict the victim with Taint Poison!<BR>Max Level: §6§l 3 §r§0<BR>Conflicts with: §nPrimal§r, §0§nKnowledge§r
 

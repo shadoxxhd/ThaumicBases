@@ -37,8 +37,8 @@ public class TileNodeLinker extends TileEntity implements IWandable
 	public Coord3D linkCoord;
 	public int syncTimer;
 	public int instability;
-
-	public void updateEntity()
+	
+	public void updateEntity() 
 	{
 		if(syncTimer <= 0)
 		{
@@ -56,13 +56,13 @@ public class TileNodeLinker extends TileEntity implements IWandable
 			MiscUtils.syncTileEntity(tg, 0);
 		}else
 			--syncTimer;
-
+		
 		if(linkCoord != null)
 		{
 			int x = MathHelper.floor_double(linkCoord.x);
 			int y = MathHelper.floor_double(linkCoord.y);
 			int z = MathHelper.floor_double(linkCoord.z);
-
+			
 			if(this.worldObj.getTileEntity(x, y, z) instanceof TileNodeLinker && TileNodeLinker.class.cast(this.worldObj.getTileEntity(x, y, z)).linkCoord == null)
 			{
 				if(this.worldObj.getBlock(xCoord, yCoord-1, zCoord) == ConfigBlocks.blockAiry && this.worldObj.getBlock(x, y-1, z) == ConfigBlocks.blockAiry)
@@ -74,20 +74,20 @@ public class TileNodeLinker extends TileEntity implements IWandable
 							double sX = linkCoord.x+0.5D;
 							double sY = linkCoord.y+0.825D;
 							double sZ = linkCoord.z+0.5D;
-
+							
 							double eX = xCoord+0.5D;
 							double eY = yCoord+0.825D;
 							double eZ = zCoord+0.5D;
-
+							
 							if(this.worldObj.isRemote)
 								Thaumcraft.proxy.beam(worldObj, sX, sY, sZ, eX, eY, eZ, 1, 0xffffff, false, 1, 1);
-
+							
 							if(this.worldObj.isRemote)
 								Thaumcraft.proxy.nodeBolt(worldObj, (float)sX, (float)(sY-1.3F), (float)sZ, (float)sX, (float)sY-0.6F, (float)sZ);
-
+							
 							if(this.worldObj.isRemote)
 								Thaumcraft.proxy.nodeBolt(worldObj, (float)eX, (float)eY-0.6F, (float)eZ, (float)eX, (float)eY-1.3F, (float)eZ);
-
+						
 							if(syncTimer % 10 == 0 && !this.worldObj.isRemote)
 							{
 								TileNode reciever = (TileNode) this.worldObj.getTileEntity(xCoord, yCoord-1, zCoord);
@@ -123,7 +123,7 @@ public class TileNodeLinker extends TileEntity implements IWandable
 										{
 											if(instabilityCheck())
 												pushTo.add(randomAspect, 1);
-
+											
 											pullFrom.reduce(randomAspect, 1);
 										}else
 										{
@@ -132,7 +132,7 @@ public class TileNodeLinker extends TileEntity implements IWandable
 										if(this.worldObj.rand.nextDouble() <= 0.33D)
 											++instability;
 									}
-
+									
 									transmitter.markDirty();
 									reciever.markDirty();
 									this.worldObj.markBlockForUpdate(x, y-1, z);
@@ -142,13 +142,13 @@ public class TileNodeLinker extends TileEntity implements IWandable
 						}
 					}
 				}
-
+				
 			}else
 				linkCoord = null;
 		}else
 			instability = 0;
 	}
-
+	
 	public boolean instabilityCheck()
 	{
 		if(this.worldObj.rand.nextInt(50) <= this.instability)
@@ -156,15 +156,15 @@ public class TileNodeLinker extends TileEntity implements IWandable
 			int rnd = this.worldObj.rand.nextInt(this.instability);
 			if(rnd == 49)
 			{
-				//TODO if a block of Ichorium is above dont explode or harm node
-				//if (!OreDictionary.doesOreNameExist("blockIchorium") || (OreDictionary.getOres("blockIchorium")!=null && !(OreDictionary.getOres("blockIchorium").contains(new ItemStack(this.worldObj.getBlock(this.xCoord, this.yCoord +1, this.zCoord))))))
+				//if a block of Ichorium is above dont explode or harm node
+				if (!OreDictionary.doesOreNameExist("blockIchorium") || (OreDictionary.getOres("blockIchorium")!=null && !(OreDictionary.getOres("blockIchorium").contains(new ItemStack(this.worldObj.getBlock(this.xCoord, this.yCoord +1, this.zCoord))))))
 				instability -= explodeTransmitter();
 			}else
 			{
 				if(rnd >= 45)
 				{
 					//if a block of Ichorium is above dont explode or harm node
-					//if (!OreDictionary.doesOreNameExist("blockIchorium") || (OreDictionary.getOres("blockIchorium")!=null && !(OreDictionary.getOres("blockIchorium").contains(new ItemStack(this.worldObj.getBlock(this.xCoord, this.yCoord +1, this.zCoord))))))
+					if (!OreDictionary.doesOreNameExist("blockIchorium") || (OreDictionary.getOres("blockIchorium")!=null && !(OreDictionary.getOres("blockIchorium").contains(new ItemStack(this.worldObj.getBlock(this.xCoord, this.yCoord +1, this.zCoord))))))
 					instability -= harmTransmitter();
 				}else
 				{
@@ -193,7 +193,7 @@ public class TileNodeLinker extends TileEntity implements IWandable
 		}
 		return true;
 	}
-
+	
 	public int harmTransmitter()
 	{
 		int x = MathHelper.floor_double(linkCoord.x);
@@ -202,20 +202,20 @@ public class TileNodeLinker extends TileEntity implements IWandable
 		boolean reducePerm = this.worldObj.rand.nextBoolean();
 		TileNode transmitter = (TileNode) this.worldObj.getTileEntity(x, y-1, z);
 		AspectList reduced = reducePerm ? transmitter.getAspectsBase() : transmitter.getAspects();
-
+		
 		if(reduced.visSize() <= 0 || reduced.size() <= 0)
 			return 0;
-
+		
 		Aspect rnd = reduced.getAspects()[this.worldObj.rand.nextInt(reduced.size())];
 		int reduceBy = Math.min(4 + this.worldObj.rand.nextInt(16),reduced.getAmount(rnd));
-
+		
 		reduced.reduce(rnd, reduceBy);
 		transmitter.markDirty();
 		this.worldObj.markBlockForUpdate(x, y-1, z);
-
+		
 		return reducePerm ? 25 : 6;
 	}
-
+	
 	@SuppressWarnings("unchecked")
 	public int zap()
 	{
@@ -233,7 +233,7 @@ public class TileNodeLinker extends TileEntity implements IWandable
 		}
 		return 0;
 	}
-
+	
 	public int wisp()
 	{
 		boolean side = this.worldObj.rand.nextBoolean();
@@ -242,19 +242,19 @@ public class TileNodeLinker extends TileEntity implements IWandable
 		int z = side ? MathHelper.floor_double(linkCoord.z) : zCoord;
 		ArrayList<Aspect> aspects = new ArrayList<Aspect>();
 		Collection<Aspect> pa = Aspect.aspects.values();
-		for (Aspect aspect:pa)
+		for (Aspect aspect:pa) 
 		{
 			aspects.add(aspect);
 		}
-
+		
 		EntityWisp wisp = new EntityWisp(worldObj);
 		wisp.setPositionAndRotation(x+0.5D, y-0.5D, z+0.5D, 0, 0);
 		wisp.setType(aspects.get(worldObj.rand.nextInt(aspects.size())).getTag());
 		worldObj.spawnEntityInWorld(wisp);
-
+		
 		return 9;
 	}
-
+	
 	public int fluxNode()
 	{
 		boolean side = this.worldObj.rand.nextBoolean();
@@ -267,7 +267,7 @@ public class TileNodeLinker extends TileEntity implements IWandable
 		this.worldObj.setBlock(x+off.offsetX, y-1, z+off.offsetZ, ConfigBlocks.blockFluxGoo, fluxMeta, 3);
 		return 5;
 	}
-
+	
 	public int fluxTransmission()
 	{
 		boolean side = this.worldObj.rand.nextBoolean();
@@ -278,7 +278,7 @@ public class TileNodeLinker extends TileEntity implements IWandable
 		this.worldObj.setBlock(x, y+2, z, ConfigBlocks.blockFluxGas, fluxMeta, 3);
 		return 3;
 	}
-
+	
 	public int explodeTransmitter()
 	{
 		int x = MathHelper.floor_double(linkCoord.x);
@@ -288,29 +288,29 @@ public class TileNodeLinker extends TileEntity implements IWandable
 		this.worldObj.createExplosion(null, x+0.5D, y-0.5D, z+0.5D, 2, true);
 		return instability;
 	}
-
-	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt)
-	{
-		if(pkt.func_148857_g().hasKey("coordsX"))
-		{
-			linkCoord = new Coord3D(pkt.func_148857_g().getFloat("coordsX"),pkt.func_148857_g().getFloat("coordsY"),pkt.func_148857_g().getFloat("coordsZ"));
-		}else
-			linkCoord = null;
-	}
-
-	public void readFromNBT(NBTTagCompound tag)
-	{
-		super.readFromNBT(tag);
-		if(tag.hasKey("coordsX"))
-		{
-			linkCoord = new Coord3D(tag.getFloat("coordsX"),tag.getFloat("coordsY"),tag.getFloat("coordsZ"));
-		}
-		instability = tag.getInteger("instability");
-	}
-
-	public void writeToNBT(NBTTagCompound tag)
-	{
-		super.writeToNBT(tag);
+	
+    public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt)
+    {
+    	if(pkt.func_148857_g().hasKey("coordsX"))
+    	{
+    		linkCoord = new Coord3D(pkt.func_148857_g().getFloat("coordsX"),pkt.func_148857_g().getFloat("coordsY"),pkt.func_148857_g().getFloat("coordsZ"));
+    	}else
+    		linkCoord = null;
+    }
+    
+    public void readFromNBT(NBTTagCompound tag)
+    {
+        super.readFromNBT(tag);
+    	if(tag.hasKey("coordsX"))
+    	{
+    		linkCoord = new Coord3D(tag.getFloat("coordsX"),tag.getFloat("coordsY"),tag.getFloat("coordsZ"));
+    	}
+    	instability = tag.getInteger("instability");
+    }
+    
+    public void writeToNBT(NBTTagCompound tag)
+    {
+        super.writeToNBT(tag);
 		if(linkCoord != null)
 		{
 			tag.setFloat("coordsX", linkCoord.x);
@@ -318,10 +318,13 @@ public class TileNodeLinker extends TileEntity implements IWandable
 			tag.setFloat("coordsZ", linkCoord.z);
 		}
 		tag.setInteger("instability", instability);
-	}
+    }
 
 	@Override
-	public int onWandRightClick(World paramWorld, ItemStack paramItemStack, EntityPlayer paramEntityPlayer, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5) {
+	public int onWandRightClick(World paramWorld, ItemStack paramItemStack,
+			EntityPlayer paramEntityPlayer, int paramInt1, int paramInt2,
+			int paramInt3, int paramInt4, int paramInt5) {
+		// TODO Auto-generated method stub
 		return 0;
 	}
 
@@ -332,38 +335,43 @@ public class TileNodeLinker extends TileEntity implements IWandable
 		if(!paramItemStack.hasTagCompound())
 			paramItemStack.setTagCompound(new NBTTagCompound());
 
-		if(paramItemStack.getTagCompound().hasKey("linkCoordX"))
-		{
+		if(paramItemStack.getTagCompound().hasKey("linkCoordX")) {
 			float x = paramItemStack.getTagCompound().getFloat("linkCoordX");
 			float y = paramItemStack.getTagCompound().getFloat("linkCoordY");
 			float z = paramItemStack.getTagCompound().getFloat("linkCoordZ");
-			if(this.worldObj.getTileEntity(MathHelper.floor_double(x), MathHelper.floor_double(y), MathHelper.floor_double(z)) instanceof TileNodeLinker)
-			{
+			if (this.worldObj.getTileEntity(MathHelper.floor_double(x), MathHelper.floor_double(y), MathHelper.floor_double(z)) instanceof TileNodeLinker) {
 				TileNodeLinker tile = (TileNodeLinker) this.worldObj.getTileEntity(MathHelper.floor_double(x), MathHelper.floor_double(y), MathHelper.floor_double(z));
-				tile.linkCoord = new Coord3D(xCoord,yCoord,zCoord);
+				tile.linkCoord = new Coord3D(xCoord, yCoord, zCoord);
 				paramItemStack.getTagCompound().removeTag("linkCoordX");
 				paramItemStack.getTagCompound().removeTag("linkCoordY");
 				paramItemStack.getTagCompound().removeTag("linkCoordZ");
-				if(paramWorld.isRemote)
+				if (paramWorld.isRemote)
 					paramEntityPlayer.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("tb.txt.linkEstabilished")));
+
+				return paramItemStack;
 			}
-		}else
-		{
-			paramItemStack.getTagCompound().setFloat("linkCoordX", xCoord);
-			paramItemStack.getTagCompound().setFloat("linkCoordY", yCoord);
-			paramItemStack.getTagCompound().setFloat("linkCoordZ", zCoord);
-			if(paramWorld.isRemote)
-				paramEntityPlayer.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("tb.txt.linkStarted")));
 		}
 
+		paramItemStack.getTagCompound().setFloat("linkCoordX", xCoord);
+		paramItemStack.getTagCompound().setFloat("linkCoordY", yCoord);
+		paramItemStack.getTagCompound().setFloat("linkCoordZ", zCoord);
+		if(paramWorld.isRemote)
+			paramEntityPlayer.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("tb.txt.linkStarted")));
+		
 		return paramItemStack;
 	}
 
 	@Override
-	public void onUsingWandTick(ItemStack paramItemStack, EntityPlayer paramEntityPlayer, int paramInt) {
+	public void onUsingWandTick(ItemStack paramItemStack,
+			EntityPlayer paramEntityPlayer, int paramInt) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
-	public void onWandStoppedUsing(ItemStack paramItemStack, World paramWorld, EntityPlayer paramEntityPlayer, int paramInt) {
+	public void onWandStoppedUsing(ItemStack paramItemStack, World paramWorld,
+			EntityPlayer paramEntityPlayer, int paramInt) {
+		// TODO Auto-generated method stub
+		
 	}
 }

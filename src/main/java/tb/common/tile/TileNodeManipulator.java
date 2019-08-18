@@ -22,28 +22,28 @@ public class TileNodeManipulator extends TileEntity implements IWandable
 	public Hashtable<String,Integer> nodeAspects = new Hashtable<String,Integer>();
 	public Hashtable<String,Integer> newNodeAspects = new Hashtable<String,Integer>();
 	public boolean firstTick = true;
-
-	public void updateEntity()
+	
+	public void updateEntity() 
 	{
 		INode node = getNode();
-
+		
 		if(node == null)
 			return;
-
+		
 		newNodeAspects.clear();
 		for(int i = 0; i < node.getAspects().size(); ++i)
 		{
 			newNodeAspects.put(node.getAspects().getAspects()[i].getTag(), node.getAspects().getAmount(node.getAspects().getAspects()[i]));
 		}
-
+		
 		if(this.worldObj.getBlockMetadata(xCoord, yCoord, zCoord) == 0 || getNode() == null)
 			workTime = 0;
-
+		
 		if(this.worldObj.getBlockMetadata(xCoord, yCoord, zCoord) != 0 && getNode() != null)
 		{
 			int color = 0xffffff;
 			int effect = this.worldObj.getBlockMetadata(xCoord, yCoord, zCoord)-1;
-
+			
 			switch(this.worldObj.getBlockMetadata(xCoord, yCoord, zCoord)-1)
 			{
 				case 0:
@@ -99,7 +99,7 @@ public class TileNodeManipulator extends TileEntity implements IWandable
 			}
 			if(!firstTick && this.worldObj.isRemote)
 				Thaumcraft.proxy.beam(this.worldObj, xCoord+0.5D, yCoord+0.5D, zCoord+0.5D, xCoord+0.5D, yCoord-0.5D, zCoord+0.5D, 2, color, false, 0.5F, 2);
-
+		
 			if(!firstTick)
 			{
 				if(effect == 7)
@@ -112,7 +112,7 @@ public class TileNodeManipulator extends TileEntity implements IWandable
 							Aspect a = node.getAspects().getAspects()[i];
 							int max = node.getNodeVisBase(a);
 							int current = node.getAspects().getAmount(a);
-
+							
 							if(current < max && this.worldObj.rand.nextFloat() < 0.01F)
 							{
 								node.getAspects().add(a, 1);
@@ -137,7 +137,7 @@ public class TileNodeManipulator extends TileEntity implements IWandable
 							return;
 						}
 						node.setNodeModifier(node.getNodeModifier() == NodeModifier.BRIGHT ? null : node.getNodeModifier() == NodeModifier.PALE ? NodeModifier.FADING : node.getNodeModifier() == NodeModifier.FADING ? NodeModifier.FADING : NodeModifier.PALE);
-
+						
 					}else
 					{
 						++workTime;
@@ -161,7 +161,7 @@ public class TileNodeManipulator extends TileEntity implements IWandable
 						if(nodeAspects.containsKey(a.getTag()))
 						{
 							int prev = nodeAspects.get(a.getTag());
-
+								
 							if(current < prev && this.worldObj.rand.nextFloat() < 0.5F)
 							{
 								node.getAspects().add(a, 1);
@@ -199,20 +199,20 @@ public class TileNodeManipulator extends TileEntity implements IWandable
 				}
 				if(effect == 5)
 				{
-					if(node.getNodeType() == NodeType.NORMAL) {
-						if(workTime > 3*60*20){
-							workTime = 0;
-							node.setNodeType(NodeType.PURE);
+						if(node.getNodeType() == NodeType.NORMAL) {
+							if(workTime > 3*60*20){
+								workTime = 0;
+								node.setNodeType(NodeType.PURE);
+							}
+							else ++workTime;
 						}
-						else ++workTime;
-					}
-					else if(node.getNodeType() == NodeType.TAINTED) {
-						if(workTime > 20*60*20){
-							workTime = 0;
-							node.setNodeType(NodeType.PURE);
+						else if(node.getNodeType() == NodeType.TAINTED) {
+							if(workTime > 33*60*20){
+								workTime = 0;
+								node.setNodeType(NodeType.PURE);
+							}
+							else ++workTime;
 						}
-						else ++workTime;
-					}
 				}
 				if(effect == 6)
 				{
@@ -231,37 +231,37 @@ public class TileNodeManipulator extends TileEntity implements IWandable
 				if(effect == 8)
 				{
 					int maxTimeRequired = 0;
-
+					
 					if(node.getNodeModifier() == NodeModifier.FADING)
 					{
 						maxTimeRequired = 5*60*20;
 					}
-
+					
 					if(node.getNodeModifier() == NodeModifier.PALE)
 					{
 						maxTimeRequired = 10*60*20;
 					}
-
+					
 					if(node.getNodeType() == NodeType.DARK)
 					{
 						maxTimeRequired = 2*60*20;
 					}
-
+					
 					if(node.getNodeType() == NodeType.HUNGRY)
 					{
 						maxTimeRequired = 30*20;
 					}
-
+					
 					if(node.getNodeType() == NodeType.UNSTABLE)
 					{
 						maxTimeRequired = 7*60*20;
 					}
-
+					
 					if(node.getNodeType() == NodeType.TAINTED || node.getNodeType() == NodeType.PURE)
 					{
-						maxTimeRequired = 20*60*20;
+						maxTimeRequired = 30*60*20;
 					}
-
+					
 					if(workTime >= maxTimeRequired)
 					{
 						workTime = 0;
@@ -270,19 +270,19 @@ public class TileNodeManipulator extends TileEntity implements IWandable
 							node.setNodeModifier(NodeModifier.PALE);
 							return;
 						}
-
+						
 						if(node.getNodeModifier() == NodeModifier.PALE)
 						{
 							node.setNodeModifier(null);
 							return;
 						}
-
+						
 						if(node.getNodeType() == NodeType.DARK || node.getNodeType() == NodeType.HUNGRY || node.getNodeType() == NodeType.UNSTABLE || node.getNodeType() == NodeType.TAINTED || node.getNodeType() == NodeType.PURE)
 						{
 							node.setNodeType(NodeType.NORMAL);
 							return;
 						}
-
+						
 					}else
 					{
 						++workTime;
@@ -318,35 +318,35 @@ public class TileNodeManipulator extends TileEntity implements IWandable
 				}
 			}
 		}
-
+		
 		firstTick = false;
-
+		
 		nodeAspects.clear();
 		for(int i = 0; i < node.getAspects().size(); ++i)
 		{
 			nodeAspects.put(node.getAspects().getAspects()[i].getTag(), node.getAspects().getAmount(node.getAspects().getAspects()[i]));
 		}
 	}
-
+	
 	public INode getNode()
 	{
 		if(this.worldObj.getTileEntity(xCoord, yCoord-1, zCoord) instanceof INode)
 			return INode.class.cast(worldObj.getTileEntity(xCoord, yCoord-1, zCoord));
-
+		
 		return null;
 	}
-
-	public void readFromNBT(NBTTagCompound tag)
-	{
-		super.readFromNBT(tag);
-		workTime = tag.getInteger("workTime");
-	}
-
-	public void writeToNBT(NBTTagCompound tag)
-	{
-		super.writeToNBT(tag);
-		tag.setInteger("workTime", workTime);
-	}
+	
+    public void readFromNBT(NBTTagCompound tag)
+    {
+        super.readFromNBT(tag);
+        workTime = tag.getInteger("workTime");
+    }
+	
+    public void writeToNBT(NBTTagCompound tag)
+    {
+        super.writeToNBT(tag);
+        tag.setInteger("workTime", workTime);
+    }
 
 	@Override
 	public int onWandRightClick(World world, ItemStack wandstack,EntityPlayer player, int x, int y, int z, int side, int md) {
