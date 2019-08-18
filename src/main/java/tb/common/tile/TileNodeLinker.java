@@ -334,30 +334,29 @@ public class TileNodeLinker extends TileEntity implements IWandable
 		paramEntityPlayer.swingItem();
 		if(!paramItemStack.hasTagCompound())
 			paramItemStack.setTagCompound(new NBTTagCompound());
-		
-		if(paramItemStack.getTagCompound().hasKey("linkCoordX"))
-		{
+
+		if(paramItemStack.getTagCompound().hasKey("linkCoordX")) {
 			float x = paramItemStack.getTagCompound().getFloat("linkCoordX");
 			float y = paramItemStack.getTagCompound().getFloat("linkCoordY");
 			float z = paramItemStack.getTagCompound().getFloat("linkCoordZ");
-			if(this.worldObj.getTileEntity(MathHelper.floor_double(x), MathHelper.floor_double(y), MathHelper.floor_double(z)) instanceof TileNodeLinker)
-			{
+			if (this.worldObj.getTileEntity(MathHelper.floor_double(x), MathHelper.floor_double(y), MathHelper.floor_double(z)) instanceof TileNodeLinker) {
 				TileNodeLinker tile = (TileNodeLinker) this.worldObj.getTileEntity(MathHelper.floor_double(x), MathHelper.floor_double(y), MathHelper.floor_double(z));
-				tile.linkCoord = new Coord3D(xCoord,yCoord,zCoord);
+				tile.linkCoord = new Coord3D(xCoord, yCoord, zCoord);
 				paramItemStack.getTagCompound().removeTag("linkCoordX");
 				paramItemStack.getTagCompound().removeTag("linkCoordY");
 				paramItemStack.getTagCompound().removeTag("linkCoordZ");
-				if(paramWorld.isRemote)
+				if (paramWorld.isRemote)
 					paramEntityPlayer.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("tb.txt.linkEstabilished")));
+
+				return paramItemStack;
 			}
-		}else
-		{
-			paramItemStack.getTagCompound().setFloat("linkCoordX", xCoord);
-			paramItemStack.getTagCompound().setFloat("linkCoordY", yCoord);
-			paramItemStack.getTagCompound().setFloat("linkCoordZ", zCoord);
-			if(paramWorld.isRemote)
-				paramEntityPlayer.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("tb.txt.linkStarted")));
 		}
+
+		paramItemStack.getTagCompound().setFloat("linkCoordX", xCoord);
+		paramItemStack.getTagCompound().setFloat("linkCoordY", yCoord);
+		paramItemStack.getTagCompound().setFloat("linkCoordZ", zCoord);
+		if(paramWorld.isRemote)
+			paramEntityPlayer.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("tb.txt.linkStarted")));
 		
 		return paramItemStack;
 	}
