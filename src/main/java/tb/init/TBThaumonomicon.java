@@ -104,7 +104,7 @@ public class TBThaumonomicon {
 		
 		CrucibleRecipe chiseledBricks = new CrucibleRecipe("TB.AlchemyRestoration",new ItemStack(Blocks.stonebrick,1,3),new ItemStack(Blocks.stonebrick,1,0),new AspectList().add(Aspect.ORDER, 1));
 		CrucibleRecipe gravel2Cobble = new CrucibleRecipe("TB.AlchemyRestoration",new ItemStack(Blocks.cobblestone,1,0),new ItemStack(Blocks.gravel,1,0),new AspectList().add(Aspect.ORDER, 1));
-		CrucibleRecipe icePacking = new CrucibleRecipe("TB.AlchemyRestoration",new ItemStack(Blocks.packed_ice,1,0),new ItemStack(Blocks.ice,1,0),new AspectList().add(Aspect.EARTH, 1));
+		CrucibleRecipe icePacking = new CrucibleRecipe("TB.AlchemyRestoration",new ItemStack(Blocks.packed_ice,1,0),new ItemStack(Blocks.ice,1,0),new AspectList().add(Aspect.EARTH, 1).add(Aspect.COLD, 3));
 		
 		CrucibleRecipe blazepowderRest = new CrucibleRecipe("TB.Backprocessing",new ItemStack(Items.blaze_rod,1,0),new ItemStack(Items.blaze_powder,1,0),new AspectList().add(Aspect.ORDER, 6).add(Aspect.FIRE, 3).add(Aspect.MAGIC, 2).add(Aspect.CRAFT, 8).add(Aspect.EXCHANGE, 6).add(Aspect.ENERGY, 3));
 		CrucibleRecipe boneRest = new CrucibleRecipe("TB.Backprocessing",new ItemStack(Items.bone,1,0),new ItemStack(Items.dye,1,15),new AspectList().add(Aspect.ORDER, 2).add(Aspect.SENSES, 6).add(Aspect.CRAFT, 2).add(Aspect.EXCHANGE, 1).add(Aspect.DEATH, 4));
