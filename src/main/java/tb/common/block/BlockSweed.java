@@ -54,10 +54,9 @@ public class BlockSweed extends BlockTBPlant {
 
         if (metadata >= growthStages-1)
         {
-            for (int i = 0; i < 1 + fortune; ++i)
-                if (world.rand.nextInt(growthStages) <= metadata)
-                	if(dropSeed != null)
-                		ret.add(dropSeed.copy());
+            if (world.rand.nextInt(growthStages) <= metadata)
+                if (dropSeed != null)
+                    ret.add(dropSeed.copy());
             
             for (int i = 0; i < 3 + fortune; ++i)
                 if (world.rand.nextBoolean())
