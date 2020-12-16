@@ -109,8 +109,6 @@ public class EntityRevolverBullet extends EntityThrowable
 					this.worldObj.spawnParticle("blockcrack_"+Block.getIdFromBlock(b)+"_"+meta, object.blockX+worldObj.rand.nextDouble(), object.blockY+worldObj.rand.nextDouble(), object.blockZ+worldObj.rand.nextDouble(), 0, 0, 0);
 				
 				worldObj.playSound(object.blockX+0.5D, object.blockY+0.5D, object.blockZ+0.5D, b.stepSound.getBreakSound(), 1, 1, false);
-				
-				this.worldObj.setBlockToAir(object.blockX, object.blockY, object.blockZ);
 			}
 		}
 		if(object.typeOfHit == MovingObjectType.ENTITY)
