@@ -422,7 +422,7 @@ tb.rec.eDec.page.0=Sometimes a thaumaturge needs more knowledge to continue his 
 
 tc.research_name.TB.GoldenOak=Thaumic Dendrology
 tc.research_text.TB.GoldenOak=Gnawing the bark of knowledge
-tb.rec.goldenOak.page.0=Not only weeds and flowers can be magically processed to create something new! Trees have that potential too! However, they are too strong on their own, and therefore they resist any simple magical additions. Infusion should do the job just fine! You have managed to create a Golden Oak tree, just as an example. This tree works just as regular Oak does, however, should it drop an apple - and that apple will be covered in gold! It, however, is impossible to get the mythical Enchanted Golden Apple. Due to being infused with Greed essentia tree will drop much less sapligns, since it wants to be the only one absorbing the sunlight and water.
+tb.rec.goldenOak.page.0=Not only weeds and flowers can be magically processed to create something new! Trees have that potential too! However, they are too strong on their own, and therefore they resist any simple magical additions. Infusion should do the job just fine! You have managed to create a Golden Oak tree, just as an example. This tree works just as regular Oak does, however, should it drop an apple - and that apple will be covered in gold! It, however, is impossible to get the mythical Enchanted Golden Apple. Due to being infused with Greed essentia, this tree will drop much less sapligns, since it wants to be the only one absorbing the sunlight and water. Due to a magical anomaly,(read: this is a GTNH-specific thing) the leaves will only drop apples when broken with shears.
 
 tc.research_name.TB.NodeMan=Node Manipulation
 tc.research_text.TB.NodeMan=Full control!
