@@ -8,8 +8,24 @@ import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.tiles.TileAlchemyFurnace;
 
 public class TileAdvAlchemicalFurnace extends TileAlchemyFurnace{
-
+	private static Field fieldCount;
 	public boolean isFuelAlumentum;
+	
+	static
+	{
+		Field field;
+		try
+		{
+			field = TileAlchemyFurnace.class.getDeclaredField("count");
+			field.setAccessible(true);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			field = null;
+		}
+		fieldCount = field;
+	}
 	
 	public void readFromNBT(NBTTagCompound tag)
 	{
@@ -31,13 +47,10 @@ public class TileAdvAlchemicalFurnace extends TileAlchemyFurnace{
 		}
 		try
 		{
-			if(this.isFuelAlumentum || !TBConfig.makeRequireAlumentum)
+			if(fieldCount != null && (this.isFuelAlumentum || !TBConfig.makeRequireAlumentum))
 			{
-				Class<TileAlchemyFurnace> furnace = TileAlchemyFurnace.class;
-				Field count = furnace.getDeclaredField("count");
-				count.setAccessible(true);
 				int furnaceUpdateStep = 20; //hardcoded in thaum to be 20 (when boosted) or 40, but let's assume 20 for simplicity
-				int currentCount = count.getInt(this);
+				int currentCount = fieldCount.getInt(this);
 				//max meaningful bonus happens when (currentStep + 1 + bonus) % furnaceUpdateStep == 0, propagating us directly to next update count
 				//simple checks:
 				// if count=0, then we can add 19, thaum adds 1 and updates
@@ -47,9 +60,7 @@ public class TileAdvAlchemicalFurnace extends TileAlchemyFurnace{
 				int bonusCount = TBConfig.speedMultiplierForFurnace-1;
 				int nextCount = currentCount + Math.min(bonusCount, maxMeaningfulBonus);
 
-				count.setInt(this, nextCount);
-				
-				count.setAccessible(false);
+				fieldCount.setInt(this, nextCount);
 			}
 		}
 		catch(Exception e)
