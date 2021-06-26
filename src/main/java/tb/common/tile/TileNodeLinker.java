@@ -40,22 +40,24 @@ public class TileNodeLinker extends TileEntity implements IWandable
 	
 	public void updateEntity() 
 	{
-		if(syncTimer <= 0)
-		{
-			syncTimer = 100;
-			NBTTagCompound tg = new NBTTagCompound();
-			if(linkCoord != null)
+		if (!worldObj.isRemote) {
+			if (syncTimer <= 0)
 			{
-				tg.setFloat("coordsX", linkCoord.x);
-				tg.setFloat("coordsY", linkCoord.y);
-				tg.setFloat("coordsZ", linkCoord.z);
-			}
-			tg.setInteger("x", xCoord);
-			tg.setInteger("y", yCoord);
-			tg.setInteger("z", zCoord);
-			MiscUtils.syncTileEntity(tg, 0);
-		}else
-			--syncTimer;
+				syncTimer = 100;
+				NBTTagCompound tg = new NBTTagCompound();
+				if (linkCoord != null)
+				{
+					tg.setFloat("coordsX", linkCoord.x);
+					tg.setFloat("coordsY", linkCoord.y);
+					tg.setFloat("coordsZ", linkCoord.z);
+				}
+				tg.setInteger("x", xCoord);
+				tg.setInteger("y", yCoord);
+				tg.setInteger("z", zCoord);
+				MiscUtils.syncTileEntity(tg, 0);
+			} else
+				--syncTimer;
+		}
 		
 		if(linkCoord != null)
 		{

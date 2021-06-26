@@ -42,22 +42,26 @@ public class TileOverchanter extends TileEntity implements IInventory, IWandable
 		return 1;
 	}
 	
+	@Override
 	@SuppressWarnings("unchecked")
 	public void updateEntity() 
 	{
-		if(syncTimer <= 0)
+		if (!worldObj.isRemote)
 		{
-			syncTimer = 100;
-			NBTTagCompound tg = new NBTTagCompound();
-			tg.setInteger("0", enchantingTime);
-			tg.setBoolean("1", xpAbsorbed);
-			tg.setBoolean("2", isEnchantingStarted);
-			tg.setInteger("x", xCoord);
-			tg.setInteger("y", yCoord);
-			tg.setInteger("z", zCoord);
-			MiscUtils.syncTileEntity(tg, 0);
-		}else
-			--syncTimer;
+			if (syncTimer <= 0)
+			{
+				syncTimer = 100;
+				NBTTagCompound tg = new NBTTagCompound();
+				tg.setInteger("0", enchantingTime);
+				tg.setBoolean("1", xpAbsorbed);
+				tg.setBoolean("2", isEnchantingStarted);
+				tg.setInteger("x", xCoord);
+				tg.setInteger("y", yCoord);
+				tg.setInteger("z", zCoord);
+				MiscUtils.syncTileEntity(tg, 0);
+			} else
+				--syncTimer;
+		}
 		
 		if(this.inventory == null)
 		{
