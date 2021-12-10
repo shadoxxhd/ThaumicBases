@@ -1,10 +1,10 @@
 [
 {
-  "modid": "thaumicbases",
-  "name": "Thaumic Bases",
+  "modid": "${modId}",
+  "name": "${modName}",
   "description": "A Thaumcraft addon, that adds more earlygame and midgame content.",
-  "version": "${version}",
-  "mcversion": "1.7.10",
+  "version": "${modVersion}",
+  "mcversion": "${minecraftVersion}",
   "url": "",
   "updateUrl": "",
   "authorList": ["Modbder", "KryptonCaptain"],
