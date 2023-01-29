@@ -1,24 +1,26 @@
 package tb.utils;
 
-import DummyCore.Utils.Pair;
 import java.util.ArrayList;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
+
 import tb.api.RevolverUpgrade;
 import tb.common.item.ItemRevolver;
 import tb.init.TBItems;
 import thaumcraft.api.ThaumcraftApiHelper;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.crafting.InfusionRecipe;
+import DummyCore.Utils.Pair;
 
 public class RevolverInfusionRecipe extends InfusionRecipe {
 
     RevolverUpgrade upgrade;
 
-    public RevolverInfusionRecipe(
-            String research, RevolverUpgrade output, int inst, AspectList aspects2, ItemStack[] recipe) {
+    public RevolverInfusionRecipe(String research, RevolverUpgrade output, int inst, AspectList aspects2,
+            ItemStack[] recipe) {
         super(
                 research,
                 new ItemStack(TBItems.revolver, 1, OreDictionary.WILDCARD_VALUE),
@@ -44,7 +46,8 @@ public class RevolverInfusionRecipe extends InfusionRecipe {
         if (this.research.length() <= 0) return false;
 
         if (this.research.length() > 0
-                && !ThaumcraftApiHelper.isResearchComplete(player.getCommandSenderName(), this.research)) return false;
+                && !ThaumcraftApiHelper.isResearchComplete(player.getCommandSenderName(), this.research))
+            return false;
 
         ItemStack i2 = central.copy();
         if (getRecipeInput().getItemDamage() == OreDictionary.WILDCARD_VALUE)
@@ -83,9 +86,8 @@ public class RevolverInfusionRecipe extends InfusionRecipe {
     public AspectList getAspects(ItemStack input) {
         AspectList retAsp = this.aspects.copy();
 
-        for (int i = 0; i < ItemRevolver.getUpgradeLevel(input, upgrade); ++i)
-            for (int j = 0; j < retAsp.size(); ++j)
-                retAsp.add(retAsp.getAspects()[j], retAsp.getAmount(retAsp.getAspects()[j]));
+        for (int i = 0; i < ItemRevolver.getUpgradeLevel(input, upgrade); ++i) for (int j = 0; j < retAsp.size(); ++j)
+            retAsp.add(retAsp.getAspects()[j], retAsp.getAmount(retAsp.getAspects()[j]));
 
         return retAsp;
     }

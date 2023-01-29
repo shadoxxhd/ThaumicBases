@@ -31,12 +31,8 @@ public class ContainerOverchanter extends Container {
     }
 
     /*
-    public ItemStack transferStackInSlot(EntityPlayer p, int slot)
-    {
-    	return null;
-    }
-
-    */
+     * public ItemStack transferStackInSlot(EntityPlayer p, int slot) { return null; }
+     */
 
     public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2) {
         ItemStack itemstack = null;

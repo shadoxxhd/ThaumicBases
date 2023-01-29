@@ -7,33 +7,42 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.AdvancedModelLoader;
 import net.minecraftforge.client.model.IModelCustom;
+
 import org.lwjgl.opengl.GL11;
+
 import tb.common.tile.TileEntityDeconstructor;
 
 public class RenderEntityDeconstructor extends TileEntitySpecialRenderer {
 
-    public static final IModelCustom model = AdvancedModelLoader.loadModel(
-            new ResourceLocation("thaumicbases", "models/entityDeconstructor/deconstructor.obj"));
-    public static final ResourceLocation frameIcon =
-            new ResourceLocation("thaumicbases", "textures/blocks/entityDeconstructor/goldbase.png");
-    public static final ResourceLocation glassIcon =
-            new ResourceLocation("thaumicbases", "textures/blocks/entityDeconstructor/glass.png");
+    public static final IModelCustom model = AdvancedModelLoader
+            .loadModel(new ResourceLocation("thaumicbases", "models/entityDeconstructor/deconstructor.obj"));
+    public static final ResourceLocation frameIcon = new ResourceLocation(
+            "thaumicbases",
+            "textures/blocks/entityDeconstructor/goldbase.png");
+    public static final ResourceLocation glassIcon = new ResourceLocation(
+            "thaumicbases",
+            "textures/blocks/entityDeconstructor/glass.png");
 
     public static final ResourceLocation air = new ResourceLocation("thaumicbases", "textures/blocks/crystal/air.png");
-    public static final ResourceLocation fire =
-            new ResourceLocation("thaumicbases", "textures/blocks/crystal/fire.png");
-    public static final ResourceLocation water =
-            new ResourceLocation("thaumicbases", "textures/blocks/crystal/water.png");
-    public static final ResourceLocation earth =
-            new ResourceLocation("thaumicbases", "textures/blocks/crystal/earth.png");
-    public static final ResourceLocation ordo =
-            new ResourceLocation("thaumicbases", "textures/blocks/crystal/order.png");
-    public static final ResourceLocation entropy =
-            new ResourceLocation("thaumicbases", "textures/blocks/crystal/entropy.png");
+    public static final ResourceLocation fire = new ResourceLocation(
+            "thaumicbases",
+            "textures/blocks/crystal/fire.png");
+    public static final ResourceLocation water = new ResourceLocation(
+            "thaumicbases",
+            "textures/blocks/crystal/water.png");
+    public static final ResourceLocation earth = new ResourceLocation(
+            "thaumicbases",
+            "textures/blocks/crystal/earth.png");
+    public static final ResourceLocation ordo = new ResourceLocation(
+            "thaumicbases",
+            "textures/blocks/crystal/order.png");
+    public static final ResourceLocation entropy = new ResourceLocation(
+            "thaumicbases",
+            "textures/blocks/crystal/entropy.png");
 
     @Override
-    public void renderTileEntityAt(
-            TileEntity tile, double screenX, double screenY, double screenZ, float partialTicks) {
+    public void renderTileEntityAt(TileEntity tile, double screenX, double screenY, double screenZ,
+            float partialTicks) {
         GL11.glPushMatrix();
 
         TileEntityDeconstructor d = (TileEntityDeconstructor) tile;

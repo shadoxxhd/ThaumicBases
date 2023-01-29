@@ -8,6 +8,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+
 import tb.common.item.ItemNodeFoci;
 import tb.common.tile.TileNodeManipulator;
 import tb.init.TBItems;
@@ -35,8 +36,8 @@ public class BlockNodeManipulator extends BlockContainer {
         return 0x421922;
     }
 
-    public boolean onBlockActivated(
-            World w, int x, int y, int z, EntityPlayer p, int side, float vecX, float vecY, float vecZ) {
+    public boolean onBlockActivated(World w, int x, int y, int z, EntityPlayer p, int side, float vecX, float vecY,
+            float vecZ) {
         if (p.getCurrentEquippedItem() != null) {
             ItemStack current = p.getCurrentEquippedItem();
             if (current.getItem() instanceof ItemNodeFoci) {

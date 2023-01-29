@@ -1,8 +1,8 @@
 package tb.common.enchantment;
 
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
+
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -19,6 +19,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.entity.item.ItemExpireEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+
 import tb.init.TBEnchant;
 import tb.utils.TBUtils;
 import thaumcraft.api.ThaumcraftApi;
@@ -37,14 +38,14 @@ import thaumcraft.common.items.ItemCrystalEssence;
 import thaumcraft.common.lib.research.ResearchManager;
 import thaumcraft.common.lib.research.ScanManager;
 import thaumcraft.common.tiles.TileNode;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class EnchantmentHandler {
 
     @SuppressWarnings("unchecked")
     @SubscribeEvent
     public void itemExpire(ItemExpireEvent event) {
-        if (event.entityItem != null
-                && event.entityItem.getEntityItem() != null
+        if (event.entityItem != null && event.entityItem.getEntityItem() != null
                 && !event.entityItem.worldObj.isRemote) {
             int x = MathHelper.floor_double(event.entityItem.posX);
             int y = MathHelper.floor_double(event.entityItem.posY);
@@ -58,8 +59,8 @@ public class EnchantmentHandler {
                     if (TileNode.class.cast(t).getNodeType() == NodeType.TAINTED) {
                         if (is.getItem() instanceof ItemSword) {
                             if (EnchantmentHelper.getEnchantmentLevel(TBEnchant.tainted.effectId, is) <= 0) {
-                                LinkedHashMap<Integer, Integer> lhm =
-                                        (LinkedHashMap<Integer, Integer>) EnchantmentHelper.getEnchantments(is);
+                                LinkedHashMap<Integer, Integer> lhm = (LinkedHashMap<Integer, Integer>) EnchantmentHelper
+                                        .getEnchantments(is);
                                 boolean canApply = true;
                                 if (!lhm.isEmpty()) {
                                     Iterator<Integer> $i = lhm.keySet().iterator();
@@ -90,8 +91,7 @@ public class EnchantmentHandler {
 
     @SubscribeEvent
     public void onMobDeath(LivingDeathEvent event) {
-        if (event.entityLiving != null
-                && !event.entityLiving.worldObj.isRemote
+        if (event.entityLiving != null && !event.entityLiving.worldObj.isRemote
                 && event.source != null
                 && event.source.getSourceOfDamage() != null
                 && event.source.getSourceOfDamage() instanceof EntityPlayer) {
@@ -100,14 +100,13 @@ public class EnchantmentHandler {
             ItemStack currentItem = player.getCurrentEquippedItem();
             if (currentItem != null) {
                 if (EnchantmentHelper.getEnchantmentLevel(TBEnchant.elderKnowledge.effectId, currentItem) > 0) {
-                    int enchLevel =
-                            EnchantmentHelper.getEnchantmentLevel(TBEnchant.elderKnowledge.effectId, currentItem);
+                    int enchLevel = EnchantmentHelper
+                            .getEnchantmentLevel(TBEnchant.elderKnowledge.effectId, currentItem);
                     if (player.worldObj.rand.nextInt(Math.max(1, 7 - enchLevel)) == 0) {
                         EntityTags eTags = null;
                         for (int i = 0; i < ThaumcraftApi.scanEntities.size(); ++i) {
                             EntityTags tags = ThaumcraftApi.scanEntities.get(i);
-                            if (tags != null
-                                    && EntityList.getEntityString(dyingMob) != null
+                            if (tags != null && EntityList.getEntityString(dyingMob) != null
                                     && EntityList.getEntityString(dyingMob).equalsIgnoreCase(tags.entityName)) {
                                 eTags = tags;
                                 break;
@@ -148,24 +147,23 @@ public class EnchantmentHandler {
                     int enchLevel = EnchantmentHelper.getEnchantmentLevel(TBEnchant.vaporising.effectId, currentItem);
                     if (event.entity.worldObj.rand.nextInt(Math.max(1, 5 - enchLevel)) == 0) {
                         AspectList aspects = ScanManager.generateEntityAspects(event.entityLiving);
-                        if ((aspects != null) && (aspects.size() > 0))
-                            for (Aspect aspect : aspects.getAspects()) {
-                                if (!event.entity.worldObj.rand.nextBoolean()) {
-                                    int size = 1 + event.entity.worldObj.rand.nextInt(aspects.getAmount(aspect));
-                                    size = Math.max(1, size / 2);
-                                    ItemStack stack = new ItemStack(ConfigItems.itemCrystalEssence, size, 0);
-                                    ((ItemCrystalEssence) stack.getItem())
-                                            .setAspects(stack, new AspectList().add(aspect, 1));
-                                    EntityItem cEs = new EntityItem(
-                                            event.entity.worldObj,
-                                            event.entityLiving.posX,
-                                            event.entityLiving.posY + event.entityLiving.getEyeHeight(),
-                                            event.entityLiving.posZ,
-                                            stack);
-                                    event.entity.worldObj.spawnEntityInWorld(cEs);
-                                }
-                                if (event.entity.worldObj.rand.nextInt(2 + enchLevel) == 0) break;
+                        if ((aspects != null) && (aspects.size() > 0)) for (Aspect aspect : aspects.getAspects()) {
+                            if (!event.entity.worldObj.rand.nextBoolean()) {
+                                int size = 1 + event.entity.worldObj.rand.nextInt(aspects.getAmount(aspect));
+                                size = Math.max(1, size / 2);
+                                ItemStack stack = new ItemStack(ConfigItems.itemCrystalEssence, size, 0);
+                                ((ItemCrystalEssence) stack.getItem())
+                                        .setAspects(stack, new AspectList().add(aspect, 1));
+                                EntityItem cEs = new EntityItem(
+                                        event.entity.worldObj,
+                                        event.entityLiving.posX,
+                                        event.entityLiving.posY + event.entityLiving.getEyeHeight(),
+                                        event.entityLiving.posZ,
+                                        stack);
+                                event.entity.worldObj.spawnEntityInWorld(cEs);
                             }
+                            if (event.entity.worldObj.rand.nextInt(2 + enchLevel) == 0) break;
+                        }
                     }
                 }
             }
@@ -174,8 +172,7 @@ public class EnchantmentHandler {
 
     @SubscribeEvent
     public void onMobDamage(LivingHurtEvent event) {
-        if (event.entityLiving != null
-                && !event.entityLiving.worldObj.isRemote
+        if (event.entityLiving != null && !event.entityLiving.worldObj.isRemote
                 && event.source != null
                 && event.source.getSourceOfDamage() != null
                 && event.source.getSourceOfDamage() instanceof EntityPlayer) {
@@ -185,8 +182,8 @@ public class EnchantmentHandler {
             if (currentItem != null) {
                 if (mob instanceof EntityEnderman || mob instanceof IEldritchMob) {
                     if (EnchantmentHelper.getEnchantmentLevel(TBEnchant.eldritchBane.effectId, currentItem) > 0) {
-                        int enchLevel =
-                                EnchantmentHelper.getEnchantmentLevel(TBEnchant.eldritchBane.effectId, currentItem);
+                        int enchLevel = EnchantmentHelper
+                                .getEnchantmentLevel(TBEnchant.eldritchBane.effectId, currentItem);
                         event.ammount += enchLevel * 5F;
                     }
                 }

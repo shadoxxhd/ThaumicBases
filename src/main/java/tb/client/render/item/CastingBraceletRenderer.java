@@ -2,6 +2,7 @@ package tb.client.render.item;
 
 import java.awt.Color;
 import java.lang.reflect.Field;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.client.model.ModelRenderer;
@@ -23,7 +24,9 @@ import net.minecraft.util.Timer;
 import net.minecraftforge.client.IItemRenderer;
 import net.minecraftforge.client.model.AdvancedModelLoader;
 import net.minecraftforge.client.model.IModelCustom;
+
 import org.lwjgl.opengl.GL11;
+
 import tb.common.item.ItemCastingBracelet;
 import thaumcraft.client.lib.UtilsFX;
 import thaumcraft.client.renderers.block.BlockRenderer;
@@ -33,16 +36,16 @@ import thaumcraft.common.items.wands.ItemWandCasting;
 
 public class CastingBraceletRenderer implements IItemRenderer {
 
-    public static final IModelCustom bracelet =
-            AdvancedModelLoader.loadModel(new ResourceLocation("thaumicbases", "models/bracelet/bracelet.obj"));
+    public static final IModelCustom bracelet = AdvancedModelLoader
+            .loadModel(new ResourceLocation("thaumicbases", "models/bracelet/bracelet.obj"));
     public static final RenderBlocks renderBlocks = new RenderBlocks();
     public static final ModelWand wand = new ModelWand();
 
     public static ModelRenderer getWandFociModel() {
         try {
             Class<ModelWand> wandModelClass = ModelWand.class;
-            Field foci = wandModelClass.getDeclaredField(
-                    "Focus"); // <- If only that field had been declared as public... Oh well.
+            Field foci = wandModelClass.getDeclaredField("Focus"); // <- If only that field had been declared as
+                                                                   // public... Oh well.
             boolean accessible = foci.isAccessible();
             if (!accessible) foci.setAccessible(true);
 
@@ -136,11 +139,9 @@ public class CastingBraceletRenderer implements IItemRenderer {
 
         double ds = 0.2D;
         GL11.glScaled(ds, ds, ds);
-        Minecraft.getMinecraft()
-                .renderEngine
-                .bindTexture(
-                        ItemCastingBracelet.braceletTextures[
-                                Math.min(ItemCastingBracelet.braceletTextures.length - 1, item.getItemDamage())]);
+        Minecraft.getMinecraft().renderEngine.bindTexture(
+                ItemCastingBracelet.braceletTextures[Math
+                        .min(ItemCastingBracelet.braceletTextures.length - 1, item.getItemDamage())]);
         GL11.glPushMatrix();
         if (wand.getRod(item) != null && wand.getRod(item).isGlowing()) {
             int j = (int) (200.0F + MathHelper.sin(entityclientplayermp.ticksExisted) * 5.0F + 5.0F);
@@ -167,14 +168,28 @@ public class CastingBraceletRenderer implements IItemRenderer {
                 GL11.glTranslatef(-0.25F, -0.1F, 0.0275F);
                 GL11.glScaled(0.5D, 0.5D, 0.5D);
                 ItemRenderer.renderItemIn2D(
-                        tessellator, maxU, minV, minU, maxV, icon.getIconWidth(), icon.getIconHeight(), 0.1F);
+                        tessellator,
+                        maxU,
+                        minV,
+                        minU,
+                        maxV,
+                        icon.getIconWidth(),
+                        icon.getIconHeight(),
+                        0.1F);
                 GL11.glPopMatrix();
                 GL11.glPushMatrix();
                 GL11.glRotatef(90.0F, 0.0F, 1.0F, 0.0F);
                 GL11.glTranslatef(-0.25F, -0.1F, 0.0275F);
                 GL11.glScaled(0.5D, 0.5D, 0.5D);
                 ItemRenderer.renderItemIn2D(
-                        tessellator, maxU, minV, minU, maxV, icon.getIconWidth(), icon.getIconHeight(), 0.1F);
+                        tessellator,
+                        maxU,
+                        minV,
+                        minU,
+                        maxV,
+                        icon.getIconWidth(),
+                        icon.getIconHeight(),
+                        0.1F);
                 GL11.glPopMatrix();
                 GL11.glPopMatrix();
             }
@@ -185,13 +200,12 @@ public class CastingBraceletRenderer implements IItemRenderer {
                 GL11.glScaled(5, 5, 5);
                 GL11.glTranslated(0, 0.87D, 0);
                 GL11.glTranslatef(0.0F, -0.15F, 0.0F);
-                GL11.glScaled(
-                        0.165D, 0.1765D,
-                        0.165D); // <- using the same numbers as Azanor, since the rendering should be identical to his.
+                GL11.glScaled(0.165D, 0.1765D, 0.165D); // <- using the same numbers as Azanor, since the rendering
+                                                        // should be identical to his.
                 Minecraft.getMinecraft().renderEngine.bindTexture(TextureMap.locationItemsTexture);
                 renderBlocks.setRenderBoundsFromBlock(Blocks.glass);
-                BlockRenderer.drawFaces(
-                        renderBlocks, null, wand.getFocus(item).getFocusDepthLayerIcon(focusStack), false);
+                BlockRenderer
+                        .drawFaces(renderBlocks, null, wand.getFocus(item).getFocusDepthLayerIcon(focusStack), false);
                 alpha = 0.6F;
                 GL11.glPopMatrix();
             }

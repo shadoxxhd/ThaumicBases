@@ -1,15 +1,16 @@
 package tb.common.block;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
 import tb.init.TBBlocks;
 import thaumcraft.api.crafting.IInfusionStabiliser;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class TBBlock extends Block implements IInfusionStabiliser {
 

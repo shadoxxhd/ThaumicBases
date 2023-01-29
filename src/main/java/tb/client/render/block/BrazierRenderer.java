@@ -1,6 +1,5 @@
 package tb.client.render.block;
 
-import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
@@ -8,9 +7,11 @@ import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
+
 import tb.common.tile.TileBrazier;
 import thaumcraft.client.renderers.block.BlockRenderer;
 import thaumcraft.common.config.ConfigBlocks;
+import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
 public class BrazierRenderer extends BlockRenderer implements ISimpleBlockRenderingHandler {
 
@@ -58,8 +59,8 @@ public class BrazierRenderer extends BlockRenderer implements ISimpleBlockRender
     }
 
     @Override
-    public boolean renderWorldBlock(
-            IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer) {
+    public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId,
+            RenderBlocks renderer) {
         renderer.renderAllFaces = true;
 
         renderer.setOverrideBlockTexture(ConfigBlocks.blockCosmeticSolid.getIcon(0, 6));

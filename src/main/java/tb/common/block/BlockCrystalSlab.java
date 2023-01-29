@@ -1,9 +1,8 @@
 package tb.common.block;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
 import java.util.Random;
+
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -11,9 +10,12 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+
 import tb.init.TBBlocks;
 import thaumcraft.api.crafting.IInfusionStabiliser;
 import thaumcraft.common.blocks.CustomStepSound;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockCrystalSlab extends BlockSlab implements IInfusionStabiliser {
 
@@ -48,7 +50,7 @@ public class BlockCrystalSlab extends BlockSlab implements IInfusionStabiliser {
         return TBBlocks.crystalBlock.getIcon(side, meta & 7);
     }
 
-    @SuppressWarnings({"unchecked", "rawtypes"})
+    @SuppressWarnings({ "unchecked", "rawtypes" })
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(Item itm, CreativeTabs tab, List lst) {
         for (int i = 0; i < 8; ++i) {

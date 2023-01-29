@@ -19,8 +19,7 @@ public class EnchantmentEldritchBane extends Enchantment {
     }
 
     public boolean canApplyTogether(Enchantment ench) {
-        return this != ench
-                && ench != Enchantment.smite
+        return this != ench && ench != Enchantment.smite
                 && ench != Enchantment.baneOfArthropods
                 && ench != Enchantment.sharpness
                 && !(ench instanceof EnchantmentDamage);

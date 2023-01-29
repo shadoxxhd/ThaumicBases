@@ -1,10 +1,9 @@
 package tb.common.block;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -16,7 +15,10 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
 import tb.utils.TBConfig;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockPyrofluid extends Block {
 
@@ -100,8 +102,7 @@ public class BlockPyrofluid extends Block {
             }
         }
 
-        if (par5Random.nextInt(10) == 0
-                && World.doesBlockHaveSolidTopSurface(par1World, par2, par3 - 1, par4)
+        if (par5Random.nextInt(10) == 0 && World.doesBlockHaveSolidTopSurface(par1World, par2, par3 - 1, par4)
                 && !par1World.getBlock(par2, par3 - 2, par4).getBlocksMovement(par1World, par2, par3, par4)) {
             par1World.spawnParticle("dripLava", d5, d7, d6, 0.0D, 0.0D, 0.0D);
         }
@@ -121,10 +122,11 @@ public class BlockPyrofluid extends Block {
         staticIcon = ir.registerIcon("thaumicbases:blazingFluid/leftovers");
     }
 
-    @SuppressWarnings({"unchecked", "rawtypes"})
+    @SuppressWarnings({ "unchecked", "rawtypes" })
     public void getSubBlocks(Item par1, CreativeTabs par2CreativeTabs, List par3List) {
-        /*for(int i = 0; i < 8; ++i)
-        par3List.add(new ItemStack(par1,1,i));*/
+        /*
+         * for(int i = 0; i < 8; ++i) par3List.add(new ItemStack(par1,1,i));
+         */
 
         par3List.add(new ItemStack(par1, 1, 0));
 
@@ -143,12 +145,12 @@ public class BlockPyrofluid extends Block {
     public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
         ArrayList<ItemStack> retLst = new ArrayList<ItemStack>();
 
-        retLst.add(new ItemStack(
-                Items.blaze_powder,
-                TBConfig.minBlazePowderFromPyrofluid
-                        + world.rand.nextInt(
-                                TBConfig.maxBlazePowderFromPyrofluid - TBConfig.minBlazePowderFromPyrofluid),
-                0));
+        retLst.add(
+                new ItemStack(
+                        Items.blaze_powder,
+                        TBConfig.minBlazePowderFromPyrofluid + world.rand
+                                .nextInt(TBConfig.maxBlazePowderFromPyrofluid - TBConfig.minBlazePowderFromPyrofluid),
+                        0));
 
         return retLst;
     }

@@ -1,8 +1,7 @@
 package tb.common.block;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.ArrayList;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCactus;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -14,6 +13,9 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockRainbowCactus extends BlockCactus {
 
@@ -27,8 +29,8 @@ public class BlockRainbowCactus extends BlockCactus {
         super();
     }
 
-    public void onEntityCollidedWithBlock(
-            World p_149670_1_, int p_149670_2_, int p_149670_3_, int p_149670_4_, Entity p_149670_5_) {}
+    public void onEntityCollidedWithBlock(World p_149670_1_, int p_149670_2_, int p_149670_3_, int p_149670_4_,
+            Entity p_149670_5_) {}
 
     @Override
     public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
@@ -45,7 +47,7 @@ public class BlockRainbowCactus extends BlockCactus {
         return ret;
     }
 
-    public static final int[] allowedDyes = new int[] {1, 2, 5, 2, 6, 7, 2, 8, 9, 10, 2, 11, 12, 13, 14, 2};
+    public static final int[] allowedDyes = new int[] { 1, 2, 5, 2, 6, 7, 2, 8, 9, 10, 2, 11, 12, 13, 14, 2 };
 
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister p_149651_1_) {
@@ -60,8 +62,8 @@ public class BlockRainbowCactus extends BlockCactus {
     }
 
     @Override
-    public boolean canSustainPlant(
-            IBlockAccess world, int x, int y, int z, ForgeDirection direction, IPlantable plantable) {
+    public boolean canSustainPlant(IBlockAccess world, int x, int y, int z, ForgeDirection direction,
+            IPlantable plantable) {
         Block plant = plantable.getPlant(world, x, y + 1, z);
 
         if (plant == this) {

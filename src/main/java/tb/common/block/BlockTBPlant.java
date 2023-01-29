@@ -1,9 +1,8 @@
 package tb.common.block;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.ArrayList;
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
@@ -16,6 +15,9 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.util.ForgeDirection;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockTBPlant extends BlockBush implements IGrowable {
 
@@ -129,7 +131,11 @@ public class BlockTBPlant extends BlockBush implements IGrowable {
     @Override
     public void func_149853_b(World w, Random r, int x, int y, int z) {
         w.setBlockMetadataWithNotify(
-                x, y, z, Math.min(growthStages - 1, w.getBlockMetadata(x, y, z) + r.nextInt(3) + 1), 3);
+                x,
+                y,
+                z,
+                Math.min(growthStages - 1, w.getBlockMetadata(x, y, z) + r.nextInt(3) + 1),
+                3);
     }
 
     @SideOnly(Side.CLIENT)

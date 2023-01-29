@@ -1,8 +1,5 @@
 package tb.common.item.foci;
 
-import DummyCore.Utils.MiscUtils;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.item.EntityItem;
@@ -15,6 +12,7 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.MovingObjectPosition.MovingObjectType;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
+
 import tb.init.TBFociUpgrades;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -24,6 +22,9 @@ import thaumcraft.common.Thaumcraft;
 import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.items.ItemCrystalEssence;
 import thaumcraft.common.items.wands.WandManager;
+import DummyCore.Utils.MiscUtils;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class FociDrain extends ItemFocusBasic {
 
@@ -57,25 +58,24 @@ public class FociDrain extends ItemFocusBasic {
 
         switch (rank) {
             case 3: {
-                return new FocusUpgradeType[] {FocusUpgradeType.frugal, TBFociUpgrades.aquatic, TBFociUpgrades.netheric
-                };
+                return new FocusUpgradeType[] { FocusUpgradeType.frugal, TBFociUpgrades.aquatic,
+                        TBFociUpgrades.netheric };
             }
             default: {
-                return new FocusUpgradeType[] {FocusUpgradeType.frugal};
+                return new FocusUpgradeType[] { FocusUpgradeType.frugal };
             }
         }
     }
 
-    public ItemStack onFocusRightClick(
-            ItemStack wandstack, World world, EntityPlayer player, MovingObjectPosition movingobjectposition) {
+    public ItemStack onFocusRightClick(ItemStack wandstack, World world, EntityPlayer player,
+            MovingObjectPosition movingobjectposition) {
         player.setItemInUse(wandstack, 2147483647);
         return wandstack;
     }
 
     public void onUsingFocusTick(ItemStack wandstack, EntityPlayer player, int count) {
 
-        ItemStack foci =
-                ItemStack.loadItemStackFromNBT(MiscUtils.getStackTag(wandstack).getCompoundTag("focus"));
+        ItemStack foci = ItemStack.loadItemStackFromNBT(MiscUtils.getStackTag(wandstack).getCompoundTag("focus"));
 
         if (!WandManager.consumeVisFromInventory(player, this.getVisCost(foci))) {
             player.stopUsingItem();
@@ -86,12 +86,9 @@ public class FociDrain extends ItemFocusBasic {
         float f1 = player.prevRotationPitch + (player.rotationPitch - player.prevRotationPitch) * f;
         float f2 = player.prevRotationYaw + (player.rotationYaw - player.prevRotationYaw) * f;
         double d0 = player.prevPosX + (player.posX - player.prevPosX) * (double) f;
-        double d1 = player.prevPosY
-                + (player.posY - player.prevPosY) * (double) f
-                + (double)
-                        (player.worldObj.isRemote
-                                ? player.getEyeHeight() - player.getDefaultEyeHeight()
-                                : player.getEyeHeight());
+        double d1 = player.prevPosY + (player.posY - player.prevPosY) * (double) f
+                + (double) (player.worldObj.isRemote ? player.getEyeHeight() - player.getDefaultEyeHeight()
+                        : player.getEyeHeight());
         double d2 = player.prevPosZ + (player.posZ - player.prevPosZ) * (double) f;
         Vec3 vec3 = Vec3.createVectorHelper(d0, d1, d2);
         float f3 = MathHelper.cos(-f2 * 0.017453292F - (float) Math.PI);
@@ -112,19 +109,18 @@ public class FociDrain extends ItemFocusBasic {
             int meta = player.worldObj.getBlockMetadata(pos.blockX, pos.blockY, pos.blockZ);
             if (b != null) {
                 if (b == Blocks.water) {
-                    if (player.worldObj.isRemote)
-                        beam = Thaumcraft.proxy.beamCont(
-                                player.worldObj,
-                                player,
-                                pos.hitVec.xCoord,
-                                pos.hitVec.yCoord,
-                                pos.hitVec.zCoord,
-                                1,
-                                0x5555ff,
-                                true,
-                                2,
-                                beam,
-                                2);
+                    if (player.worldObj.isRemote) beam = Thaumcraft.proxy.beamCont(
+                            player.worldObj,
+                            player,
+                            pos.hitVec.xCoord,
+                            pos.hitVec.yCoord,
+                            pos.hitVec.zCoord,
+                            1,
+                            0x5555ff,
+                            true,
+                            2,
+                            beam,
+                            2);
 
                     if (this.getUpgradeLevel(foci, TBFociUpgrades.aquatic) > 0 || player.ticksExisted % 5 == 0) {
                         b.onBlockDestroyedByPlayer(
@@ -142,15 +138,14 @@ public class FociDrain extends ItemFocusBasic {
                                 1,
                                 1,
                                 false);
-                        for (int i = 0; i < 100; ++i)
-                            player.worldObj.spawnParticle(
-                                    "blockcrack_" + Block.getIdFromBlock(b) + "_" + meta,
-                                    pos.blockX + player.worldObj.rand.nextDouble(),
-                                    pos.blockY + player.worldObj.rand.nextDouble(),
-                                    pos.blockZ + player.worldObj.rand.nextDouble(),
-                                    0,
-                                    0,
-                                    0);
+                        for (int i = 0; i < 100; ++i) player.worldObj.spawnParticle(
+                                "blockcrack_" + Block.getIdFromBlock(b) + "_" + meta,
+                                pos.blockX + player.worldObj.rand.nextDouble(),
+                                pos.blockY + player.worldObj.rand.nextDouble(),
+                                pos.blockZ + player.worldObj.rand.nextDouble(),
+                                0,
+                                0,
+                                0);
 
                         if (this.getUpgradeLevel(foci, TBFociUpgrades.aquatic) > 0
                                 && player.worldObj.rand.nextDouble() < 0.4D) {
@@ -158,12 +153,9 @@ public class FociDrain extends ItemFocusBasic {
                             ItemCrystalEssence cEssence = (ItemCrystalEssence) waterCrystal.getItem();
                             cEssence.setAspects(
                                     waterCrystal,
-                                    new AspectList()
-                                            .add(
-                                                    (player.worldObj.rand.nextDouble() < 0.1D
-                                                            ? Aspect.POISON
-                                                            : Aspect.WATER),
-                                                    1));
+                                    new AspectList().add(
+                                            (player.worldObj.rand.nextDouble() < 0.1D ? Aspect.POISON : Aspect.WATER),
+                                            1));
                             EntityItem crystal = new EntityItem(
                                     player.worldObj,
                                     pos.blockX + 0.5D,
@@ -176,19 +168,18 @@ public class FociDrain extends ItemFocusBasic {
                 }
 
                 if (b == Blocks.lava && this.getUpgradeLevel(foci, TBFociUpgrades.netheric) > 0) {
-                    if (player.worldObj.isRemote)
-                        beam = Thaumcraft.proxy.beamCont(
-                                player.worldObj,
-                                player,
-                                pos.hitVec.xCoord,
-                                pos.hitVec.yCoord,
-                                pos.hitVec.zCoord,
-                                1,
-                                0xff5555,
-                                true,
-                                2,
-                                beam,
-                                2);
+                    if (player.worldObj.isRemote) beam = Thaumcraft.proxy.beamCont(
+                            player.worldObj,
+                            player,
+                            pos.hitVec.xCoord,
+                            pos.hitVec.yCoord,
+                            pos.hitVec.zCoord,
+                            1,
+                            0xff5555,
+                            true,
+                            2,
+                            beam,
+                            2);
 
                     if (player.ticksExisted % 5 == 0
                             && WandManager.consumeVisFromInventory(player, new AspectList().add(Aspect.FIRE, 3))) {
@@ -207,15 +198,14 @@ public class FociDrain extends ItemFocusBasic {
                                 1,
                                 1,
                                 false);
-                        for (int i = 0; i < 100; ++i)
-                            player.worldObj.spawnParticle(
-                                    "blockcrack_" + Block.getIdFromBlock(b) + "_" + meta,
-                                    pos.blockX + player.worldObj.rand.nextDouble(),
-                                    pos.blockY + player.worldObj.rand.nextDouble(),
-                                    pos.blockZ + player.worldObj.rand.nextDouble(),
-                                    0,
-                                    0,
-                                    0);
+                        for (int i = 0; i < 100; ++i) player.worldObj.spawnParticle(
+                                "blockcrack_" + Block.getIdFromBlock(b) + "_" + meta,
+                                pos.blockX + player.worldObj.rand.nextDouble(),
+                                pos.blockY + player.worldObj.rand.nextDouble(),
+                                pos.blockZ + player.worldObj.rand.nextDouble(),
+                                0,
+                                0,
+                                0);
                     }
                 }
             }

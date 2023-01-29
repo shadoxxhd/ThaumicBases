@@ -2,8 +2,10 @@ package tb.common.block;
 
 import java.util.ArrayList;
 import java.util.Random;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.common.entities.EntityAspectOrb;
 
@@ -43,8 +45,7 @@ public class BlockAshroom extends BlockTBPlant {
         if (metadata >= this.growthStages - 1) {
             for (int i = 0; i < 8 + world.rand.nextInt(32); ++i) // Nerf for the shrooms
             {
-                Aspect primal = Aspect.getPrimalAspects()
-                        .get(world.rand.nextInt(Aspect.getPrimalAspects().size()));
+                Aspect primal = Aspect.getPrimalAspects().get(world.rand.nextInt(Aspect.getPrimalAspects().size()));
                 EntityAspectOrb orb = new EntityAspectOrb(world, x, y, z, primal, 1);
                 if (!world.isRemote) world.spawnEntityInWorld(orb);
             }

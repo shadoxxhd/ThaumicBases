@@ -1,14 +1,16 @@
 package tb.client.render.block;
 
-import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.IBlockAccess;
+
 import org.lwjgl.opengl.GL11;
+
 import tb.common.block.BlockRelocator;
 import tb.common.tile.TileRelocator;
+import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
 public class ThaumicRelocatorRenderer implements ISimpleBlockRenderingHandler {
 
@@ -105,8 +107,8 @@ public class ThaumicRelocatorRenderer implements ISimpleBlockRenderingHandler {
     }
 
     @Override
-    public boolean renderWorldBlock(
-            IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer) {
+    public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId,
+            RenderBlocks renderer) {
         int meta = world.getBlockMetadata(x, y, z);
 
         int color = meta < 6 ? 0xffff77 : 0x0077ff;

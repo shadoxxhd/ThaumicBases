@@ -1,12 +1,9 @@
 package tb.common.block;
 
-import DummyCore.Utils.MathUtils;
-import cpw.mods.fml.common.FMLLog;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDirt;
 import net.minecraft.block.BlockGrass;
@@ -34,16 +31,21 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.BiomeGenBase.SpawnListEntry;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.oredict.OreDictionary;
+
 import tb.core.TBCore;
 import tb.init.TBBlocks;
+import DummyCore.Utils.MathUtils;
+import cpw.mods.fml.common.FMLLog;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockTBLeaves extends BlockOldLeaf {
 
-    public static final String[] names =
-            new String[] {"goldenOakLeaves", "peacefullTreeLeaves", "netherTreeLeaves", "enderTreeLeaves"};
+    public static final String[] names = new String[] { "goldenOakLeaves", "peacefullTreeLeaves", "netherTreeLeaves",
+            "enderTreeLeaves" };
 
-    public static final String[] textures =
-            new String[] {"goldenOak/leaves", "peacefullTree/leaves", "netherTree/leaves", "enderTree/leaves"};
+    public static final String[] textures = new String[] { "goldenOak/leaves", "peacefullTree/leaves",
+            "netherTree/leaves", "enderTree/leaves" };
 
     public boolean canEntityDestroy(IBlockAccess world, int x, int y, int z, Entity entity) {
         if (world.getBlockMetadata(x, y, z) % 8 == 3) if (entity instanceof EntityDragon) return false;
@@ -113,15 +115,14 @@ public class BlockTBLeaves extends BlockOldLeaf {
                 w.spawnParticle("dripLava", x + rnd.nextDouble(), y, z + rnd.nextDouble(), 0, 0, 0);
         }
 
-        if (w.getBlockMetadata(x, y, z) % 8 == 3)
-            w.spawnParticle(
-                    "portal",
-                    x + rnd.nextDouble(),
-                    y + rnd.nextDouble(),
-                    z + rnd.nextDouble(),
-                    MathUtils.randomDouble(rnd),
-                    MathUtils.randomDouble(rnd),
-                    MathUtils.randomDouble(rnd));
+        if (w.getBlockMetadata(x, y, z) % 8 == 3) w.spawnParticle(
+                "portal",
+                x + rnd.nextDouble(),
+                y + rnd.nextDouble(),
+                z + rnd.nextDouble(),
+                MathUtils.randomDouble(rnd),
+                MathUtils.randomDouble(rnd),
+                MathUtils.randomDouble(rnd));
     }
 
     public Item getItemDropped(int meta, Random rnd, int fortune) {
@@ -149,8 +150,7 @@ public class BlockTBLeaves extends BlockOldLeaf {
                         Class<?> c = entry.entityClass;
                         if (EntityLiving.class.isAssignableFrom(c)) {
                             try {
-                                EntityLiving el = EntityLiving.class.cast(
-                                        c.getConstructor(World.class).newInstance(w));
+                                EntityLiving el = EntityLiving.class.cast(c.getConstructor(World.class).newInstance(w));
                                 while (--y >= dy - 6) {
                                     el.setPositionAndRotation(x + 0.5D, y, z + 0.5D, 0, 0);
                                     if (el.getCanSpawnHere()) {
@@ -175,8 +175,8 @@ public class BlockTBLeaves extends BlockOldLeaf {
             while (--y >= dy - 8) {
                 Block b = w.getBlock(x, y, z);
                 if (!b.isAir(w, x, y, z)) {
-                    boolean netheric =
-                            b instanceof BlockNetherrack || b instanceof BlockSoulSand || b == Blocks.quartz_ore;
+                    boolean netheric = b instanceof BlockNetherrack || b instanceof BlockSoulSand
+                            || b == Blocks.quartz_ore;
                     if (netheric && rnd.nextDouble() <= 0.05D) {
                         BiomeGenBase hellBiome = BiomeGenBase.hell;
                         @SuppressWarnings("unchecked")
@@ -189,8 +189,8 @@ public class BlockTBLeaves extends BlockOldLeaf {
                                 Class<?> c = entry.entityClass;
                                 if (EntityLiving.class.isAssignableFrom(c)) {
                                     try {
-                                        EntityLiving el = EntityLiving.class.cast(
-                                                c.getConstructor(World.class).newInstance(w));
+                                        EntityLiving el = EntityLiving.class
+                                                .cast(c.getConstructor(World.class).newInstance(w));
 
                                         el.setPositionAndRotation(x + 0.5D, y + 1, z + 0.5D, 0, 0);
                                         el.onSpawnWithEgg(null);
@@ -213,22 +213,19 @@ public class BlockTBLeaves extends BlockOldLeaf {
 
                         break;
                     } else {
-                        boolean flag = b instanceof BlockDirt
-                                || b instanceof BlockGrass
+                        boolean flag = b instanceof BlockDirt || b instanceof BlockGrass
                                 || b instanceof BlockGravel
                                 || b instanceof BlockSand
                                 || b instanceof BlockStone;
                         if (!flag) {
                             ItemStack stk = new ItemStack(b, 1, w.getBlockMetadata(x, y, z));
                             if (OreDictionary.getOreIDs(stk) != null && OreDictionary.getOreIDs(stk).length > 0) {
-                                OreDict:
-                                for (int i = 0; i < OreDictionary.getOreIDs(stk).length; ++i) {
+                                OreDict: for (int i = 0; i < OreDictionary.getOreIDs(stk).length; ++i) {
                                     int id = OreDictionary.getOreIDs(stk)[i];
                                     if (id != -1) {
                                         String ore = OreDictionary.getOreName(id);
                                         if (ore != null && !ore.isEmpty()) {
-                                            flag = ore.contains("dirt")
-                                                    || ore.contains("grass")
+                                            flag = ore.contains("dirt") || ore.contains("grass")
                                                     || ore.contains("sand")
                                                     || ore.contains("gravel")
                                                     || ore.contains("stone");
@@ -240,8 +237,7 @@ public class BlockTBLeaves extends BlockOldLeaf {
                         }
                         if (flag) {
                             double random = rnd.nextDouble();
-                            Block setTo = random <= 0.6D
-                                    ? Blocks.netherrack
+                            Block setTo = random <= 0.6D ? Blocks.netherrack
                                     : random <= 0.9D ? Blocks.soul_sand : Blocks.quartz_ore;
                             w.setBlock(x, y, z, setTo, 0, 3);
                             break;
@@ -268,8 +264,8 @@ public class BlockTBLeaves extends BlockOldLeaf {
                                 Class<?> c = entry.entityClass;
                                 if (EntityLiving.class.isAssignableFrom(c)) {
                                     try {
-                                        EntityLiving el = EntityLiving.class.cast(
-                                                c.getConstructor(World.class).newInstance(w));
+                                        EntityLiving el = EntityLiving.class
+                                                .cast(c.getConstructor(World.class).newInstance(w));
 
                                         el.setPositionAndRotation(x + 0.5D, y + 1, z + 0.5D, 0, 0);
                                         el.onSpawnWithEgg(null);
@@ -292,22 +288,19 @@ public class BlockTBLeaves extends BlockOldLeaf {
 
                         break;
                     } else {
-                        boolean flag = b instanceof BlockDirt
-                                || b instanceof BlockGrass
+                        boolean flag = b instanceof BlockDirt || b instanceof BlockGrass
                                 || b instanceof BlockGravel
                                 || b instanceof BlockSand
                                 || b instanceof BlockStone && !(b instanceof BlockObsidian) && !(b == Blocks.end_stone);
                         if (!flag) {
                             ItemStack stk = new ItemStack(b, 1, w.getBlockMetadata(x, y, z));
                             if (OreDictionary.getOreIDs(stk) != null && OreDictionary.getOreIDs(stk).length > 0) {
-                                OreDict:
-                                for (int i = 0; i < OreDictionary.getOreIDs(stk).length; ++i) {
+                                OreDict: for (int i = 0; i < OreDictionary.getOreIDs(stk).length; ++i) {
                                     int id = OreDictionary.getOreIDs(stk)[i];
                                     if (id != -1) {
                                         String ore = OreDictionary.getOreName(id);
                                         if (ore != null && !ore.isEmpty()) {
-                                            flag = ore.contains("dirt")
-                                                    || ore.contains("grass")
+                                            flag = ore.contains("dirt") || ore.contains("grass")
                                                     || ore.contains("sand")
                                                     || ore.contains("gravel")
                                                     || ore.contains("stone");
@@ -351,7 +344,7 @@ public class BlockTBLeaves extends BlockOldLeaf {
         return icons[meta % 8];
     }
 
-    @SuppressWarnings({"unchecked", "rawtypes"})
+    @SuppressWarnings({ "unchecked", "rawtypes" })
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(Item i, CreativeTabs p_149666_2_, List p_149666_3_) {
         for (int f = 0; f < names.length; ++f) p_149666_3_.add(new ItemStack(i, 1, f));

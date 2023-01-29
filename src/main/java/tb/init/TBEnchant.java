@@ -1,9 +1,10 @@
 package tb.init;
 
-import cpw.mods.fml.common.Loader;
 import java.lang.reflect.Method;
+
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
+
 import tb.common.enchantment.EnchantmentElderKnowledge;
 import tb.common.enchantment.EnchantmentEldritchBane;
 import tb.common.enchantment.EnchantmentMagicTouch;
@@ -12,6 +13,7 @@ import tb.common.enchantment.EnchantmentVaporising;
 import tb.utils.TBConfig;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+import cpw.mods.fml.common.Loader;
 
 public class TBEnchant {
 
@@ -20,11 +22,11 @@ public class TBEnchant {
                 .setName("elderKnowledge");
         eldritchBane = new EnchantmentEldritchBane(TBConfig.eldritchBaneID, 7, EnumEnchantmentType.weapon)
                 .setName("eldritchBane");
-        magicTouch =
-                new EnchantmentMagicTouch(TBConfig.magicTouchID, 11, EnumEnchantmentType.weapon).setName("magicTouch");
+        magicTouch = new EnchantmentMagicTouch(TBConfig.magicTouchID, 11, EnumEnchantmentType.weapon)
+                .setName("magicTouch");
         tainted = new EnchantmentTainted(TBConfig.taintedID, 9, EnumEnchantmentType.weapon).setName("tainted");
-        vaporising =
-                new EnchantmentVaporising(TBConfig.vaporisingID, 6, EnumEnchantmentType.weapon).setName("vaporising");
+        vaporising = new EnchantmentVaporising(TBConfig.vaporisingID, 6, EnumEnchantmentType.weapon)
+                .setName("vaporising");
 
         if (Loader.isModLoaded("ThaumicTinkerer") && TBConfig.enableTTCompathability) {
             try {
@@ -40,28 +42,19 @@ public class TBEnchant {
                         elderKnowledge,
                         "thaumicbases:textures/enchantments/elder_knowledge.png",
                         false,
-                        new AspectList()
-                                .add(Aspect.AIR, 8)
-                                .add(Aspect.ORDER, 12)
-                                .add(Aspect.EARTH, 16));
+                        new AspectList().add(Aspect.AIR, 8).add(Aspect.ORDER, 12).add(Aspect.EARTH, 16));
                 reg.invoke(
                         null,
                         eldritchBane,
                         "thaumicbases:textures/enchantments/eldritch_bane.png",
                         false,
-                        new AspectList()
-                                .add(Aspect.FIRE, 12)
-                                .add(Aspect.ENTROPY, 12)
-                                .add(Aspect.ORDER, 8));
+                        new AspectList().add(Aspect.FIRE, 12).add(Aspect.ENTROPY, 12).add(Aspect.ORDER, 8));
                 reg.invoke(
                         null,
                         magicTouch,
                         "thaumicbases:textures/enchantments/magic_touched.png",
                         false,
-                        new AspectList()
-                                .add(Aspect.FIRE, 16)
-                                .add(Aspect.ORDER, 16)
-                                .add(Aspect.WATER, 8)
+                        new AspectList().add(Aspect.FIRE, 16).add(Aspect.ORDER, 16).add(Aspect.WATER, 8)
                                 .add(Aspect.ENTROPY, 12));
                 reg.invoke(
                         null,
@@ -74,10 +67,7 @@ public class TBEnchant {
                         vaporising,
                         "thaumicbases:textures/enchantments/vaporising.png",
                         false,
-                        new AspectList()
-                                .add(Aspect.ENTROPY, 8)
-                                .add(Aspect.ORDER, 12)
-                                .add(Aspect.FIRE, 16));
+                        new AspectList().add(Aspect.ENTROPY, 8).add(Aspect.ORDER, 12).add(Aspect.FIRE, 16));
             } catch (Exception e) {
                 System.out.println("[ThaumicBases]Unable to add ThaumicTinkerer integration - mod not found");
                 return;

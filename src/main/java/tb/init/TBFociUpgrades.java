@@ -1,6 +1,7 @@
 package tb.init;
 
 import net.minecraft.util.ResourceLocation;
+
 import tb.utils.TBConfig;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;

@@ -1,14 +1,15 @@
 package tb.network.proxy;
 
-import cpw.mods.fml.common.network.IGuiHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+
 import tb.common.inventory.ContainerOverchanter;
 import tb.common.inventory.ContainerRevolver;
 import tb.common.inventory.ContainerThaumicAnvil;
 import tb.common.inventory.ContainerVoidAnvil;
 import tb.common.tile.TileOverchanter;
+import cpw.mods.fml.common.network.IGuiHandler;
 
 public class TBServer implements IGuiHandler {
 
@@ -43,21 +44,11 @@ public class TBServer implements IGuiHandler {
 
     public void registerRenderInformation() {}
 
-    public void lightning(
-            World world,
-            double sx,
-            double sy,
-            double sz,
-            double ex,
-            double ey,
-            double ez,
-            int dur,
-            float curve,
-            int speed,
-            int type) {}
+    public void lightning(World world, double sx, double sy, double sz, double ex, double ey, double ez, int dur,
+            float curve, int speed, int type) {}
 
-    public void sparkle(
-            World w, double x, double y, double z, double dx, double dy, double dz, int color, float scale) {}
+    public void sparkle(World w, double x, double y, double z, double dx, double dy, double dz, int color,
+            float scale) {}
 
     public World clientWorld() {
         return null;

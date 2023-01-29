@@ -1,6 +1,7 @@
 package tb.common.event;
 
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSapling;
 import net.minecraft.init.Blocks;
@@ -16,13 +17,7 @@ public class WorldGenOak extends WorldGenTrees {
     public int trunkMeta;
     public int minTreeHeight;
 
-    public WorldGenOak(
-            boolean doBlockNotify,
-            int minHeight,
-            int metaWood,
-            int metaLeaves,
-            boolean doVines,
-            Block tree,
+    public WorldGenOak(boolean doBlockNotify, int minHeight, int metaWood, int metaLeaves, boolean doVines, Block tree,
             Block leaves) {
         super(doBlockNotify, minHeight, metaWood, metaLeaves, doVines);
         trunkMeta = metaWood;
@@ -71,8 +66,8 @@ public class WorldGenOak extends WorldGenTrees {
                 } else {
                     Block block2 = w.getBlock(x, y - 1, z);
 
-                    boolean isSoil =
-                            block2.canSustainPlant(w, x, y - 1, z, ForgeDirection.UP, (BlockSapling) Blocks.sapling);
+                    boolean isSoil = block2
+                            .canSustainPlant(w, x, y - 1, z, ForgeDirection.UP, (BlockSapling) Blocks.sapling);
                     if (isSoil && y < 256 - height - 1) {
                         block2.onPlantGrow(w, x, y - 1, z, x, y, z);
                         b0 = 3;
@@ -97,7 +92,12 @@ public class WorldGenOak extends WorldGenTrees {
 
                                         if (block1.isAir(w, i2, k1, k2) || block1.isLeaves(w, i2, k1, k2)) {
                                             this.setBlockAndNotifyAdequately(
-                                                    w, i2, k1, k2, this.leavesBlock, this.leavesMeta);
+                                                    w,
+                                                    i2,
+                                                    k1,
+                                                    k2,
+                                                    this.leavesBlock,
+                                                    this.leavesMeta);
                                         }
                                     }
                                 }

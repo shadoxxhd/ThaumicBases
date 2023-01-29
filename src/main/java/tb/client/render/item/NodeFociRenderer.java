@@ -1,18 +1,20 @@
 package tb.client.render.item;
 
-import DummyCore.Utils.MiscUtils;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
 import net.minecraftforge.client.model.AdvancedModelLoader;
 import net.minecraftforge.client.model.IModelCustom;
+
 import org.lwjgl.opengl.GL11;
+
 import tb.common.item.ItemNodeFoci;
+import DummyCore.Utils.MiscUtils;
 
 public class NodeFociRenderer implements IItemRenderer {
 
-    public static final IModelCustom model =
-            AdvancedModelLoader.loadModel(new ResourceLocation("thaumicbases", "models/nodeManipulator/foci.obj"));
+    public static final IModelCustom model = AdvancedModelLoader
+            .loadModel(new ResourceLocation("thaumicbases", "models/nodeManipulator/foci.obj"));
 
     @Override
     public boolean handleRenderType(ItemStack item, ItemRenderType type) {

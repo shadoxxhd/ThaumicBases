@@ -1,9 +1,8 @@
 package tb.common.inventory;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.Iterator;
 import java.util.Map;
+
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
@@ -18,13 +17,18 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
+
 import org.apache.commons.lang3.StringUtils;
+
 import tb.init.TBBlocks;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ContainerVoidAnvil extends ContainerRepair {
 
     private IInventory outputSlot = new InventoryCraftResult();
     private IInventory inputSlots = new InventoryBasic("Repair", true, 2) {
+
         public void markDirty() {
             super.markDirty();
             ContainerVoidAnvil.this.onCraftMatrixChanged(this);
@@ -58,13 +62,14 @@ public class ContainerVoidAnvil extends ContainerRepair {
         this.addSlotToContainer(new Slot(this.inputSlots, 0, 27, 47));
         this.addSlotToContainer(new Slot(this.inputSlots, 1, 76, 47));
         this.addSlotToContainer(new Slot(this.outputSlot, 2, 134, 47) {
+
             public boolean isItemValid(ItemStack stk) {
                 return false;
             }
 
             public boolean canTakeStack(EntityPlayer p_82869_1_) {
                 return (p_82869_1_.capabilities.isCreativeMode
-                                || p_82869_1_.experienceLevel >= ContainerVoidAnvil.this.maximumCost)
+                        || p_82869_1_.experienceLevel >= ContainerVoidAnvil.this.maximumCost)
                         && ContainerVoidAnvil.this.maximumCost > 0
                         && this.getHasStack();
             }
@@ -98,8 +103,7 @@ public class ContainerVoidAnvil extends ContainerRepair {
 
                 ContainerVoidAnvil.this.maximumCost = 0;
 
-                if (!p_82870_1_.capabilities.isCreativeMode
-                        && !wrld.isRemote
+                if (!p_82870_1_.capabilities.isCreativeMode && !wrld.isRemote
                         && wrld.getBlock(ax, ay, az) == TBBlocks.thaumicAnvil
                         && p_82870_1_.getRNG().nextFloat() < breakChance) {
                     int i1 = wrld.getBlockMetadata(ax, ay, az);
@@ -141,7 +145,7 @@ public class ContainerVoidAnvil extends ContainerRepair {
         }
     }
 
-    @SuppressWarnings({"unchecked", "rawtypes"})
+    @SuppressWarnings({ "unchecked", "rawtypes" })
     public void updateRepairOutput() {
         ItemStack itemstack = this.inputSlots.getStackInSlot(0);
         this.maximumCost = 0;
@@ -220,8 +224,7 @@ public class ContainerVoidAnvil extends ContainerRepair {
                     while (iterator1.hasNext()) {
                         i1 = ((Integer) iterator1.next()).intValue();
                         enchantment = Enchantment.enchantmentsList[i1];
-                        k1 = map.containsKey(Integer.valueOf(i1))
-                                ? ((Integer) map.get(Integer.valueOf(i1))).intValue()
+                        k1 = map.containsKey(Integer.valueOf(i1)) ? ((Integer) map.get(Integer.valueOf(i1))).intValue()
                                 : 0;
                         l1 = ((Integer) map1.get(Integer.valueOf(i1))).intValue();
                         int i3;
@@ -247,10 +250,13 @@ public class ContainerVoidAnvil extends ContainerRepair {
                             int j2 = ((Integer) iterator.next()).intValue();
 
                             Enchantment e2 = Enchantment.enchantmentsList[j2];
-                            if (j2 != i1
-                                    && !(enchantment.canApplyTogether(e2)
-                                            && e2.canApplyTogether(
-                                                    enchantment))) // Forge BugFix: Let Both enchantments veto being
+                            if (j2 != i1 && !(enchantment.canApplyTogether(e2) && e2.canApplyTogether(enchantment))) // Forge
+                                                                                                                     // BugFix:
+                                                                                                                     // Let
+                                                                                                                     // Both
+                                                                                                                     // enchantments
+                                                                                                                     // veto
+                                                                                                                     // being
                             // together
                             {
                                 flag1 = false;
@@ -409,8 +415,7 @@ public class ContainerVoidAnvil extends ContainerRepair {
     }
 
     public boolean canInteractWith(EntityPlayer p_75145_1_) {
-        return this.w.getBlock(this.x, this.y, this.z) != TBBlocks.voidAnvil
-                ? false
+        return this.w.getBlock(this.x, this.y, this.z) != TBBlocks.voidAnvil ? false
                 : p_75145_1_.getDistanceSq((double) this.x + 0.5D, (double) this.y + 0.5D, (double) this.z + 0.5D)
                         <= 64.0D;
     }

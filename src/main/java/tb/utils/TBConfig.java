@@ -1,8 +1,9 @@
 package tb.utils;
 
-import DummyCore.Utils.IDummyConfig;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraftforge.common.config.Configuration;
+
+import DummyCore.Utils.IDummyConfig;
 
 public class TBConfig implements IDummyConfig {
 
@@ -59,15 +60,15 @@ public class TBConfig implements IDummyConfig {
                 "Does the Advanced Alchemical Furnace requires Alumentum to work faster");
 
         // enchants
-        elderKnowledgeID = cfg.getInt(
-                "elderKnowledgeEnchantmentID", "Enchantments", 98, 0, Enchantment.enchantmentsList.length, "");
-        eldritchBaneID =
-                cfg.getInt("eldritchBaneEnchantmentID", "Enchantments", 99, 0, Enchantment.enchantmentsList.length, "");
-        magicTouchID =
-                cfg.getInt("magicTouchEnchantmentID", "Enchantments", 100, 0, Enchantment.enchantmentsList.length, "");
+        elderKnowledgeID = cfg
+                .getInt("elderKnowledgeEnchantmentID", "Enchantments", 98, 0, Enchantment.enchantmentsList.length, "");
+        eldritchBaneID = cfg
+                .getInt("eldritchBaneEnchantmentID", "Enchantments", 99, 0, Enchantment.enchantmentsList.length, "");
+        magicTouchID = cfg
+                .getInt("magicTouchEnchantmentID", "Enchantments", 100, 0, Enchantment.enchantmentsList.length, "");
         taintedID = cfg.getInt("taintedEnchantmentID", "Enchantments", 101, 0, Enchantment.enchantmentsList.length, "");
-        vaporisingID =
-                cfg.getInt("vaporisingEnchantmentID", "Enchantments", 102, 0, Enchantment.enchantmentsList.length, "");
+        vaporisingID = cfg
+                .getInt("vaporisingEnchantmentID", "Enchantments", 102, 0, Enchantment.enchantmentsList.length, "");
 
         // focus upgrades
         aquaticFociUID = cfg.getInt("aquaticFociUID", "Foci", 42, 0, Integer.MAX_VALUE, "");
@@ -91,8 +92,8 @@ public class TBConfig implements IDummyConfig {
                 true,
                 "Allow the mod to register it's enchantments in the Thaumic Tinkerer's enchanter? Set to false if Thaumic Tinkerer is crashing you.");
 
-        shardsFromOre = cfg.getInt(
-                "shardsFromOre", "General", 8, 1, 64, "Amount of shards recieved from crucible ore processing");
+        shardsFromOre = cfg
+                .getInt("shardsFromOre", "General", 8, 1, 64, "Amount of shards recieved from crucible ore processing");
 
         brightFociRequiresPrimordialPearl = cfg.getBoolean(
                 "brightFociRequiresPrimordialPearl",
@@ -130,14 +131,16 @@ public class TBConfig implements IDummyConfig {
                 true,
                 "If set to false the spikes and bloody robes will be disabled - there will be no recipes/no entries in Thaumonomicon");
 
-        /*enableVoidTools = cfg.getBoolean("enableVoidTools", "General", true,
-        		"If set to false the void shears and igniter will be disabled - there will be no recipes/no entries in Thaumonomicon");
-        */
+        /*
+         * enableVoidTools = cfg.getBoolean("enableVoidTools", "General", true,
+         * "If set to false the void shears and igniter will be disabled - there will be no recipes/no entries in Thaumonomicon"
+         * );
+         */
 
         // pyrofluid
-        minBlazePowderFromPyrofluid =
-                cfg.getInt("minBlazePowderFromPyrofluid", "Pyrofluid", 5, 0, Integer.MAX_VALUE, "");
-        maxBlazePowderFromPyrofluid =
-                cfg.getInt("maxBlazePowderFromPyrofluid", "Pyrofluid", 5 + 32, 0, Integer.MAX_VALUE, "");
+        minBlazePowderFromPyrofluid = cfg
+                .getInt("minBlazePowderFromPyrofluid", "Pyrofluid", 5, 0, Integer.MAX_VALUE, "");
+        maxBlazePowderFromPyrofluid = cfg
+                .getInt("maxBlazePowderFromPyrofluid", "Pyrofluid", 5 + 32, 0, Integer.MAX_VALUE, "");
     }
 }

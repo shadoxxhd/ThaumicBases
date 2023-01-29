@@ -3,6 +3,7 @@ package tb.common.itemblock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.item.ItemSlab;
+
 import tb.init.TBBlocks;
 
 public class ItemBlockSlab_1 extends ItemSlab {

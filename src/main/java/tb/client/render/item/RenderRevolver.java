@@ -1,7 +1,7 @@
 package tb.client.render.item;
 
-import DummyCore.Utils.Pair;
 import java.util.ArrayList;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
@@ -9,24 +9,32 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
 import net.minecraftforge.client.model.AdvancedModelLoader;
 import net.minecraftforge.client.model.IModelCustom;
+
 import org.lwjgl.opengl.GL11;
+
 import tb.api.RevolverUpgrade;
 import tb.common.item.ItemRevolver;
+import DummyCore.Utils.Pair;
 
 public class RenderRevolver implements IItemRenderer {
 
-    public static final IModelCustom model =
-            AdvancedModelLoader.loadModel(new ResourceLocation("thaumicbases", "models/revolver/revolver.obj"));
-    public static final ResourceLocation handle =
-            new ResourceLocation("thaumicbases", "textures/items/revolver/revolverHandleUV.png");
-    public static final ResourceLocation barrel =
-            new ResourceLocation("thaumicbases", "textures/items/revolver/revolverBarrelUV.png");
-    public static final ResourceLocation metal =
-            new ResourceLocation("thaumicbases", "textures/items/revolver/revolverDarkMetal.png");
-    public static final ResourceLocation gun =
-            new ResourceLocation("thaumicbases", "textures/items/revolver/revolverGunUV.png");
-    public static final ResourceLocation press =
-            new ResourceLocation("thaumicbases", "textures/items/revolver/revolverPressUV.png");
+    public static final IModelCustom model = AdvancedModelLoader
+            .loadModel(new ResourceLocation("thaumicbases", "models/revolver/revolver.obj"));
+    public static final ResourceLocation handle = new ResourceLocation(
+            "thaumicbases",
+            "textures/items/revolver/revolverHandleUV.png");
+    public static final ResourceLocation barrel = new ResourceLocation(
+            "thaumicbases",
+            "textures/items/revolver/revolverBarrelUV.png");
+    public static final ResourceLocation metal = new ResourceLocation(
+            "thaumicbases",
+            "textures/items/revolver/revolverDarkMetal.png");
+    public static final ResourceLocation gun = new ResourceLocation(
+            "thaumicbases",
+            "textures/items/revolver/revolverGunUV.png");
+    public static final ResourceLocation press = new ResourceLocation(
+            "thaumicbases",
+            "textures/items/revolver/revolverPressUV.png");
 
     @Override
     public boolean handleRenderType(ItemStack item, ItemRenderType type) {
@@ -92,20 +100,15 @@ public class RenderRevolver implements IItemRenderer {
         ArrayList<Pair<RevolverUpgrade, Integer>> upgrades = ItemRevolver.getAllUpgradesFor(item);
         for (Pair<RevolverUpgrade, Integer> p : upgrades) {
             RevolverUpgrade ru = p.getFirst();
-            handle = ru.getOverridePartTexture(item, 0, p.getSecond()) == null
-                    ? handle
+            handle = ru.getOverridePartTexture(item, 0, p.getSecond()) == null ? handle
                     : ru.getOverridePartTexture(item, 0, p.getSecond());
-            barrel = ru.getOverridePartTexture(item, 1, p.getSecond()) == null
-                    ? barrel
+            barrel = ru.getOverridePartTexture(item, 1, p.getSecond()) == null ? barrel
                     : ru.getOverridePartTexture(item, 1, p.getSecond());
-            metal = ru.getOverridePartTexture(item, 2, p.getSecond()) == null
-                    ? metal
+            metal = ru.getOverridePartTexture(item, 2, p.getSecond()) == null ? metal
                     : ru.getOverridePartTexture(item, 2, p.getSecond());
-            gun = ru.getOverridePartTexture(item, 3, p.getSecond()) == null
-                    ? gun
+            gun = ru.getOverridePartTexture(item, 3, p.getSecond()) == null ? gun
                     : ru.getOverridePartTexture(item, 3, p.getSecond());
-            press = ru.getOverridePartTexture(item, 4, p.getSecond()) == null
-                    ? press
+            press = ru.getOverridePartTexture(item, 4, p.getSecond()) == null ? press
                     : ru.getOverridePartTexture(item, 4, p.getSecond());
         }
 
@@ -136,8 +139,7 @@ public class RenderRevolver implements IItemRenderer {
         Minecraft.getMinecraft().renderEngine.bindTexture(press);
         model.renderPart("Cube.001_Cube.005");
 
-        if (type == ItemRenderType.EQUIPPED_FIRST_PERSON
-                && item.getTagCompound() != null
+        if (type == ItemRenderType.EQUIPPED_FIRST_PERSON && item.getTagCompound() != null
                 && item.getTagCompound().getBoolean("hasJar")) {
             GL11.glPushMatrix();
 

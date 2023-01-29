@@ -1,14 +1,16 @@
 package tb.common.item;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
+
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+
 import tb.core.TBCore;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class TBResource extends Item {
 
@@ -16,17 +18,9 @@ public class TBResource extends Item {
         this.setHasSubtypes(true);
     }
 
-    public static final String names[] = new String[] {
-        "nuggetthauminite",
-        "thauminite/thauminite_ingot",
-        "thauminite/wand_cap_thauminite",
-        "thaumium_wand_core",
-        "void_wand_core",
-        "aurelia_petal",
-        "briar_seedbag",
-        "tobacco_leaves",
-        "bloodycloth"
-    };
+    public static final String names[] = new String[] { "nuggetthauminite", "thauminite/thauminite_ingot",
+            "thauminite/wand_cap_thauminite", "thaumium_wand_core", "void_wand_core", "aurelia_petal", "briar_seedbag",
+            "tobacco_leaves", "bloodycloth" };
 
     public static IIcon[] icons = new IIcon[names.length];
 
@@ -48,7 +42,7 @@ public class TBResource extends Item {
         for (int i = 0; i < names.length; ++i) icons[i] = reg.registerIcon(TBCore.modid + ":" + names[i]);
     }
 
-    @SuppressWarnings({"rawtypes", "unchecked"})
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     @SideOnly(Side.CLIENT)
     public void getSubItems(Item itm, CreativeTabs tab, List lst) {
         for (int i = 0; i < names.length; ++i) lst.add(new ItemStack(itm, 1, i));

@@ -6,13 +6,16 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
+
 import org.lwjgl.opengl.GL11;
+
 import tb.common.inventory.ContainerRevolver;
 
 public class GuiRevolver extends GuiContainer {
 
-    public static final ResourceLocation revolverTextures =
-            new ResourceLocation("thaumicbases", "textures/gui/revolver.png");
+    public static final ResourceLocation revolverTextures = new ResourceLocation(
+            "thaumicbases",
+            "textures/gui/revolver.png");
     public int blockedSlot;
 
     public GuiRevolver(InventoryPlayer inv, World w, int x, int y, int z) {

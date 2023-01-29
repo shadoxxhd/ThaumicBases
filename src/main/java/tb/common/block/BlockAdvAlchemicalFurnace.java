@@ -1,9 +1,7 @@
 package tb.common.block;
 
-import DummyCore.Utils.MiscUtils;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -18,9 +16,13 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
 import tb.common.tile.TileAdvAlchemicalFurnace;
 import thaumcraft.common.Thaumcraft;
 import thaumcraft.common.tiles.TileAlchemyFurnace;
+import DummyCore.Utils.MiscUtils;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockAdvAlchemicalFurnace extends BlockContainer {
 
@@ -96,8 +98,8 @@ public class BlockAdvAlchemicalFurnace extends BlockContainer {
         ((TileAdvAlchemicalFurnace) w.getTileEntity(x, y, z)).getBellows();
     }
 
-    public boolean onBlockActivated(
-            World w, int x, int y, int z, EntityPlayer player, int side, float par7, float par8, float par9) {
+    public boolean onBlockActivated(World w, int x, int y, int z, EntityPlayer player, int side, float par7, float par8,
+            float par9) {
         if (w.isRemote) return true;
         TileEntity tileEntity = w.getTileEntity(x, y, z);
 

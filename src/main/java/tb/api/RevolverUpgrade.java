@@ -1,9 +1,8 @@
 package tb.api;
 
-import cpw.mods.fml.common.FMLLog;
-import cpw.mods.fml.common.Loader;
 import java.util.ArrayList;
 import java.util.Hashtable;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.boss.IBossDisplayData;
@@ -16,6 +15,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.common.IExtendedEntityProperties;
+
 import tb.utils.TBUtils;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -23,6 +23,8 @@ import thaumcraft.api.entities.IEldritchMob;
 import thaumcraft.api.entities.ITaintedMob;
 import thaumcraft.common.config.Config;
 import thaumcraft.common.lib.research.ScanManager;
+import cpw.mods.fml.common.FMLLog;
+import cpw.mods.fml.common.Loader;
 
 public class RevolverUpgrade {
 
@@ -35,14 +37,18 @@ public class RevolverUpgrade {
     public final String text_id;
     public int instability;
 
-    public static final ResourceLocation eldritchTextures =
-            new ResourceLocation("thaumicbases", "textures/items/revolver/revolverDarkMetalEldritch.png");
-    public static final ResourceLocation primalTextures =
-            new ResourceLocation("thaumicbases", "textures/items/revolver/revolverGunPrimalUV.png");
-    public static final ResourceLocation taintedTextures =
-            new ResourceLocation("thaumicbases", "textures/items/revolver/revolverGunTaintedUV.png");
-    public static final ResourceLocation voidTextures =
-            new ResourceLocation("thaumicbases", "textures/items/revolver/revolverHandleVoidUV.png");
+    public static final ResourceLocation eldritchTextures = new ResourceLocation(
+            "thaumicbases",
+            "textures/items/revolver/revolverDarkMetalEldritch.png");
+    public static final ResourceLocation primalTextures = new ResourceLocation(
+            "thaumicbases",
+            "textures/items/revolver/revolverGunPrimalUV.png");
+    public static final ResourceLocation taintedTextures = new ResourceLocation(
+            "thaumicbases",
+            "textures/items/revolver/revolverGunTaintedUV.png");
+    public static final ResourceLocation voidTextures = new ResourceLocation(
+            "thaumicbases",
+            "textures/items/revolver/revolverHandleVoidUV.png");
 
     public final ArrayList<RevolverUpgrade> conflicts = new ArrayList<RevolverUpgrade>();
 
@@ -52,9 +58,14 @@ public class RevolverUpgrade {
 
         if (id < allUpgrades.length && allUpgrades[id] != null) {
             FMLLog.warning(
-                    "[TB]Attempting to register revolver upgrade " + name + "[" + id
-                            + "], but the ID is already occupied by " + allUpgrades[id].text_id + "["
-                            + allUpgrades[id].id + "], ignoring.",
+                    "[TB]Attempting to register revolver upgrade " + name
+                            + "["
+                            + id
+                            + "], but the ID is already occupied by "
+                            + allUpgrades[id].text_id
+                            + "["
+                            + allUpgrades[id].id
+                            + "], ignoring.",
                     new Object[0]);
             return;
         }
@@ -114,21 +125,21 @@ public class RevolverUpgrade {
 
     /**
      * Modifies the revolver damage - pass 0
-     * @param base - the entity to modify against. null means that the modification is not applied for the attack, and rather is applied for the information.
-     * @param revolver - the revolver
+     * 
+     * @param base                - the entity to modify against. null means that the modification is not applied for
+     *                            the attack, and rather is applied for the information.
+     * @param revolver            - the revolver
      * @param currentModification - damage BEFORE the modification
-     * @param modLevel - the level of this modifier
+     * @param modLevel            - the level of this modifier
      * @return the new damage value
      */
-    public float modifyDamage_start(
-            EntityLivingBase base, ItemStack revolver, float currentModification, int modLevel) {
+    public float modifyDamage_start(EntityLivingBase base, ItemStack revolver, float currentModification,
+            int modLevel) {
         if (base != null) {
             if (this == power) return (float) (currentModification * (Math.pow(1.1F, modLevel)));
 
-            if (this == silver
-                    && (base.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD
-                            || isBMEntity(base)
-                            || (base instanceof EntityPlayer && isWerewolf(EntityPlayer.class.cast(base)))))
+            if (this == silver && (base.getCreatureAttribute() == EnumCreatureAttribute.UNDEAD || isBMEntity(base)
+                    || (base instanceof EntityPlayer && isWerewolf(EntityPlayer.class.cast(base)))))
                 return (float) (currentModification * (Math.pow(1.2F, modLevel)));
 
             if (this == atropodsBane && base.getCreatureAttribute() == EnumCreatureAttribute.ARTHROPOD)
@@ -157,10 +168,12 @@ public class RevolverUpgrade {
 
     /**
      * Modifies the revolver damage - pass 1
-     * @param base - the entity to modify against. null means that the modification is not applied for the attack, and rather is applied for the information.
-     * @param revolver - the revolver
+     * 
+     * @param base                - the entity to modify against. null means that the modification is not applied for
+     *                            the attack, and rather is applied for the information.
+     * @param revolver            - the revolver
      * @param currentModification - damage BEFORE the modification
-     * @param modLevel - the level of this modifier
+     * @param modLevel            - the level of this modifier
      * @return the new damage value
      */
     public float modifyDamage_end(EntityLivingBase base, ItemStack revolver, float currentModification, int modLevel) {
@@ -171,18 +184,18 @@ public class RevolverUpgrade {
 
     /**
      * Used to check if the bullet is destroyed.
-     * @param base the entity damaged
-     * @param user the shooter(can be null?)
-     * @param revolver the revolver
+     * 
+     * @param base        the entity damaged
+     * @param user        the shooter(can be null?)
+     * @param revolver    the revolver
      * @param damageDealt the damage dealt
-     * @param modLevel the level of this upgrade
+     * @param modLevel    the level of this upgrade
      * @return true to destroy bulled, false otherwise
      */
-    public boolean afterhit(
-            EntityLivingBase base, EntityPlayer user, ItemStack revolver, final float damageDealt, int modLevel) {
-        if (this == tainted)
-            if (base.worldObj.rand.nextDouble() <= 0.1D)
-                base.addPotionEffect(new PotionEffect(Config.potionTaintPoisonID, 200, 1, true));
+    public boolean afterhit(EntityLivingBase base, EntityPlayer user, ItemStack revolver, final float damageDealt,
+            int modLevel) {
+        if (this == tainted) if (base.worldObj.rand.nextDouble() <= 0.1D)
+            base.addPotionEffect(new PotionEffect(Config.potionTaintPoisonID, 200, 1, true));
 
         if (this == poisoned) base.addPotionEffect(new PotionEffect(Potion.poison.id, 200, 1, true));
 
@@ -206,7 +219,8 @@ public class RevolverUpgrade {
 
     /**
      * Used to check if the bullet can travel through the ground or should get destroyed on contact
-     * @param user the player using the weapon(can be null?)
+     * 
+     * @param user     the player using the weapon(can be null?)
      * @param revolver the revolver
      * @param modLevel the level of this upgrade
      * @return
@@ -219,11 +233,12 @@ public class RevolverUpgrade {
 
     /**
      * Used to get the amount of shots 1 aspect point gives to the weapon
-     * @param user the player
-     * @param revolver the gun
-     * @param modLevel this level
+     * 
+     * @param user          the player
+     * @param revolver      the gun
+     * @param modLevel      this level
      * @param originalLevel 2 or the result of previous run of this
-     * @param hasPrimal if the primal upgrade is installed
+     * @param hasPrimal     if the primal upgrade is installed
      * @return -1 for 2 consumption, anythingelse otherwise
      */
     public int modifyShots(EntityPlayer user, ItemStack revolver, int modLevel, int originalLevel, boolean hasPrimal) {
@@ -236,10 +251,11 @@ public class RevolverUpgrade {
 
     /**
      * Used to modify the bullet speed
-     * @param user the player
-     * @param revolver the gun
+     * 
+     * @param user      the player
+     * @param revolver  the gun
      * @param origSpeed the original bullet speed
-     * @param modLevel the level of the modifier
+     * @param modLevel  the level of the modifier
      * @return
      */
     public double modifySpeed(EntityPlayer user, ItemStack revolver, float origSpeed, int modLevel) {
@@ -248,10 +264,17 @@ public class RevolverUpgrade {
     }
 
     /**
-     * Used for rendering to override the texture for a specific part of the weapon. If 2 or more upgrades override the same part texture the latest in the list will get rendered.
+     * Used for rendering to override the texture for a specific part of the weapon. If 2 or more upgrades override the
+     * same part texture the latest in the list will get rendered.
+     * 
      * @param revolver the revolver
-     * @param part The actual part.<BR>0 = Handle<BR>1 = Cylinder<BR>2 = generic metal texture<BR>3 = Barrel<BR>4 = Trigger
-     * @param level The level of this upgrade
+     * @param part     The actual part.<BR>
+     *                 0 = Handle<BR>
+     *                 1 = Cylinder<BR>
+     *                 2 = generic metal texture<BR>
+     *                 3 = Barrel<BR>
+     *                 4 = Trigger
+     * @param level    The level of this upgrade
      * @return null if the texture is not overriden, your texture otherwise.
      */
     public ResourceLocation getOverridePartTexture(ItemStack revolver, int part, int level) {
@@ -306,36 +329,36 @@ public class RevolverUpgrade {
         tainted.addConflict(knowledge);
     }
 
-    public static final RevolverUpgrade power =
-            new RevolverUpgrade(0, "POWER").setMaxLevel(5).setInstabilityPerLevel(2);
-    public static final RevolverUpgrade accuracy =
-            new RevolverUpgrade(1, "ACCURACY").setMaxLevel(3).setInstabilityPerLevel(1);
-    public static final RevolverUpgrade silver =
-            new RevolverUpgrade(2, "SILVER").setMaxLevel(5).setInstabilityPerLevel(3);
-    public static final RevolverUpgrade poisoned =
-            new RevolverUpgrade(3, "POISONED").setMaxLevel(3).setInstabilityPerLevel(1);
-    public static final RevolverUpgrade atropodsBane =
-            new RevolverUpgrade(4, "BANE_OF_ATROPODS").setMaxLevel(5).setInstabilityPerLevel(3);
-    public static final RevolverUpgrade eldritchBane =
-            new RevolverUpgrade(5, "BANE_OF_ELDRITCH").setMaxLevel(5).setInstabilityPerLevel(3);
-    public static final RevolverUpgrade piercig =
-            new RevolverUpgrade(6, "PIERCING").setMaxLevel(1).setInstabilityPerLevel(12);
-    public static final RevolverUpgrade dueling =
-            new RevolverUpgrade(7, "DUELING").setMaxLevel(5).setInstabilityPerLevel(3);
-    public static final RevolverUpgrade tainted =
-            new RevolverUpgrade(8, "TAINTED").setMaxLevel(3).setInstabilityPerLevel(5);
-    public static final RevolverUpgrade primal =
-            new RevolverUpgrade(9, "PRIMAL").setMaxLevel(1).setInstabilityPerLevel(12);
-    public static final RevolverUpgrade speed =
-            new RevolverUpgrade(10, "SPEED").setMaxLevel(5).setInstabilityPerLevel(2);
-    public static final RevolverUpgrade efficiency =
-            new RevolverUpgrade(11, "EFFICIENCY").setMaxLevel(5).setInstabilityPerLevel(4);
-    public static final RevolverUpgrade eldritch =
-            new RevolverUpgrade(12, "ELDRITCH").setMaxLevel(2).setInstabilityPerLevel(7);
-    public static final RevolverUpgrade uvoid =
-            new RevolverUpgrade(13, "VOID").setMaxLevel(3).setInstabilityPerLevel(4);
-    public static final RevolverUpgrade knowledge =
-            new RevolverUpgrade(14, "KNOWLEDGE").setMaxLevel(5).setInstabilityPerLevel(1);
-    public static final RevolverUpgrade heavy =
-            new RevolverUpgrade(15, "HEAVY").setMaxLevel(5).setInstabilityPerLevel(1);
+    public static final RevolverUpgrade power = new RevolverUpgrade(0, "POWER").setMaxLevel(5)
+            .setInstabilityPerLevel(2);
+    public static final RevolverUpgrade accuracy = new RevolverUpgrade(1, "ACCURACY").setMaxLevel(3)
+            .setInstabilityPerLevel(1);
+    public static final RevolverUpgrade silver = new RevolverUpgrade(2, "SILVER").setMaxLevel(5)
+            .setInstabilityPerLevel(3);
+    public static final RevolverUpgrade poisoned = new RevolverUpgrade(3, "POISONED").setMaxLevel(3)
+            .setInstabilityPerLevel(1);
+    public static final RevolverUpgrade atropodsBane = new RevolverUpgrade(4, "BANE_OF_ATROPODS").setMaxLevel(5)
+            .setInstabilityPerLevel(3);
+    public static final RevolverUpgrade eldritchBane = new RevolverUpgrade(5, "BANE_OF_ELDRITCH").setMaxLevel(5)
+            .setInstabilityPerLevel(3);
+    public static final RevolverUpgrade piercig = new RevolverUpgrade(6, "PIERCING").setMaxLevel(1)
+            .setInstabilityPerLevel(12);
+    public static final RevolverUpgrade dueling = new RevolverUpgrade(7, "DUELING").setMaxLevel(5)
+            .setInstabilityPerLevel(3);
+    public static final RevolverUpgrade tainted = new RevolverUpgrade(8, "TAINTED").setMaxLevel(3)
+            .setInstabilityPerLevel(5);
+    public static final RevolverUpgrade primal = new RevolverUpgrade(9, "PRIMAL").setMaxLevel(1)
+            .setInstabilityPerLevel(12);
+    public static final RevolverUpgrade speed = new RevolverUpgrade(10, "SPEED").setMaxLevel(5)
+            .setInstabilityPerLevel(2);
+    public static final RevolverUpgrade efficiency = new RevolverUpgrade(11, "EFFICIENCY").setMaxLevel(5)
+            .setInstabilityPerLevel(4);
+    public static final RevolverUpgrade eldritch = new RevolverUpgrade(12, "ELDRITCH").setMaxLevel(2)
+            .setInstabilityPerLevel(7);
+    public static final RevolverUpgrade uvoid = new RevolverUpgrade(13, "VOID").setMaxLevel(3)
+            .setInstabilityPerLevel(4);
+    public static final RevolverUpgrade knowledge = new RevolverUpgrade(14, "KNOWLEDGE").setMaxLevel(5)
+            .setInstabilityPerLevel(1);
+    public static final RevolverUpgrade heavy = new RevolverUpgrade(15, "HEAVY").setMaxLevel(5)
+            .setInstabilityPerLevel(1);
 }

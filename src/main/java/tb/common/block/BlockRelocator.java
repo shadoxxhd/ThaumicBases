@@ -1,10 +1,8 @@
 package tb.common.block;
 
-import DummyCore.Utils.MathUtils;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
 import java.util.Random;
+
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -18,8 +16,12 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+
 import tb.common.tile.TileRelocator;
 import tb.core.TBCore;
+import DummyCore.Utils.MathUtils;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockRelocator extends BlockContainer {
 
@@ -75,7 +77,7 @@ public class BlockRelocator extends BlockContainer {
         return new TileRelocator();
     }
 
-    @SuppressWarnings({"unchecked", "rawtypes"})
+    @SuppressWarnings({ "unchecked", "rawtypes" })
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(Item p_149666_1_, CreativeTabs p_149666_2_, List p_149666_3_) {
         p_149666_3_.add(new ItemStack(p_149666_1_, 1, 0));
@@ -96,43 +98,43 @@ public class BlockRelocator extends BlockContainer {
                 double dx = x + 0.5D + MathUtils.randomDouble(r) / 2;
                 double dy = y;
                 double dz = z + 0.5D + MathUtils.randomDouble(r) / 2;
-                TBCore.proxy.sparkle(
-                        w, dx, doColor ? dy - 3 : dy, dz, dx, doColor ? dy : dy - 3, dz, doColor ? 2 : 1, 1F);
+                TBCore.proxy
+                        .sparkle(w, dx, doColor ? dy - 3 : dy, dz, dx, doColor ? dy : dy - 3, dz, doColor ? 2 : 1, 1F);
             }
             if (meta == 1) {
                 double dx = x + 0.5D + MathUtils.randomDouble(r) / 2;
                 double dy = y + 1;
                 double dz = z + 0.5D + MathUtils.randomDouble(r) / 2;
-                TBCore.proxy.sparkle(
-                        w, dx, doColor ? dy + 3 : dy, dz, dx, doColor ? dy : dy + 3, dz, doColor ? 2 : 1, 1);
+                TBCore.proxy
+                        .sparkle(w, dx, doColor ? dy + 3 : dy, dz, dx, doColor ? dy : dy + 3, dz, doColor ? 2 : 1, 1);
             }
             if (meta == 2) {
                 double dx = x + 0.5D + MathUtils.randomDouble(r) / 2;
                 double dy = y + 0.5D + MathUtils.randomDouble(r) / 2;
                 double dz = z;
-                TBCore.proxy.sparkle(
-                        w, dx, dy, doColor ? dz - 3 : dz, dx, dy, doColor ? dz : dz - 3, doColor ? 2 : 1, 1);
+                TBCore.proxy
+                        .sparkle(w, dx, dy, doColor ? dz - 3 : dz, dx, dy, doColor ? dz : dz - 3, doColor ? 2 : 1, 1);
             }
             if (meta == 3) {
                 double dx = x + 0.5D + MathUtils.randomDouble(r) / 2;
                 double dy = y + 0.5D + MathUtils.randomDouble(r) / 2;
                 double dz = z + 1;
-                TBCore.proxy.sparkle(
-                        w, dx, dy, doColor ? dz + 3 : dz, dx, dy, doColor ? dz : dz + 3, doColor ? 2 : 1, 1);
+                TBCore.proxy
+                        .sparkle(w, dx, dy, doColor ? dz + 3 : dz, dx, dy, doColor ? dz : dz + 3, doColor ? 2 : 1, 1);
             }
             if (meta == 4) {
                 double dx = x;
                 double dy = y + 0.5D + MathUtils.randomDouble(r) / 2;
                 double dz = z + 0.5D + MathUtils.randomDouble(r) / 2;
-                TBCore.proxy.sparkle(
-                        w, doColor ? dx - 3 : dx, dy, dz, doColor ? dx : dx - 3, dy, dz, doColor ? 2 : 1, 1);
+                TBCore.proxy
+                        .sparkle(w, doColor ? dx - 3 : dx, dy, dz, doColor ? dx : dx - 3, dy, dz, doColor ? 2 : 1, 1);
             }
             if (meta == 5) {
                 double dx = x + 1;
                 double dy = y + 0.5D + MathUtils.randomDouble(r) / 2;
                 double dz = z + 0.5D + MathUtils.randomDouble(r) / 2;
-                TBCore.proxy.sparkle(
-                        w, doColor ? dx + 3 : dx, dy, dz, doColor ? dx : dx + 3, dy, dz, doColor ? 2 : 1, 1);
+                TBCore.proxy
+                        .sparkle(w, doColor ? dx + 3 : dx, dy, dz, doColor ? dx : dx + 3, dy, dz, doColor ? 2 : 1, 1);
             }
         }
     }
@@ -142,8 +144,8 @@ public class BlockRelocator extends BlockContainer {
         w.setBlockMetadataWithNotify(x, y, z, w.getBlockMetadata(x, y, z) + l, 3);
     }
 
-    public static int determineOrientation(
-            World p_150071_0_, int p_150071_1_, int p_150071_2_, int p_150071_3_, EntityLivingBase p_150071_4_) {
+    public static int determineOrientation(World p_150071_0_, int p_150071_1_, int p_150071_2_, int p_150071_3_,
+            EntityLivingBase p_150071_4_) {
         if (MathHelper.abs((float) p_150071_4_.posX - (float) p_150071_1_) < 2.0F
                 && MathHelper.abs((float) p_150071_4_.posZ - (float) p_150071_3_) < 2.0F) {
             double d0 = p_150071_4_.posY + 1.82D - (double) p_150071_4_.yOffset;

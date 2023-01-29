@@ -1,11 +1,10 @@
 package tb.common.tile;
 
-import DummyCore.Utils.MathUtils;
-import DummyCore.Utils.MiscUtils;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Set;
+
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -19,9 +18,12 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.wands.IWandable;
 import thaumcraft.common.lib.events.EssentiaHandler;
+import DummyCore.Utils.MathUtils;
+import DummyCore.Utils.MiscUtils;
 
 public class TileOverchanter extends TileEntity implements IInventory, IWandable {
 
@@ -53,7 +55,7 @@ public class TileOverchanter extends TileEntity implements IInventory, IWandable
                 tg.setInteger("y", yCoord);
                 tg.setInteger("z", zCoord);
                 MiscUtils.syncTileEntity(tg, 0);
-            } else --syncTimer;
+            } else--syncTimer;
         }
 
         if (this.inventory == null) {
@@ -65,24 +67,30 @@ public class TileOverchanter extends TileEntity implements IInventory, IWandable
             if (this.isEnchantingStarted) {
                 if (this.worldObj.getTotalWorldTime() % 20 == 0) {
                     // renderedLightning = new Lightning(this.worldObj.rand, new Coord3D(0,0,0), new
-                    // Coord3D(MathUtils.randomDouble(this.worldObj.rand)/50,MathUtils.randomDouble(this.worldObj.rand)/50,MathUtils.randomDouble(this.worldObj.rand)/50), 0.3F, 1,0,1);
+                    // Coord3D(MathUtils.randomDouble(this.worldObj.rand)/50,MathUtils.randomDouble(this.worldObj.rand)/50,MathUtils.randomDouble(this.worldObj.rand)/50),
+                    // 0.3F, 1,0,1);
                     this.worldObj.playSoundEffect(
-                            this.xCoord, this.yCoord, this.zCoord, "thaumcraft:infuserstart", 1F, 1.0F);
+                            this.xCoord,
+                            this.yCoord,
+                            this.zCoord,
+                            "thaumcraft:infuserstart",
+                            1F,
+                            1.0F);
                     if (EssentiaHandler.drainEssentia(this, Aspect.MAGIC, ForgeDirection.UNKNOWN, 8, false)) {
                         ++enchantingTime;
                         if (enchantingTime >= 16 && !this.xpAbsorbed) {
                             List<EntityPlayer> players = this.worldObj.getEntitiesWithinAABB(
                                     EntityPlayer.class,
-                                    AxisAlignedBB.getBoundingBox(
-                                                    xCoord, yCoord, zCoord, xCoord + 1, yCoord + 1, zCoord + 1)
+                                    AxisAlignedBB
+                                            .getBoundingBox(xCoord, yCoord, zCoord, xCoord + 1, yCoord + 1, zCoord + 1)
                                             .expand(6, 3, 6));
                             if (!players.isEmpty()) {
                                 for (int i = 0; i < players.size(); ++i) {
                                     EntityPlayer p = players.get(i);
                                     if (p.experienceLevel >= 30) {
                                         p.attackEntityFrom(DamageSource.magic, 8);
-                                        this.worldObj.playSoundEffect(
-                                                p.posX, p.posY, p.posZ, "thaumcraft:zap", 1F, 1.0F);
+                                        this.worldObj
+                                                .playSoundEffect(p.posX, p.posY, p.posZ, "thaumcraft:zap", 1F, 1.0F);
                                         p.experienceLevel -= 30;
                                         xpAbsorbed = true;
                                         break;
@@ -100,7 +108,7 @@ public class TileOverchanter extends TileEntity implements IInventory, IWandable
                                     tag.setShort("lvl", (short) (Integer.valueOf(tag.getShort("lvl")) + 1));
                                     NBTTagCompound stackTag = MiscUtils.getStackTag(inventory);
                                     if (!stackTag.hasKey("overchants")) {
-                                        stackTag.setIntArray("overchants", new int[] {enchId});
+                                        stackTag.setIntArray("overchants", new int[] { enchId });
                                     } else {
                                         int[] arrayInt = stackTag.getIntArray("overchants");
                                         int[] newArrayInt = new int[arrayInt.length + 1];
@@ -118,8 +126,8 @@ public class TileOverchanter extends TileEntity implements IInventory, IWandable
                             xpAbsorbed = false;
                             enchantingTime = 0;
                             // renderedLightning = null;
-                            this.worldObj.playSoundEffect(
-                                    this.xCoord, this.yCoord, this.zCoord, "thaumcraft:wand", 1F, 1F);
+                            this.worldObj
+                                    .playSoundEffect(this.xCoord, this.yCoord, this.zCoord, "thaumcraft:wand", 1F, 1F);
                         }
 
                     } else {
@@ -131,23 +139,22 @@ public class TileOverchanter extends TileEntity implements IInventory, IWandable
     }
 
     public boolean canStartEnchanting() {
-        if (!this.isEnchantingStarted)
-            if (this.inventory != null) {
-                if (this.inventory.getEnchantmentTagList() != null
-                        && this.inventory.getEnchantmentTagList().tagCount() > 0) {
-                    if (findEnchantment(inventory) != -1) {
-                        return true;
-                    }
+        if (!this.isEnchantingStarted) if (this.inventory != null) {
+            if (this.inventory.getEnchantmentTagList() != null
+                    && this.inventory.getEnchantmentTagList().tagCount() > 0) {
+                if (findEnchantment(inventory) != -1) {
+                    return true;
                 }
             }
+        }
         return false;
     }
 
     @SuppressWarnings("unchecked")
     public int findEnchantment(ItemStack enchanted) {
         NBTTagCompound stackTag = MiscUtils.getStackTag(inventory);
-        LinkedHashMap<Integer, Integer> ench =
-                (LinkedHashMap<Integer, Integer>) EnchantmentHelper.getEnchantments(enchanted);
+        LinkedHashMap<Integer, Integer> ench = (LinkedHashMap<Integer, Integer>) EnchantmentHelper
+                .getEnchantments(enchanted);
         Set<Integer> keys = ench.keySet();
         Iterator<Integer> $i = keys.iterator();
 
@@ -211,27 +218,10 @@ public class TileOverchanter extends TileEntity implements IInventory, IWandable
         }
     }
     /*
-    @Override
-       public ItemStack decrStackSize(int i, int j) {
-           if (inventory != null) {
-               ItemStack stackAt;
-
-               if (inventory.stackSize <= j) {
-                   stackAt = inventory;
-                   inventory = null;
-                   return stackAt;
-               } else {
-                   stackAt = inventory.splitStack(j);
-
-                   if (inventory.stackSize == 0)
-                       inventory = null;
-
-                   return stackAt;
-               }
-           }
-
-           return null;
-       }*/
+     * @Override public ItemStack decrStackSize(int i, int j) { if (inventory != null) { ItemStack stackAt; if
+     * (inventory.stackSize <= j) { stackAt = inventory; inventory = null; return stackAt; } else { stackAt =
+     * inventory.splitStack(j); if (inventory.stackSize == 0) inventory = null; return stackAt; } } return null; }
+     */
 
     @Override
     public ItemStack getStackInSlotOnClosing(int slot) {
@@ -301,8 +291,8 @@ public class TileOverchanter extends TileEntity implements IInventory, IWandable
     }
 
     @Override
-    public int onWandRightClick(
-            World world, ItemStack wandstack, EntityPlayer player, int x, int y, int z, int side, int md) {
+    public int onWandRightClick(World world, ItemStack wandstack, EntityPlayer player, int x, int y, int z, int side,
+            int md) {
         if (canStartEnchanting()) {
             isEnchantingStarted = true;
             player.swingItem();

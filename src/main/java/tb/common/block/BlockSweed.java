@@ -2,6 +2,7 @@ package tb.common.block;
 
 import java.util.ArrayList;
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDirt;
 import net.minecraft.block.BlockGrass;
@@ -29,9 +30,11 @@ public class BlockSweed extends BlockTBPlant {
             int newX = x + dir.offsetX;
             int newZ = z + dir.offsetZ;
             int newY = findSutableY(w, newX, y, newZ);
-            if (canPlaceBlockOn(w.getBlock(newX, newY - 1, newZ))
-                    && w.isAirBlock(newX, newY, newZ)) // fix for the Sweeds destroying blocks
-            w.setBlock(newX, newY, newZ, this, 0, 3);
+            if (canPlaceBlockOn(w.getBlock(newX, newY - 1, newZ)) && w.isAirBlock(newX, newY, newZ)) // fix for the
+                                                                                                     // Sweeds
+                                                                                                     // destroying
+                                                                                                     // blocks
+                w.setBlock(newX, newY, newZ, this, 0, 3);
         }
     }
 

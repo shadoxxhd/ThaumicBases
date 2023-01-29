@@ -3,6 +3,7 @@ package tb.utils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraftforge.common.util.FakePlayer;
+
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.common.Thaumcraft;
 import thaumcraft.common.lib.network.PacketHandler;
@@ -14,16 +15,16 @@ public class TBUtils {
     public static void addAspectToKnowledgePool(EntityPlayer player, Aspect aspect, short amount) {
         Thaumcraft.proxy.playerKnowledge.addAspectPool(player.getCommandSenderName(), aspect, amount);
         ResearchManager.scheduleSave(player);
-        if (player instanceof EntityPlayerMP)
-            if (!(player instanceof FakePlayer)) {
-                PacketHandler.INSTANCE.sendTo(
-                        new PacketAspectPool(
-                                aspect.getTag(),
-                                Short.valueOf(amount),
-                                Short.valueOf(Thaumcraft.proxy.playerKnowledge.getAspectPoolFor(
-                                        player.getCommandSenderName(), aspect))),
-                        (EntityPlayerMP) player);
-            }
+        if (player instanceof EntityPlayerMP) if (!(player instanceof FakePlayer)) {
+            PacketHandler.INSTANCE.sendTo(
+                    new PacketAspectPool(
+                            aspect.getTag(),
+                            Short.valueOf(amount),
+                            Short.valueOf(
+                                    Thaumcraft.proxy.playerKnowledge
+                                            .getAspectPoolFor(player.getCommandSenderName(), aspect))),
+                    (EntityPlayerMP) player);
+        }
     }
 
     /**

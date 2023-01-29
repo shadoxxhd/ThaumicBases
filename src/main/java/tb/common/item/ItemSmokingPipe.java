@@ -6,9 +6,11 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
+
 import tb.api.ITobacco;
 
 public class ItemSmokingPipe extends Item {
+
     public boolean isSilverwood;
 
     public ItemSmokingPipe(boolean silverwood) {
@@ -44,9 +46,14 @@ public class ItemSmokingPipe extends Item {
         double x = player.posX + look.xCoord / 5;
         double y = player.posY + player.getEyeHeight() + look.yCoord / 5;
         double z = player.posZ + look.zCoord / 5;
-        if (count < 32)
-            player.worldObj.spawnParticle(
-                    isSilverwood ? "explode" : "smoke", x, y, z, look.xCoord / 10, look.yCoord / 10, look.zCoord / 10);
+        if (count < 32) player.worldObj.spawnParticle(
+                isSilverwood ? "explode" : "smoke",
+                x,
+                y,
+                z,
+                look.xCoord / 10,
+                look.yCoord / 10,
+                look.zCoord / 10);
     }
 
     public ItemStack onEaten(ItemStack stack, World w, EntityPlayer player) {
@@ -70,7 +77,13 @@ public class ItemSmokingPipe extends Item {
             double z = player.posZ + look.zCoord / 5;
 
             player.worldObj.spawnParticle(
-                    isSilverwood ? "explode" : "smoke", x, y, z, look.xCoord / 10, look.yCoord / 10, look.zCoord / 10);
+                    isSilverwood ? "explode" : "smoke",
+                    x,
+                    y,
+                    z,
+                    look.xCoord / 10,
+                    look.yCoord / 10,
+                    look.zCoord / 10);
         }
 
         return stack;

@@ -1,13 +1,14 @@
 package tb.network.proxy;
 
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.world.World;
+
+import tb.core.TBCore;
 import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 import io.netty.channel.ChannelHandler;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.world.World;
-import tb.core.TBCore;
 
 @ChannelHandler.Sharable
 public class TBNetworkManager implements IMessageHandler<PacketTB, IMessage> {
@@ -29,8 +30,8 @@ public class TBNetworkManager implements IMessageHandler<PacketTB, IMessage> {
         return null;
     }
 
-    public static void playSoundOnServer(
-            World w, String sound, double x, double y, double z, float volume, float pitch) {
+    public static void playSoundOnServer(World w, String sound, double x, double y, double z, float volume,
+            float pitch) {
         NBTTagCompound tg = new NBTTagCompound();
         tg.setString("snd", sound);
         tg.setDouble("x", x);

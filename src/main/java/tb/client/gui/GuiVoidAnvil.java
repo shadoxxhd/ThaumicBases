@@ -1,8 +1,7 @@
 package tb.client.gui;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -15,21 +14,32 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.play.client.C17PacketCustomPayload;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
+
 import org.apache.commons.io.Charsets;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
+
 import tb.common.inventory.ContainerVoidAnvil;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class GuiVoidAnvil extends GuiContainer implements ICrafting {
+
     private static final ResourceLocation field_147093_u = new ResourceLocation("textures/gui/container/anvil.png");
     private ContainerVoidAnvil field_147092_v;
     private GuiTextField field_147091_w;
     private InventoryPlayer field_147094_x;
 
     public GuiVoidAnvil(InventoryPlayer p_i1073_1_, World p_i1073_2_, int p_i1073_3_, int p_i1073_4_, int p_i1073_5_) {
-        super(new ContainerVoidAnvil(
-                p_i1073_1_, p_i1073_2_, p_i1073_3_, p_i1073_4_, p_i1073_5_, Minecraft.getMinecraft().thePlayer));
+        super(
+                new ContainerVoidAnvil(
+                        p_i1073_1_,
+                        p_i1073_2_,
+                        p_i1073_3_,
+                        p_i1073_4_,
+                        p_i1073_5_,
+                        Minecraft.getMinecraft().thePlayer));
         this.field_147094_x = p_i1073_1_;
         this.field_147092_v = (ContainerVoidAnvil) this.inventorySlots;
     }
@@ -71,8 +81,8 @@ public class GuiVoidAnvil extends GuiContainer implements ICrafting {
         if (this.field_147092_v.maximumCost > 0) {
             int k = 8453920;
             boolean flag = true;
-            String s = I18n.format(
-                    "container.repair.cost", new Object[] {Integer.valueOf(this.field_147092_v.maximumCost)});
+            String s = I18n
+                    .format("container.repair.cost", new Object[] { Integer.valueOf(this.field_147092_v.maximumCost) });
 
             if (this.field_147092_v.maximumCost >= 40 && !this.mc.thePlayer.capabilities.isCreativeMode) {
                 s = I18n.format("container.repair.expensive", new Object[0]);
@@ -119,16 +129,15 @@ public class GuiVoidAnvil extends GuiContainer implements ICrafting {
         String s = this.field_147091_w.getText();
         Slot slot = this.field_147092_v.getSlot(0);
 
-        if (slot != null
-                && slot.getHasStack()
+        if (slot != null && slot.getHasStack()
                 && !slot.getStack().hasDisplayName()
                 && s.equals(slot.getStack().getDisplayName())) {
             s = "";
         }
 
         this.field_147092_v.updateItemName(s);
-        this.mc.thePlayer.sendQueue.addToSendQueue(
-                new C17PacketCustomPayload("MC|ItemName", s.getBytes(Charsets.UTF_8)));
+        this.mc.thePlayer.sendQueue
+                .addToSendQueue(new C17PacketCustomPayload("MC|ItemName", s.getBytes(Charsets.UTF_8)));
     }
 
     /**
@@ -156,10 +165,14 @@ public class GuiVoidAnvil extends GuiContainer implements ICrafting {
         int l = (this.height - this.ySize) / 2;
         this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize);
         this.drawTexturedModalRect(
-                k + 59, l + 20, 0, this.ySize + (this.field_147092_v.getSlot(0).getHasStack() ? 0 : 16), 110, 16);
+                k + 59,
+                l + 20,
+                0,
+                this.ySize + (this.field_147092_v.getSlot(0).getHasStack() ? 0 : 16),
+                110,
+                16);
 
-        if ((this.field_147092_v.getSlot(0).getHasStack()
-                        || this.field_147092_v.getSlot(1).getHasStack())
+        if ((this.field_147092_v.getSlot(0).getHasStack() || this.field_147092_v.getSlot(1).getHasStack())
                 && !this.field_147092_v.getSlot(2).getHasStack()) {
             this.drawTexturedModalRect(k + 99, l + 45, this.xSize, 0, 28, 21);
         }

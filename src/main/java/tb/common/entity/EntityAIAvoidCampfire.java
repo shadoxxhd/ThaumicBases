@@ -9,6 +9,7 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
 public class EntityAIAvoidCampfire extends EntityAIBase {
+
     public boolean isScared;
     public int scareTimer;
     public int campfireX;
@@ -38,7 +39,10 @@ public class EntityAIAvoidCampfire extends EntityAIBase {
     public boolean shouldExecute() {
         if (isScared) {
             Vec3 vec3 = RandomPositionGenerator.findRandomTargetBlockAwayFrom(
-                    this.entityObj, 16, 10, Vec3.createVectorHelper(campfireX + 0.5D, campfireY, campfireZ + 0.5D));
+                    this.entityObj,
+                    16,
+                    10,
+                    Vec3.createVectorHelper(campfireX + 0.5D, campfireY, campfireZ + 0.5D));
 
             if (vec3 == null) return false;
 

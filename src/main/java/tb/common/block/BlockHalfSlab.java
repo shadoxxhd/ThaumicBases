@@ -1,9 +1,8 @@
 package tb.common.block;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.material.Material;
@@ -12,21 +11,16 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+
 import tb.init.TBBlocks;
 import thaumcraft.api.crafting.IInfusionStabiliser;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockHalfSlab extends BlockSlab implements IInfusionStabiliser {
 
-    public static Block[] parents = new Block[] {
-        TBBlocks.eldritchArk,
-        TBBlocks.oldBrick,
-        TBBlocks.oldCobble,
-        TBBlocks.oldCobbleMossy,
-        TBBlocks.oldDiamond,
-        TBBlocks.oldGold,
-        TBBlocks.oldIron,
-        TBBlocks.oldLapis
-    };
+    public static Block[] parents = new Block[] { TBBlocks.eldritchArk, TBBlocks.oldBrick, TBBlocks.oldCobble,
+            TBBlocks.oldCobbleMossy, TBBlocks.oldDiamond, TBBlocks.oldGold, TBBlocks.oldIron, TBBlocks.oldLapis };
 
     public BlockHalfSlab(boolean fullBlock, Material material) {
         super(fullBlock, material);
@@ -55,7 +49,7 @@ public class BlockHalfSlab extends BlockSlab implements IInfusionStabiliser {
         return parents[meta & 7].getIcon(side, 0);
     }
 
-    @SuppressWarnings({"unchecked", "rawtypes"})
+    @SuppressWarnings({ "unchecked", "rawtypes" })
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(Item itm, CreativeTabs tab, List lst) {
         for (int i = 0; i < parents.length; ++i) {

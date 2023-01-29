@@ -1,26 +1,18 @@
 package tb.common.item;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class ItemNodeFoci extends Item {
 
-    public static final String names[] = new String[] {
-        "brightness",
-        "destruction",
-        "efficiency",
-        "hunger",
-        "instability",
-        "purity",
-        "sinister",
-        "speed",
-        "stability",
-        "taint"
-    };
+    public static final String names[] = new String[] { "brightness", "destruction", "efficiency", "hunger",
+            "instability", "purity", "sinister", "speed", "stability", "taint" };
 
     public ItemNodeFoci() {
         super();
@@ -37,7 +29,7 @@ public class ItemNodeFoci extends Item {
         return super.getUnlocalizedName(is) + names[is.getItemDamage()].replace('/', '.');
     }
 
-    @SuppressWarnings({"rawtypes", "unchecked"})
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     @SideOnly(Side.CLIENT)
     public void getSubItems(Item itm, CreativeTabs tab, List lst) {
         for (int i = 0; i < names.length; ++i) lst.add(new ItemStack(itm, 1, i));

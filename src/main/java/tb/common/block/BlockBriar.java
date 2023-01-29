@@ -1,9 +1,8 @@
 package tb.common.block;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.ArrayList;
 import java.util.Random;
+
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
@@ -15,9 +14,13 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+
 import tb.init.TBItems;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockBriar extends BlockBush implements IGrowable {
+
     private IIcon[] doublePlantBottomIcons;
     private IIcon[] doublePlantTopIcons;
     public int growthStages;
@@ -103,10 +106,9 @@ public class BlockBriar extends BlockBush implements IGrowable {
     }
 
     public boolean canBlockStay(World w, int x, int y, int z) {
-        return !w.isAirBlock(x, y - 1, z)
-                && (w.getBlock(x, y - 1, z).isReplaceableOreGen(w, x, y - 1, z, Blocks.grass)
-                        || w.getBlock(x, y - 1, z).isReplaceableOreGen(w, x, y, z, Blocks.dirt)
-                        || w.getBlock(x, y - 1, z).canSustainPlant(w, x, y - 1, z, ForgeDirection.UP, this));
+        return !w.isAirBlock(x, y - 1, z) && (w.getBlock(x, y - 1, z).isReplaceableOreGen(w, x, y - 1, z, Blocks.grass)
+                || w.getBlock(x, y - 1, z).isReplaceableOreGen(w, x, y, z, Blocks.dirt)
+                || w.getBlock(x, y - 1, z).canSustainPlant(w, x, y - 1, z, ForgeDirection.UP, this));
     }
 
     public boolean isTopBlock(int meta) {

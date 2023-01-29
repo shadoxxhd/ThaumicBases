@@ -1,11 +1,9 @@
 package tb.common.tile;
 
-import DummyCore.Utils.Coord3D;
-import DummyCore.Utils.MiscUtils;
-import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -19,6 +17,7 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.oredict.OreDictionary;
+
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.nodes.INode;
@@ -30,8 +29,12 @@ import thaumcraft.common.entities.monster.EntityWisp;
 import thaumcraft.common.lib.network.PacketHandler;
 import thaumcraft.common.lib.network.fx.PacketFXBlockZap;
 import thaumcraft.common.tiles.TileNode;
+import DummyCore.Utils.Coord3D;
+import DummyCore.Utils.MiscUtils;
+import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
 
 public class TileNodeLinker extends TileEntity implements IWandable {
+
     public Coord3D linkCoord;
     public int syncTimer;
     public int instability;
@@ -50,7 +53,7 @@ public class TileNodeLinker extends TileEntity implements IWandable {
                 tg.setInteger("y", yCoord);
                 tg.setInteger("z", zCoord);
                 MiscUtils.syncTileEntity(tg, 0);
-            } else --syncTimer;
+            } else--syncTimer;
         }
 
         if (linkCoord != null) {
@@ -77,41 +80,38 @@ public class TileNodeLinker extends TileEntity implements IWandable {
                             if (this.worldObj.isRemote)
                                 Thaumcraft.proxy.beam(worldObj, sX, sY, sZ, eX, eY, eZ, 1, 0xffffff, false, 1, 1);
 
-                            if (this.worldObj.isRemote)
-                                Thaumcraft.proxy.nodeBolt(
-                                        worldObj,
-                                        (float) sX,
-                                        (float) (sY - 1.3F),
-                                        (float) sZ,
-                                        (float) sX,
-                                        (float) sY - 0.6F,
-                                        (float) sZ);
+                            if (this.worldObj.isRemote) Thaumcraft.proxy.nodeBolt(
+                                    worldObj,
+                                    (float) sX,
+                                    (float) (sY - 1.3F),
+                                    (float) sZ,
+                                    (float) sX,
+                                    (float) sY - 0.6F,
+                                    (float) sZ);
 
-                            if (this.worldObj.isRemote)
-                                Thaumcraft.proxy.nodeBolt(
-                                        worldObj,
-                                        (float) eX,
-                                        (float) eY - 0.6F,
-                                        (float) eZ,
-                                        (float) eX,
-                                        (float) eY - 1.3F,
-                                        (float) eZ);
+                            if (this.worldObj.isRemote) Thaumcraft.proxy.nodeBolt(
+                                    worldObj,
+                                    (float) eX,
+                                    (float) eY - 0.6F,
+                                    (float) eZ,
+                                    (float) eX,
+                                    (float) eY - 1.3F,
+                                    (float) eZ);
 
                             if (syncTimer % 10 == 0 && !this.worldObj.isRemote) {
                                 TileNode reciever = (TileNode) this.worldObj.getTileEntity(xCoord, yCoord - 1, zCoord);
                                 TileNode transmitter = (TileNode) this.worldObj.getTileEntity(x, y - 1, z);
-                                boolean isPushPerm = this.worldObj.rand.nextDouble() < 0.3D
-                                        ? true
+                                boolean isPushPerm = this.worldObj.rand.nextDouble() < 0.3D ? true
                                         : transmitter.getAspects().visSize() > 0 ? false : true;
-                                AspectList pullFrom =
-                                        isPushPerm ? transmitter.getAspectsBase() : transmitter.getAspects();
+                                AspectList pullFrom = isPushPerm ? transmitter.getAspectsBase()
+                                        : transmitter.getAspects();
                                 AspectList pushTo = isPushPerm ? reciever.getAspectsBase() : reciever.getAspects();
                                 if (pullFrom.visSize() <= 0) {
                                     this.worldObj.setBlockToAir(x, y - 1, z);
                                     return;
                                 } else {
-                                    Aspect randomAspect = pullFrom.getAspects()[
-                                            this.worldObj.rand.nextInt(pullFrom.getAspects().length)];
+                                    Aspect randomAspect = pullFrom.getAspects()[this.worldObj.rand
+                                            .nextInt(pullFrom.getAspects().length)];
                                     if (isPushPerm) {
                                         if (this.worldObj.rand.nextDouble() <= 0.7D) {
                                             if (instabilityCheck()) {
@@ -124,10 +124,8 @@ public class TileNodeLinker extends TileEntity implements IWandable {
                                         }
                                         ++instability;
                                     } else {
-                                        if (pushTo.getAmount(randomAspect) > 0
-                                                && pushTo.getAmount(randomAspect)
-                                                        <= reciever.getAspectsBase()
-                                                                .getAmount(randomAspect)) {
+                                        if (pushTo.getAmount(randomAspect) > 0 && pushTo.getAmount(randomAspect)
+                                                <= reciever.getAspectsBase().getAmount(randomAspect)) {
                                             if (instabilityCheck()) pushTo.add(randomAspect, 1);
 
                                             pullFrom.reduce(randomAspect, 1);
@@ -156,20 +154,17 @@ public class TileNodeLinker extends TileEntity implements IWandable {
             int rnd = this.worldObj.rand.nextInt(this.instability);
             if (rnd == 49) {
                 // if a block of Ichorium is above dont explode or harm node
-                if (!OreDictionary.doesOreNameExist("blockIchorium")
-                        || (OreDictionary.getOres("blockIchorium") != null
-                                && !(OreDictionary.getOres("blockIchorium")
-                                        .contains(new ItemStack(
-                                                this.worldObj.getBlock(this.xCoord, this.yCoord + 1, this.zCoord))))))
+                if (!OreDictionary.doesOreNameExist("blockIchorium") || (OreDictionary.getOres("blockIchorium") != null
+                        && !(OreDictionary.getOres("blockIchorium").contains(
+                                new ItemStack(this.worldObj.getBlock(this.xCoord, this.yCoord + 1, this.zCoord))))))
                     instability -= explodeTransmitter();
             } else {
                 if (rnd >= 45) {
                     // if a block of Ichorium is above dont explode or harm node
-                    if (!OreDictionary.doesOreNameExist("blockIchorium")
-                            || (OreDictionary.getOres("blockIchorium") != null
-                                    && !(OreDictionary.getOres("blockIchorium")
-                                            .contains(new ItemStack(this.worldObj.getBlock(
-                                                    this.xCoord, this.yCoord + 1, this.zCoord))))))
+                    if (!OreDictionary.doesOreNameExist("blockIchorium") || (OreDictionary.getOres("blockIchorium")
+                            != null
+                            && !(OreDictionary.getOres("blockIchorium").contains(
+                                    new ItemStack(this.worldObj.getBlock(this.xCoord, this.yCoord + 1, this.zCoord))))))
                         instability -= harmTransmitter();
                 } else {
                     if (rnd >= 31) {
@@ -219,7 +214,8 @@ public class TileNodeLinker extends TileEntity implements IWandable {
         int y = side ? MathHelper.floor_double(linkCoord.y) : yCoord;
         int z = side ? MathHelper.floor_double(linkCoord.z) : zCoord;
         List<EntityPlayer> players = this.worldObj.getEntitiesWithinAABB(
-                EntityPlayer.class, AxisAlignedBB.getBoundingBox(x - 5, y - 6, z - 5, x + 5, y + 4, z + 5));
+                EntityPlayer.class,
+                AxisAlignedBB.getBoundingBox(x - 5, y - 6, z - 5, x + 5, y + 4, z + 5));
         if (!players.isEmpty()) {
             EntityPlayer target = players.get(worldObj.rand.nextInt(players.size()));
             PacketHandler.INSTANCE.sendToAllAround(
@@ -315,15 +311,8 @@ public class TileNodeLinker extends TileEntity implements IWandable {
     }
 
     @Override
-    public int onWandRightClick(
-            World paramWorld,
-            ItemStack paramItemStack,
-            EntityPlayer paramEntityPlayer,
-            int paramInt1,
-            int paramInt2,
-            int paramInt3,
-            int paramInt4,
-            int paramInt5) {
+    public int onWandRightClick(World paramWorld, ItemStack paramItemStack, EntityPlayer paramEntityPlayer,
+            int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5) {
         // TODO Auto-generated method stub
         return 0;
     }
@@ -338,17 +327,19 @@ public class TileNodeLinker extends TileEntity implements IWandable {
             float y = paramItemStack.getTagCompound().getFloat("linkCoordY");
             float z = paramItemStack.getTagCompound().getFloat("linkCoordZ");
             if (this.worldObj.getTileEntity(
-                            MathHelper.floor_double(x), MathHelper.floor_double(y), MathHelper.floor_double(z))
-                    instanceof TileNodeLinker) {
+                    MathHelper.floor_double(x),
+                    MathHelper.floor_double(y),
+                    MathHelper.floor_double(z)) instanceof TileNodeLinker) {
                 TileNodeLinker tile = (TileNodeLinker) this.worldObj.getTileEntity(
-                        MathHelper.floor_double(x), MathHelper.floor_double(y), MathHelper.floor_double(z));
+                        MathHelper.floor_double(x),
+                        MathHelper.floor_double(y),
+                        MathHelper.floor_double(z));
                 tile.linkCoord = new Coord3D(xCoord, yCoord, zCoord);
                 paramItemStack.getTagCompound().removeTag("linkCoordX");
                 paramItemStack.getTagCompound().removeTag("linkCoordY");
                 paramItemStack.getTagCompound().removeTag("linkCoordZ");
-                if (paramWorld.isRemote)
-                    paramEntityPlayer.addChatMessage(
-                            new ChatComponentText(StatCollector.translateToLocal("tb.txt.linkEstabilished")));
+                if (paramWorld.isRemote) paramEntityPlayer.addChatMessage(
+                        new ChatComponentText(StatCollector.translateToLocal("tb.txt.linkEstabilished")));
 
                 return paramItemStack;
             }
@@ -357,9 +348,8 @@ public class TileNodeLinker extends TileEntity implements IWandable {
         paramItemStack.getTagCompound().setFloat("linkCoordX", xCoord);
         paramItemStack.getTagCompound().setFloat("linkCoordY", yCoord);
         paramItemStack.getTagCompound().setFloat("linkCoordZ", zCoord);
-        if (paramWorld.isRemote)
-            paramEntityPlayer.addChatMessage(
-                    new ChatComponentText(StatCollector.translateToLocal("tb.txt.linkStarted")));
+        if (paramWorld.isRemote) paramEntityPlayer
+                .addChatMessage(new ChatComponentText(StatCollector.translateToLocal("tb.txt.linkStarted")));
 
         return paramItemStack;
     }
@@ -371,8 +361,8 @@ public class TileNodeLinker extends TileEntity implements IWandable {
     }
 
     @Override
-    public void onWandStoppedUsing(
-            ItemStack paramItemStack, World paramWorld, EntityPlayer paramEntityPlayer, int paramInt) {
+    public void onWandStoppedUsing(ItemStack paramItemStack, World paramWorld, EntityPlayer paramEntityPlayer,
+            int paramInt) {
         // TODO Auto-generated method stub
 
     }

@@ -1,10 +1,8 @@
 package tb.common.block;
 
-import com.mojang.authlib.GameProfile;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
 import java.util.UUID;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -21,14 +19,20 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.util.FakePlayer;
+
 import tb.init.TBItems;
 import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.items.armor.ItemVoidArmor;
 
+import com.mojang.authlib.GameProfile;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class BlockSpike extends Block {
 
-    public static final String[] spikeNames =
-            new String[] {"iron", "iron_bloody", "thaumic", "thaumic_bloody", "void", "void_bloody"};
+    public static final String[] spikeNames = new String[] { "iron", "iron_bloody", "thaumic", "thaumic_bloody", "void",
+            "void_bloody" };
 
     public static IIcon[] icons = new IIcon[spikeNames.length];
 
@@ -67,7 +71,7 @@ public class BlockSpike extends Block {
         for (int i = 0; i < icons.length; ++i) icons[i] = reg.registerIcon("thaumicbases:spike/" + spikeNames[i]);
     }
 
-    @SuppressWarnings({"unchecked", "rawtypes"})
+    @SuppressWarnings({ "unchecked", "rawtypes" })
     public void getSubBlocks(Item par1, CreativeTabs par2CreativeTabs, List par3List) {
         par3List.add(new ItemStack(par1, 1, 0));
         par3List.add(new ItemStack(par1, 1, 2));
@@ -115,8 +119,8 @@ public class BlockSpike extends Block {
         }
     }
 
-    public boolean onBlockActivated(
-            World w, int x, int y, int z, EntityPlayer player, int side, float vecX, float vecY, float vecZ) {
+    public boolean onBlockActivated(World w, int x, int y, int z, EntityPlayer player, int side, float vecX, float vecY,
+            float vecZ) {
         int meta = w.getBlockMetadata(x, y, z);
         if (meta != 1 && meta != 3 && meta != 5) return false;
 

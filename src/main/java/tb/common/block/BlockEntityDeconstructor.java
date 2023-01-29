@@ -9,6 +9,7 @@ import net.minecraft.util.ChatStyle;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
+
 import tb.common.itemblock.ItemBlockCrystal;
 import tb.common.tile.TileEntityDeconstructor;
 import thaumcraft.common.lib.research.ResearchManager;
@@ -38,8 +39,8 @@ public class BlockEntityDeconstructor extends BlockContainer {
         return -1;
     }
 
-    public boolean onBlockActivated(
-            World w, int x, int y, int z, EntityPlayer p, int side, float vecX, float vecY, float vecZ) {
+    public boolean onBlockActivated(World w, int x, int y, int z, EntityPlayer p, int side, float vecX, float vecY,
+            float vecZ) {
         if (p.getCurrentEquippedItem() != null) {
             if (p.getCurrentEquippedItem().getItem() instanceof ItemBlockCrystal) {
                 if (ResearchManager.isResearchComplete(p.getCommandSenderName(), "TB.EntityDecAdv"))
@@ -98,9 +99,9 @@ public class BlockEntityDeconstructor extends BlockContainer {
                     }
             }
         }
-        if (p.worldObj.isRemote)
-            p.addChatMessage(new ChatComponentText(StatCollector.translateToLocal("tb.txt.linkEntDecon"))
-                    .setChatStyle(new ChatStyle().setItalic(true).setColor(EnumChatFormatting.AQUA)));
+        if (p.worldObj.isRemote) p.addChatMessage(
+                new ChatComponentText(StatCollector.translateToLocal("tb.txt.linkEntDecon"))
+                        .setChatStyle(new ChatStyle().setItalic(true).setColor(EnumChatFormatting.AQUA)));
 
         TileEntityDeconstructor.class.cast(w.getTileEntity(x, y, z)).placerName = p.getCommandSenderName();
         return true;

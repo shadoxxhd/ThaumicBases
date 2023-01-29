@@ -1,8 +1,7 @@
 package tb.common.tile;
 
-import DummyCore.Utils.MathUtils;
-import DummyCore.Utils.MiscUtils;
 import java.util.List;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -16,6 +15,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
+
 import tb.utils.TBUtils;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -24,6 +24,8 @@ import thaumcraft.common.Thaumcraft;
 import thaumcraft.common.lib.crafting.ThaumcraftCraftingManager;
 import thaumcraft.common.lib.research.ResearchManager;
 import thaumcraft.common.lib.research.ScanManager;
+import DummyCore.Utils.MathUtils;
+import DummyCore.Utils.MiscUtils;
 
 public class TileEntityDeconstructor extends TileEntity {
 
@@ -71,9 +73,14 @@ public class TileEntityDeconstructor extends TileEntity {
 
     @SuppressWarnings("unchecked")
     public void updateEntity() {
-        if (!this.worldObj.isRemote && tickTime == 0)
-            MiscUtils.sendPacketToAllAround(
-                    worldObj, getDescriptionPacket(), xCoord, yCoord, zCoord, worldObj.provider.dimensionId, 16);
+        if (!this.worldObj.isRemote && tickTime == 0) MiscUtils.sendPacketToAllAround(
+                worldObj,
+                getDescriptionPacket(),
+                xCoord,
+                yCoord,
+                zCoord,
+                worldObj.provider.dimensionId,
+                16);
 
         int additionalStability = 0;
 
@@ -87,7 +94,8 @@ public class TileEntityDeconstructor extends TileEntity {
         if (placerName == null || placerName.isEmpty() || placerName.contains("no placer")) return;
 
         List<Entity> entities = this.worldObj.getEntitiesWithinAABB(
-                Entity.class, AxisAlignedBB.getBoundingBox(xCoord, yCoord, zCoord, xCoord + 1, yCoord + 1, zCoord + 1));
+                Entity.class,
+                AxisAlignedBB.getBoundingBox(xCoord, yCoord, zCoord, xCoord + 1, yCoord + 1, zCoord + 1));
         if (!entities.isEmpty()) {
             Entity e = entities.get(0);
             if (e != null && !e.isDead) {
@@ -108,13 +116,11 @@ public class TileEntityDeconstructor extends TileEntity {
 
                                     AspectList primals = ResearchManager.reduceToPrimals(aspectsCompound);
                                     Aspect a = null;
-                                    if (this.worldObj.rand.nextInt(40) < primals.visSize())
-                                        a = primals.getAspects()[
-                                                this.worldObj.rand.nextInt(primals.getAspects().length)];
+                                    if (this.worldObj.rand.nextInt(40) < primals.visSize()) a = primals
+                                            .getAspects()[this.worldObj.rand.nextInt(primals.getAspects().length)];
 
                                     if (!this.worldObj.isRemote && a != null) {
-                                        EntityPlayerMP player = MinecraftServer.getServer()
-                                                .getConfigurationManager()
+                                        EntityPlayerMP player = MinecraftServer.getServer().getConfigurationManager()
                                                 .func_152612_a(placerName);
                                         if (player != null) {
                                             double distance = player.getDistance(xCoord + 0.5D, yCoord, zCoord + 0.5D);
@@ -157,8 +163,7 @@ public class TileEntityDeconstructor extends TileEntity {
                             Aspect a = aspectsCompound.getAspects()[this.worldObj.rand.nextInt(aspectsCompound.size())];
 
                             if (!this.worldObj.isRemote) {
-                                EntityPlayerMP player = MinecraftServer.getServer()
-                                        .getConfigurationManager()
+                                EntityPlayerMP player = MinecraftServer.getServer().getConfigurationManager()
                                         .func_152612_a(placerName);
                                 if (player != null) {
                                     double distance = player.getDistance(xCoord + 0.5D, yCoord, zCoord + 0.5D);

@@ -1,6 +1,7 @@
 package tb.client.render.tile;
 
 import java.awt.Color;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemRenderer;
 import net.minecraft.client.renderer.Tessellator;
@@ -9,24 +10,23 @@ import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
+
 import org.lwjgl.opengl.GL11;
+
 import tb.common.tile.TileOverchanter;
 
 public class RenderOverchanter extends TileEntitySpecialRenderer {
 
     @Override
-    public void renderTileEntityAt(
-            TileEntity tile, double screenX, double screenY, double screenZ, float partialTicks) {
+    public void renderTileEntityAt(TileEntity tile, double screenX, double screenY, double screenZ,
+            float partialTicks) {
         TileOverchanter overchanter = (TileOverchanter) tile;
 
-        /*if(overchanter.inventory != null)
-        {
-        	GL11.glPushMatrix();
-
-        	MiscUtils.renderItemStack_Full(overchanter.inventory, 0, 0, 0, screenX, screenY, screenZ, tile.getWorldObj().getWorldTime()%360, 0, 1, 1, 1, 0.5F, 0.9F, 0.5F);
-
-        	GL11.glPopMatrix();
-        }*/
+        /*
+         * if(overchanter.inventory != null) { GL11.glPushMatrix();
+         * MiscUtils.renderItemStack_Full(overchanter.inventory, 0, 0, 0, screenX, screenY, screenZ,
+         * tile.getWorldObj().getWorldTime()%360, 0, 1, 1, 1, 0.5F, 0.9F, 0.5F); GL11.glPopMatrix(); }
+         */
 
         GL11.glPushMatrix();
         GL11.glTranslated(screenX, screenY + 0.75, screenZ);
@@ -53,7 +53,14 @@ public class RenderOverchanter extends TileEntitySpecialRenderer {
                     float f2 = icon.getMinV();
                     float f3 = icon.getMaxV();
                     ItemRenderer.renderItemIn2D(
-                            Tessellator.instance, f1, f2, f, f3, icon.getIconWidth(), icon.getIconHeight(), 1F / 16F);
+                            Tessellator.instance,
+                            f1,
+                            f2,
+                            f,
+                            f3,
+                            icon.getIconWidth(),
+                            icon.getIconHeight(),
+                            1F / 16F);
                     GL11.glColor3f(1F, 1F, 1F);
                 }
                 renderPass++;
@@ -63,13 +70,10 @@ public class RenderOverchanter extends TileEntitySpecialRenderer {
 
         GL11.glPopMatrix();
 
-        /*if(overchanter.renderedLightning != null)
-        {
-        	GL11.glPushMatrix();
-
-        	overchanter.renderedLightning.render(screenX+0.5D, screenY+1D, screenZ+0.5D, partialTicks);
-
-        	GL11.glPopMatrix();
-        }*/
+        /*
+         * if(overchanter.renderedLightning != null) { GL11.glPushMatrix();
+         * overchanter.renderedLightning.render(screenX+0.5D, screenY+1D, screenZ+0.5D, partialTicks);
+         * GL11.glPopMatrix(); }
+         */
     }
 }

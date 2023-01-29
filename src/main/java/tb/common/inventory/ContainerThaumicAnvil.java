@@ -1,9 +1,8 @@
 package tb.common.inventory;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.Iterator;
 import java.util.Map;
+
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
@@ -18,13 +17,18 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
+
 import org.apache.commons.lang3.StringUtils;
+
 import tb.init.TBBlocks;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ContainerThaumicAnvil extends ContainerRepair {
 
     private IInventory outputSlot = new InventoryCraftResult();
     private IInventory inputSlots = new InventoryBasic("Repair", true, 2) {
+
         public void markDirty() {
             super.markDirty();
             ContainerThaumicAnvil.this.onCraftMatrixChanged(this);
@@ -58,13 +62,14 @@ public class ContainerThaumicAnvil extends ContainerRepair {
         this.addSlotToContainer(new Slot(this.inputSlots, 0, 27, 47));
         this.addSlotToContainer(new Slot(this.inputSlots, 1, 76, 47));
         this.addSlotToContainer(new Slot(this.outputSlot, 2, 134, 47) {
+
             public boolean isItemValid(ItemStack stk) {
                 return false;
             }
 
             public boolean canTakeStack(EntityPlayer p_82869_1_) {
                 return (p_82869_1_.capabilities.isCreativeMode
-                                || p_82869_1_.experienceLevel >= ContainerThaumicAnvil.this.maximumCost)
+                        || p_82869_1_.experienceLevel >= ContainerThaumicAnvil.this.maximumCost)
                         && ContainerThaumicAnvil.this.maximumCost > 0
                         && this.getHasStack();
             }
@@ -75,11 +80,10 @@ public class ContainerThaumicAnvil extends ContainerRepair {
                 }
 
                 float breakChance = ForgeHooks.onAnvilRepair(
-                                p_82870_1_,
-                                p_82870_2_,
-                                ContainerThaumicAnvil.this.inputSlots.getStackInSlot(0),
-                                ContainerThaumicAnvil.this.inputSlots.getStackInSlot(1))
-                        / 3;
+                        p_82870_1_,
+                        p_82870_2_,
+                        ContainerThaumicAnvil.this.inputSlots.getStackInSlot(0),
+                        ContainerThaumicAnvil.this.inputSlots.getStackInSlot(1)) / 3;
 
                 ContainerThaumicAnvil.this.inputSlots.setInventorySlotContents(0, (ItemStack) null);
 
@@ -99,8 +103,7 @@ public class ContainerThaumicAnvil extends ContainerRepair {
 
                 ContainerThaumicAnvil.this.maximumCost = 0;
 
-                if (!p_82870_1_.capabilities.isCreativeMode
-                        && !fw.isRemote
+                if (!p_82870_1_.capabilities.isCreativeMode && !fw.isRemote
                         && fw.getBlock(fx, fy, fz) == TBBlocks.thaumicAnvil
                         && p_82870_1_.getRNG().nextFloat() < breakChance) {
                     int i1 = fw.getBlockMetadata(fx, fy, fz);
@@ -142,7 +145,7 @@ public class ContainerThaumicAnvil extends ContainerRepair {
         }
     }
 
-    @SuppressWarnings({"unchecked", "rawtypes"})
+    @SuppressWarnings({ "unchecked", "rawtypes" })
     public void updateRepairOutput() {
         ItemStack itemstack = this.inputSlots.getStackInSlot(0);
         this.maximumCost = 0;
@@ -221,8 +224,7 @@ public class ContainerThaumicAnvil extends ContainerRepair {
                     while (iterator1.hasNext()) {
                         i1 = ((Integer) iterator1.next()).intValue();
                         enchantment = Enchantment.enchantmentsList[i1];
-                        k1 = map.containsKey(Integer.valueOf(i1))
-                                ? ((Integer) map.get(Integer.valueOf(i1))).intValue()
+                        k1 = map.containsKey(Integer.valueOf(i1)) ? ((Integer) map.get(Integer.valueOf(i1))).intValue()
                                 : 0;
                         l1 = ((Integer) map1.get(Integer.valueOf(i1))).intValue();
                         int i3;
@@ -248,10 +250,13 @@ public class ContainerThaumicAnvil extends ContainerRepair {
                             int j2 = ((Integer) iterator.next()).intValue();
 
                             Enchantment e2 = Enchantment.enchantmentsList[j2];
-                            if (j2 != i1
-                                    && !(enchantment.canApplyTogether(e2)
-                                            && e2.canApplyTogether(
-                                                    enchantment))) // Forge BugFix: Let Both enchantments veto being
+                            if (j2 != i1 && !(enchantment.canApplyTogether(e2) && e2.canApplyTogether(enchantment))) // Forge
+                                                                                                                     // BugFix:
+                                                                                                                     // Let
+                                                                                                                     // Both
+                                                                                                                     // enchantments
+                                                                                                                     // veto
+                                                                                                                     // being
                             // together
                             {
                                 flag1 = false;
@@ -422,8 +427,7 @@ public class ContainerThaumicAnvil extends ContainerRepair {
     }
 
     public boolean canInteractWith(EntityPlayer p_75145_1_) {
-        return this.w.getBlock(this.x, this.y, this.z) != TBBlocks.thaumicAnvil
-                ? false
+        return this.w.getBlock(this.x, this.y, this.z) != TBBlocks.thaumicAnvil ? false
                 : p_75145_1_.getDistanceSq((double) this.x + 0.5D, (double) this.y + 0.5D, (double) this.z + 0.5D)
                         <= 64.0D;
     }

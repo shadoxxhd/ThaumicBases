@@ -1,12 +1,14 @@
 package tb.common.item;
 
 import java.util.List;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
+
 import thaumcraft.api.IRepairable;
 import thaumcraft.api.IRunicArmor;
 import thaumcraft.api.IVisDiscountGear;
@@ -22,8 +24,7 @@ public class ItemThauminiteArmor extends ItemArmor implements IRepairable, IVisD
     }
 
     public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
-        return slot == 2
-                ? "thaumicbases:textures/items/armor/thauminite/thauminite_2.png"
+        return slot == 2 ? "thaumicbases:textures/items/armor/thauminite/thauminite_2.png"
                 : "thaumicbases:textures/items/armor/thauminite/thauminite_1.png";
     }
 
@@ -32,17 +33,20 @@ public class ItemThauminiteArmor extends ItemArmor implements IRepairable, IVisD
         return discount[aType];
     }
 
-    static final int[] discount = new int[] {5, 2, 3, 1};
+    static final int[] discount = new int[] { 5, 2, 3, 1 };
 
     @Override
     public int getRunicCharge(ItemStack itemstack) {
         return 0;
     }
 
-    @SuppressWarnings({"unchecked", "rawtypes"})
+    @SuppressWarnings({ "unchecked", "rawtypes" })
     public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
-        list.add(EnumChatFormatting.DARK_PURPLE + StatCollector.translateToLocal("tc.visdiscount") + ": "
-                + getVisDiscount(stack, player, null) + "%");
+        list.add(
+                EnumChatFormatting.DARK_PURPLE + StatCollector.translateToLocal("tc.visdiscount")
+                        + ": "
+                        + getVisDiscount(stack, player, null)
+                        + "%");
         super.addInformation(stack, player, list, par4);
     }
 }

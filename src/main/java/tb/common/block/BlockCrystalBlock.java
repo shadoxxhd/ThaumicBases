@@ -1,8 +1,7 @@
 package tb.common.block;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -11,14 +10,17 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+
 import thaumcraft.api.crafting.IInfusionStabiliser;
 import thaumcraft.common.blocks.CustomStepSound;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockCrystalBlock extends Block implements IInfusionStabiliser {
 
     public static IIcon[] icons = new IIcon[8];
-    public static final String[] names =
-            new String[] {"air", "fire", "water", "earth", "order", "entropy", "mixed", "tainted"};
+    public static final String[] names = new String[] { "air", "fire", "water", "earth", "order", "entropy", "mixed",
+            "tainted" };
 
     public BlockCrystalBlock() {
         super(Material.glass);
@@ -28,7 +30,7 @@ public class BlockCrystalBlock extends Block implements IInfusionStabiliser {
         setStepSound(new CustomStepSound("crystal", 1.0F, 1.0F));
     }
 
-    @SuppressWarnings({"unchecked", "rawtypes"})
+    @SuppressWarnings({ "unchecked", "rawtypes" })
     public void getSubBlocks(Item par1, CreativeTabs par2CreativeTabs, List par3List) {
         for (int i = 0; i < 8; ++i) par3List.add(new ItemStack(par1, 1, i));
     }

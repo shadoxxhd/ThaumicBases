@@ -1,13 +1,10 @@
 package tb.common.item;
 
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Multimap;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.UUID;
+
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -30,9 +27,16 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
+
 import tb.core.TBCore;
 import thaumcraft.api.IRepairable;
 import thaumcraft.api.IWarpingGear;
+
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemHerobrinesScythe extends ItemSword implements IRepairable, IWarpingGear {
 
@@ -44,32 +48,31 @@ public class ItemHerobrinesScythe extends ItemSword implements IRepairable, IWar
         return EnumRarity.uncommon;
     }
 
-    @SuppressWarnings({"unchecked", "rawtypes"})
+    @SuppressWarnings({ "unchecked", "rawtypes" })
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer player, List lst, boolean held) {
-        lst.add(EnumChatFormatting.ITALIC
-                + "Well, they're nothing..."); // Do not translate this line, it is a reference to TheAtlanticCraft's
+        lst.add(EnumChatFormatting.ITALIC + "Well, they're nothing..."); // Do not translate this line, it is a
+                                                                         // reference to TheAtlanticCraft's
         // song - The Herobrine
     }
 
     public void onUpdate(ItemStack stk, World w, Entity entity, int slot, boolean held) {
         super.onUpdate(stk, w, entity, slot, held);
-        if ((stk.isItemDamaged())
-                && (entity != null)
+        if ((stk.isItemDamaged()) && (entity != null)
                 && (entity.ticksExisted % 20 == 0)
-                && ((entity instanceof EntityLivingBase))) stk.damageItem(-1, (EntityLivingBase) entity);
+                && ((entity instanceof EntityLivingBase)))
+            stk.damageItem(-1, (EntityLivingBase) entity);
     }
 
     @SuppressWarnings("unchecked")
     public static void attack(EntityPlayer attacker, List<EntityLivingBase> doNotAttack, EntityLivingBase attacked) {
         AxisAlignedBB aabb = AxisAlignedBB.getBoundingBox(
-                        attacked.posX - 1,
-                        attacked.posY - 1,
-                        attacked.posZ - 1,
-                        attacked.posX + 1,
-                        attacked.posY + 1,
-                        attacked.posZ + 1)
-                .expand(6, 6, 6);
+                attacked.posX - 1,
+                attacked.posY - 1,
+                attacked.posZ - 1,
+                attacked.posX + 1,
+                attacked.posY + 1,
+                attacked.posZ + 1).expand(6, 6, 6);
 
         List<EntityLivingBase> mobs = attacked.worldObj.getEntitiesWithinAABB(EntityLivingBase.class, aabb);
 
@@ -80,8 +83,7 @@ public class ItemHerobrinesScythe extends ItemSword implements IRepairable, IWar
         if (!mobs.isEmpty()) {
             while (!mobs.isEmpty()) {
                 int index = rnd.nextInt(mobs.size());
-                if (mobs.get(index) != null
-                        && mobs.get(index).isEntityAlive()
+                if (mobs.get(index) != null && mobs.get(index).isEntityAlive()
                         && mobs.get(index) instanceof IMob
                         && !(mobs.get(index) instanceof EntityPlayer)) {
                     performPlayerAttackAt(attacker, mobs.get(index));
@@ -92,8 +94,7 @@ public class ItemHerobrinesScythe extends ItemSword implements IRepairable, IWar
                             attacked.posY + rnd.nextDouble() * attacked.getEyeHeight(),
                             attacked.posZ,
                             mobs.get(index).posX,
-                            mobs.get(index).posY
-                                    + rnd.nextDouble() * mobs.get(index).getEyeHeight(),
+                            mobs.get(index).posY + rnd.nextDouble() * mobs.get(index).getEyeHeight(),
                             mobs.get(index).posZ,
                             20,
                             2F,
@@ -124,8 +125,10 @@ public class ItemHerobrinesScythe extends ItemSword implements IRepairable, IWar
     }
 
     /**
-     * Copied from {@link EntityPlayer#attackTargetEntityWithCurrentItem(Entity)} to not call the {@link #onLeftClickEntity(ItemStack, EntityPlayer, Entity)}
-     * @param p the player
+     * Copied from {@link EntityPlayer#attackTargetEntityWithCurrentItem(Entity)} to not call the
+     * {@link #onLeftClickEntity(ItemStack, EntityPlayer, Entity)}
+     * 
+     * @param p          the player
      * @param p_71059_1_ attacked entity
      */
     public static void performPlayerAttackAt(EntityPlayer p, Entity p_71059_1_) {
@@ -135,8 +138,7 @@ public class ItemHerobrinesScythe extends ItemSword implements IRepairable, IWar
 
         if (p_71059_1_.canAttackWithItem()) {
             if (!p_71059_1_.hitByEntity(p)) {
-                float f = (float) p.getEntityAttribute(SharedMonsterAttributes.attackDamage)
-                        .getAttributeValue();
+                float f = (float) p.getEntityAttribute(SharedMonsterAttributes.attackDamage).getAttributeValue();
                 int i = 0;
                 float f1 = 0.0F;
 
@@ -150,8 +152,7 @@ public class ItemHerobrinesScythe extends ItemSword implements IRepairable, IWar
                 }
 
                 if (f > 0.0F || f1 > 0.0F) {
-                    boolean flag = p.fallDistance > 0.0F
-                            && !p.onGround
+                    boolean flag = p.fallDistance > 0.0F && !p.onGround
                             && !p.isOnLadder()
                             && !p.isInWater()
                             && !p.isPotionActive(Potion.blindness)
@@ -176,12 +177,10 @@ public class ItemHerobrinesScythe extends ItemSword implements IRepairable, IWar
                     if (flag2) {
                         if (i > 0) {
                             p_71059_1_.addVelocity(
-                                    (double) (-MathHelper.sin(p.rotationYaw * (float) Math.PI / 180.0F)
-                                            * (float) i
+                                    (double) (-MathHelper.sin(p.rotationYaw * (float) Math.PI / 180.0F) * (float) i
                                             * 0.5F),
                                     0.1D,
-                                    (double) (MathHelper.cos(p.rotationYaw * (float) Math.PI / 180.0F)
-                                            * (float) i
+                                    (double) (MathHelper.cos(p.rotationYaw * (float) Math.PI / 180.0F) * (float) i
                                             * 0.5F));
                             p.motionX *= 0.6D;
                             p.motionZ *= 0.6D;
@@ -247,18 +246,24 @@ public class ItemHerobrinesScythe extends ItemSword implements IRepairable, IWar
         return 3;
     }
 
-    @SuppressWarnings({"rawtypes", "unchecked"})
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     public Multimap getAttributeModifiers(ItemStack stack) {
         Multimap attribs = HashMultimap.create();
 
         attribs.put(
                 SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(),
                 new AttributeModifier(
-                        UUID.fromString("CB3F55D3-645C-4F38-A497-9C13A33DB5CF"), "Weapon modifier", 14.5F, 0));
+                        UUID.fromString("CB3F55D3-645C-4F38-A497-9C13A33DB5CF"),
+                        "Weapon modifier",
+                        14.5F,
+                        0));
         attribs.put(
                 SharedMonsterAttributes.movementSpeed.getAttributeUnlocalizedName(),
                 new AttributeModifier(
-                        UUID.fromString("CB3F55D3-645C-4F38-A497-9C13A33DB5CE"), "Speed modifier", 0.5F, 2));
+                        UUID.fromString("CB3F55D3-645C-4F38-A497-9C13A33DB5CE"),
+                        "Speed modifier",
+                        0.5F,
+                        2));
 
         return attribs;
     }

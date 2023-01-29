@@ -1,9 +1,11 @@
 package tb.common.block;
 
 import java.util.ArrayList;
+
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+
 import tb.init.TBBlocks;
 import tb.init.TBItems;
 

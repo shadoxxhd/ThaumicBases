@@ -2,6 +2,7 @@ package tb.common.tile;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLog;
 import net.minecraft.entity.EntityCreature;
@@ -15,10 +16,12 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraftforge.oredict.OreDictionary;
+
 import tb.common.entity.EntityAIAvoidCampfire;
 import thaumcraft.common.config.ConfigBlocks;
 
 public class TileCampfire extends TileEntity {
+
     public int burnTime;
     public int logTime;
     public int uptime;
@@ -91,7 +94,7 @@ public class TileCampfire extends TileEntity {
         return true;
     }
 
-    @SuppressWarnings({"unchecked", "rawtypes"})
+    @SuppressWarnings({ "unchecked", "rawtypes" })
     public void updateEntity() {
         ++uptime;
 

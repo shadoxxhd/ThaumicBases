@@ -1,7 +1,7 @@
 package tb.common.entity;
 
-import DummyCore.Utils.Pair;
 import java.util.ArrayList;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -13,11 +13,14 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.MovingObjectPosition.MovingObjectType;
 import net.minecraft.world.World;
+
 import tb.api.RevolverUpgrade;
 import tb.common.item.ItemRevolver;
 import thaumcraft.common.Thaumcraft;
+import DummyCore.Utils.Pair;
 
 public class EntityRevolverBullet extends EntityThrowable {
+
     public Entity shooter;
     public ItemStack revolver;
     ArrayList<Pair<RevolverUpgrade, Integer>> upgrades;
@@ -39,8 +42,8 @@ public class EntityRevolverBullet extends EntityThrowable {
                 if (!allowNoclip)
                     allowNoclip = p.getFirst().bulletNoclip((EntityPlayer) shooter, revolver, p.getSecond());
 
-                speedIndex =
-                        (float) p.getFirst().modifySpeed((EntityPlayer) shooter, revolver, speedIndex, p.getSecond());
+                speedIndex = (float) p.getFirst()
+                        .modifySpeed((EntityPlayer) shooter, revolver, speedIndex, p.getSecond());
 
                 if (p.getFirst() == RevolverUpgrade.primal) isPrimal = true;
             }
@@ -59,12 +62,14 @@ public class EntityRevolverBullet extends EntityThrowable {
     public void onUpdate() {
         if (this.worldObj.isRemote) Thaumcraft.proxy.sparkle((float) posX, (float) posY, (float) posZ, 4);
 
-        if (this.worldObj.isRemote)
-            Thaumcraft.proxy.sparkle(
-                    (float) (posX - motionX / 20), (float) (posY - motionY / 20), (float) (posZ - motionZ / 20), 4);
+        if (this.worldObj.isRemote) Thaumcraft.proxy.sparkle(
+                (float) (posX - motionX / 20),
+                (float) (posY - motionY / 20),
+                (float) (posZ - motionZ / 20),
+                4);
 
         if (this.ticksExisted >= 200) // <- loop exit for primal
-        this.setDead();
+            this.setDead();
 
         super.onUpdate();
 
@@ -90,15 +95,14 @@ public class EntityRevolverBullet extends EntityThrowable {
                 Block b = this.worldObj.getBlock(object.blockX, object.blockY, object.blockZ);
                 int meta = this.worldObj.getBlockMetadata(object.blockX, object.blockY, object.blockZ);
 
-                for (int i = 0; i < 100; ++i)
-                    this.worldObj.spawnParticle(
-                            "blockcrack_" + Block.getIdFromBlock(b) + "_" + meta,
-                            object.blockX + worldObj.rand.nextDouble(),
-                            object.blockY + worldObj.rand.nextDouble(),
-                            object.blockZ + worldObj.rand.nextDouble(),
-                            0,
-                            0,
-                            0);
+                for (int i = 0; i < 100; ++i) this.worldObj.spawnParticle(
+                        "blockcrack_" + Block.getIdFromBlock(b) + "_" + meta,
+                        object.blockX + worldObj.rand.nextDouble(),
+                        object.blockY + worldObj.rand.nextDouble(),
+                        object.blockZ + worldObj.rand.nextDouble(),
+                        0,
+                        0,
+                        0);
 
                 worldObj.playSound(
                         object.blockX + 0.5D,
@@ -126,9 +130,8 @@ public class EntityRevolverBullet extends EntityThrowable {
                 boolean destroy = true;
 
                 for (Pair<RevolverUpgrade, Integer> p : upgrades) {
-                    if (destroy)
-                        destroy = p.getFirst()
-                                .afterhit(elb, (EntityPlayer) shooter, revolver, initialDamage, p.getSecond());
+                    if (destroy) destroy = p.getFirst()
+                            .afterhit(elb, (EntityPlayer) shooter, revolver, initialDamage, p.getSecond());
                     else p.getFirst().afterhit(elb, (EntityPlayer) shooter, revolver, initialDamage, p.getSecond());
                 }
 

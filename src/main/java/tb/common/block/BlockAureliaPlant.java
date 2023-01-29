@@ -1,8 +1,7 @@
 package tb.common.block;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDirt;
 import net.minecraft.block.BlockGrass;
@@ -13,7 +12,10 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+
 import tb.init.TBBlocks;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockAureliaPlant extends Block {
 
@@ -55,10 +57,13 @@ public class BlockAureliaPlant extends Block {
             // int newX = x+dir.offsetX;
             // int newZ = z+dir.offsetZ;
             int newY = findSutableY(w, rndX, y, rndZ);
-            if (canPlaceBlockOn(w.getBlock(rndX, newY - 1, rndZ))
-                    && w.isAirBlock(
-                            rndX, newY, rndZ)) // fix for the Sweeds destroying blocks. Totally not copy-pasted code...
-            w.setBlock(rndX, newY, rndZ, TBBlocks.aureliaPetal, 0, 3);
+            if (canPlaceBlockOn(w.getBlock(rndX, newY - 1, rndZ)) && w.isAirBlock(rndX, newY, rndZ)) // fix for the
+                                                                                                     // Sweeds
+                                                                                                     // destroying
+                                                                                                     // blocks. Totally
+                                                                                                     // not copy-pasted
+                                                                                                     // code...
+                w.setBlock(rndX, newY, rndZ, TBBlocks.aureliaPetal, 0, 3);
         }
     }
 
@@ -89,8 +94,8 @@ public class BlockAureliaPlant extends Block {
         return 0;
     }
 
-    public AxisAlignedBB getCollisionBoundingBoxFromPool(
-            World p_149668_1_, int p_149668_2_, int p_149668_3_, int p_149668_4_) {
+    public AxisAlignedBB getCollisionBoundingBoxFromPool(World p_149668_1_, int p_149668_2_, int p_149668_3_,
+            int p_149668_4_) {
         return null;
     }
 
@@ -126,8 +131,7 @@ public class BlockAureliaPlant extends Block {
     }
 
     public static boolean canGrowOn(World w, int x, int y, int z) {
-        return !w.isAirBlock(x, y, z)
-                && (w.getBlock(x, y, z).isReplaceableOreGen(w, x, y, z, Blocks.grass)
-                        || w.getBlock(x, y, z).isReplaceableOreGen(w, x, y, z, Blocks.dirt));
+        return !w.isAirBlock(x, y, z) && (w.getBlock(x, y, z).isReplaceableOreGen(w, x, y, z, Blocks.grass)
+                || w.getBlock(x, y, z).isReplaceableOreGen(w, x, y, z, Blocks.dirt));
     }
 }

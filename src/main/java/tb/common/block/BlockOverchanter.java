@@ -1,8 +1,5 @@
 package tb.common.block;
 
-import DummyCore.Utils.MiscUtils;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -11,8 +8,12 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+
 import tb.common.tile.TileOverchanter;
 import tb.core.TBCore;
+import DummyCore.Utils.MiscUtils;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockOverchanter extends BlockContainer {
 
@@ -56,8 +57,8 @@ public class BlockOverchanter extends BlockContainer {
         MiscUtils.dropItemsOnBlockBreak(w, x, y, z, b, meta);
     }
 
-    public boolean onBlockActivated(
-            World w, int x, int y, int z, EntityPlayer p, int side, float vecX, float vecY, float vecZ) {
+    public boolean onBlockActivated(World w, int x, int y, int z, EntityPlayer p, int side, float vecX, float vecY,
+            float vecZ) {
         if (!p.isSneaking()) {
             if (!w.isRemote) {
                 p.openGui(TBCore.instance, 0x421922, w, x, y, z);

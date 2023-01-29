@@ -7,6 +7,7 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemFlintAndSteel;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+
 import thaumcraft.api.IRepairable;
 import thaumcraft.api.IWarpingGear;
 
@@ -18,10 +19,10 @@ public class ItemVoidFlintAndSteel extends ItemFlintAndSteel implements IRepaira
 
     public void onUpdate(ItemStack stk, World w, Entity entity, int slot, boolean held) {
         super.onUpdate(stk, w, entity, slot, held);
-        if ((stk.isItemDamaged())
-                && (entity != null)
+        if ((stk.isItemDamaged()) && (entity != null)
                 && (entity.ticksExisted % 20 == 0)
-                && ((entity instanceof EntityLivingBase))) stk.damageItem(-1, (EntityLivingBase) entity);
+                && ((entity instanceof EntityLivingBase)))
+            stk.damageItem(-1, (EntityLivingBase) entity);
     }
 
     public int getWarp(ItemStack itemstack, EntityPlayer player) {

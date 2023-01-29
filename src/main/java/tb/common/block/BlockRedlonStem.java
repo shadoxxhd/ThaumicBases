@@ -2,17 +2,19 @@ package tb.common.block;
 
 import static net.minecraftforge.common.util.ForgeDirection.UP;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.ArrayList;
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockStem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
 import tb.init.TBItems;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockRedlonStem extends BlockStem {
 
@@ -83,8 +85,8 @@ public class BlockRedlonStem extends BlockStem {
     }
 
     @SideOnly(Side.CLIENT)
-    public void randomDisplayTick(
-            World p_149734_1_, int p_149734_2_, int p_149734_3_, int p_149734_4_, Random p_149734_5_) {
+    public void randomDisplayTick(World p_149734_1_, int p_149734_2_, int p_149734_3_, int p_149734_4_,
+            Random p_149734_5_) {
         this.func_150186_m(p_149734_1_, p_149734_2_, p_149734_3_, p_149734_4_);
     }
 
@@ -97,50 +99,31 @@ public class BlockRedlonStem extends BlockStem {
             double d2 = (double) ((float) p_150186_3_ + random.nextFloat());
             double d3 = (double) ((float) p_150186_4_ + random.nextFloat());
 
-            if (l == 0
-                    && !p_150186_1_
-                            .getBlock(p_150186_2_, p_150186_3_ + 1, p_150186_4_)
-                            .isOpaqueCube()) {
+            if (l == 0 && !p_150186_1_.getBlock(p_150186_2_, p_150186_3_ + 1, p_150186_4_).isOpaqueCube()) {
                 d2 = (double) (p_150186_3_ + 1) + d0;
             }
 
-            if (l == 1
-                    && !p_150186_1_
-                            .getBlock(p_150186_2_, p_150186_3_ - 1, p_150186_4_)
-                            .isOpaqueCube()) {
+            if (l == 1 && !p_150186_1_.getBlock(p_150186_2_, p_150186_3_ - 1, p_150186_4_).isOpaqueCube()) {
                 d2 = (double) (p_150186_3_ + 0) - d0;
             }
 
-            if (l == 2
-                    && !p_150186_1_
-                            .getBlock(p_150186_2_, p_150186_3_, p_150186_4_ + 1)
-                            .isOpaqueCube()) {
+            if (l == 2 && !p_150186_1_.getBlock(p_150186_2_, p_150186_3_, p_150186_4_ + 1).isOpaqueCube()) {
                 d3 = (double) (p_150186_4_ + 1) + d0;
             }
 
-            if (l == 3
-                    && !p_150186_1_
-                            .getBlock(p_150186_2_, p_150186_3_, p_150186_4_ - 1)
-                            .isOpaqueCube()) {
+            if (l == 3 && !p_150186_1_.getBlock(p_150186_2_, p_150186_3_, p_150186_4_ - 1).isOpaqueCube()) {
                 d3 = (double) (p_150186_4_ + 0) - d0;
             }
 
-            if (l == 4
-                    && !p_150186_1_
-                            .getBlock(p_150186_2_ + 1, p_150186_3_, p_150186_4_)
-                            .isOpaqueCube()) {
+            if (l == 4 && !p_150186_1_.getBlock(p_150186_2_ + 1, p_150186_3_, p_150186_4_).isOpaqueCube()) {
                 d1 = (double) (p_150186_2_ + 1) + d0;
             }
 
-            if (l == 5
-                    && !p_150186_1_
-                            .getBlock(p_150186_2_ - 1, p_150186_3_, p_150186_4_)
-                            .isOpaqueCube()) {
+            if (l == 5 && !p_150186_1_.getBlock(p_150186_2_ - 1, p_150186_3_, p_150186_4_).isOpaqueCube()) {
                 d1 = (double) (p_150186_2_ + 0) - d0;
             }
 
-            if (d1 < (double) p_150186_2_
-                    || d1 > (double) (p_150186_2_ + 1)
+            if (d1 < (double) p_150186_2_ || d1 > (double) (p_150186_2_ + 1)
                     || d2 < 0.0D
                     || d2 > (double) (p_150186_3_ + 1)
                     || d3 < (double) p_150186_4_

@@ -2,6 +2,7 @@ package tb.common.tile;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.ai.EntityAITasks;
 import net.minecraft.entity.ai.EntityAITasks.EntityAITaskEntry;
@@ -10,11 +11,13 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraftforge.common.util.ForgeDirection;
+
 import tb.common.entity.EntityAIAvoidCampfire;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.common.lib.events.EssentiaHandler;
 
 public class TileBrazier extends TileEntity {
+
     public int burnTime;
     public int uptime;
     public boolean burning;
@@ -33,7 +36,7 @@ public class TileBrazier extends TileEntity {
         tag.setInteger("burnTime", burnTime);
     }
 
-    @SuppressWarnings({"unchecked", "rawtypes"})
+    @SuppressWarnings({ "unchecked", "rawtypes" })
     public void updateEntity() {
         ++uptime;
 

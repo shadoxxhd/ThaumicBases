@@ -1,9 +1,8 @@
 package tb.common.block;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
 import java.util.Random;
+
 import net.minecraft.block.BlockSapling;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -12,22 +11,21 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+
 import tb.common.event.WorldGenBigOak;
 import tb.common.event.WorldGenOak;
 import tb.init.TBBlocks;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockTBSapling extends BlockSapling {
 
     public IIcon[] icons = new IIcon[8];
-    public static final String[] names =
-            new String[] {"goldenOakSapling", "peacefullTreeSapling", "netherTreeSapling", "enderTreeSapling"};
+    public static final String[] names = new String[] { "goldenOakSapling", "peacefullTreeSapling", "netherTreeSapling",
+            "enderTreeSapling" };
 
-    public static final String[] textures = new String[] {
-        "thaumicbases:goldenOak/sapling",
-        "thaumicbases:peacefullTree/sapling",
-        "thaumicbases:netherTree/sapling",
-        "thaumicbases:enderTree/sapling"
-    };
+    public static final String[] textures = new String[] { "thaumicbases:goldenOak/sapling",
+            "thaumicbases:peacefullTree/sapling", "thaumicbases:netherTree/sapling", "thaumicbases:enderTree/sapling" };
 
     @SideOnly(Side.CLIENT)
     public IIcon getIcon(int side, int meta) {
@@ -71,7 +69,7 @@ public class BlockTBSapling extends BlockSapling {
         return meta % 8;
     }
 
-    @SuppressWarnings({"unchecked", "rawtypes"})
+    @SuppressWarnings({ "unchecked", "rawtypes" })
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(Item p_149666_1_, CreativeTabs p_149666_2_, List p_149666_3_) {
         for (int i = 0; i < names.length; ++i) p_149666_3_.add(new ItemStack(p_149666_1_, 1, i));

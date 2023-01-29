@@ -1,8 +1,7 @@
 package tb.common.block;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
+
 import net.minecraft.block.BlockOldLog;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -14,13 +13,16 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+
 import tb.core.TBCore;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockTBLog extends BlockOldLog {
 
-    public static final String[] names = new String[] {"peacefullTreeLog", "netherTreeLog", "enderTreeLog"};
+    public static final String[] names = new String[] { "peacefullTreeLog", "netherTreeLog", "enderTreeLog" };
 
-    public static final String[] textures = new String[] {"peacefullTree/log", "netherTree/log", "enderTree/log"};
+    public static final String[] textures = new String[] { "peacefullTree/log", "netherTree/log", "enderTree/log" };
 
     public boolean canEntityDestroy(IBlockAccess world, int x, int y, int z, Entity entity) {
         if (world.getBlockMetadata(x, y, z) % 4 == 2) if (entity instanceof EntityDragon) return false;
@@ -57,7 +59,7 @@ public class BlockTBLog extends BlockOldLog {
         this.setHarvestLevel("axe", 0);
     }
 
-    @SuppressWarnings({"rawtypes", "unchecked"})
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(Item itm, CreativeTabs tab, List lst) {
         for (int i = 0; i < names.length; ++i) lst.add(new ItemStack(itm, 1, i));

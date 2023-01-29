@@ -10,6 +10,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
 public class ContainerRevolver extends Container {
+
     public World worldObj;
     public int x;
     public int y;
@@ -60,9 +61,11 @@ public class ContainerRevolver extends Container {
 
             if (slot == 0) {
                 if (!this.input.isItemValidForSlot(slot, stackInSlot)
-                        || !mergeItemStack(stackInSlot, 1, this.inventorySlots.size(), true, 64)) return null;
-            } else if (!this.input.isItemValidForSlot(slot, stackInSlot)
-                    || !mergeItemStack(stackInSlot, 0, 1, false, 1)) return null;
+                        || !mergeItemStack(stackInSlot, 1, this.inventorySlots.size(), true, 64))
+                    return null;
+            } else
+                if (!this.input.isItemValidForSlot(slot, stackInSlot) || !mergeItemStack(stackInSlot, 0, 1, false, 1))
+                    return null;
 
             if (stackInSlot.stackSize == 0) slotObject.putStack(null);
             else slotObject.onSlotChanged();
@@ -75,8 +78,7 @@ public class ContainerRevolver extends Container {
         if (par1 == this.blockedSlot) return null;
 
         InventoryPlayer inventoryplayer = par4EntityPlayer.inventory;
-        if (par1 != 0
-                || this.input.isItemValidForSlot(par1, inventoryplayer.getItemStack())
+        if (par1 != 0 || this.input.isItemValidForSlot(par1, inventoryplayer.getItemStack())
                 || (par1 == 0 && inventoryplayer.getItemStack() == null))
             return super.slotClick(par1, par2, par3, par4EntityPlayer);
 
@@ -126,8 +128,7 @@ public class ContainerRevolver extends Container {
                 Slot var7 = (Slot) this.inventorySlots.get(var6);
                 ItemStack var8 = var7.getStack();
 
-                if (var8 != null
-                        && var8.getItem() == par1ItemStack.getItem()
+                if (var8 != null && var8.getItem() == par1ItemStack.getItem()
                         && (!par1ItemStack.getHasSubtypes() || par1ItemStack.getItemDamage() == var8.getItemDamage())
                         && ItemStack.areItemStackTagsEqual(par1ItemStack, var8)) {
                     int var9 = var8.stackSize + par1ItemStack.stackSize;

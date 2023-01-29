@@ -1,8 +1,5 @@
 package tb.network.proxy;
 
-import DummyCore.Client.GuiCommon;
-import cpw.mods.fml.client.registry.ClientRegistry;
-import cpw.mods.fml.client.registry.RenderingRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -10,6 +7,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
+
 import tb.client.RevolverEvents;
 import tb.client.gui.GuiRevolver;
 import tb.client.gui.GuiThaumicAnvil;
@@ -38,6 +36,9 @@ import tb.init.TBItems;
 import thaumcraft.client.fx.ParticleEngine;
 import thaumcraft.client.fx.bolt.FXLightningBolt;
 import thaumcraft.client.fx.particles.FXSparkle;
+import DummyCore.Client.GuiCommon;
+import cpw.mods.fml.client.registry.ClientRegistry;
+import cpw.mods.fml.client.registry.RenderingRegistry;
 
 public class TBClient extends TBServer {
 
@@ -72,10 +73,11 @@ public class TBClient extends TBServer {
 
         MinecraftForgeClient.registerItemRenderer(TBItems.nodeFoci, new NodeFociRenderer());
         MinecraftForgeClient.registerItemRenderer(
-                Item.getItemFromBlock(TBBlocks.nodeManipulator), new NodeManipulatorItemRenderer());
+                Item.getItemFromBlock(TBBlocks.nodeManipulator),
+                new NodeManipulatorItemRenderer());
         MinecraftForgeClient.registerItemRenderer(TBItems.revolver, new RenderRevolver());
-        MinecraftForgeClient.registerItemRenderer(
-                Item.getItemFromBlock(TBBlocks.nodeLinker), new NodeLinkerItemRenderer());
+        MinecraftForgeClient
+                .registerItemRenderer(Item.getItemFromBlock(TBBlocks.nodeLinker), new NodeLinkerItemRenderer());
         MinecraftForgeClient.registerItemRenderer(TBItems.castingBracelet, new CastingBraceletRenderer());
 
         RenderingRegistry.registerBlockHandler(new ThaumicRelocatorRenderer());
@@ -87,20 +89,20 @@ public class TBClient extends TBServer {
     }
 
     @Override
-    public void lightning(
-            World world,
-            double sx,
-            double sy,
-            double sz,
-            double ex,
-            double ey,
-            double ez,
-            int dur,
-            float curve,
-            int speed,
-            int type) {
-        FXLightningBolt bolt =
-                new FXLightningBolt(world, sx, sy, sz, ex, ey, ez, world.rand.nextLong(), dur, curve, speed);
+    public void lightning(World world, double sx, double sy, double sz, double ex, double ey, double ez, int dur,
+            float curve, int speed, int type) {
+        FXLightningBolt bolt = new FXLightningBolt(
+                world,
+                sx,
+                sy,
+                sz,
+                ex,
+                ey,
+                ez,
+                world.rand.nextLong(),
+                dur,
+                curve,
+                speed);
 
         bolt.defaultFractal();
         bolt.setType(type);
@@ -108,8 +110,8 @@ public class TBClient extends TBServer {
         bolt.finalizeBolt();
     }
 
-    public void sparkle(
-            World w, double x, double y, double z, double dx, double dy, double dz, int color, float scale) {
+    public void sparkle(World w, double x, double y, double z, double dx, double dy, double dz, int color,
+            float scale) {
         FXSparkle fx = new FXSparkle(w, x, y, z, dx, dy, dz, scale, color, 1);
         fx.noClip = true;
         ParticleEngine.instance.addEffect(w, fx);

@@ -3,6 +3,7 @@ package tb.common.item;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
@@ -10,6 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
+
 import thaumcraft.common.config.Config;
 import thaumcraft.common.config.ConfigItems;
 
@@ -62,8 +64,7 @@ public class ItemRosehipSyrup extends Item {
     }
 
     public static int processPotion(EntityPlayer p, PotionEffect effect) {
-        if (effect != null
-                && effect.getPotionID() < Potion.potionTypes.length
+        if (effect != null && effect.getPotionID() < Potion.potionTypes.length
                 && Potion.potionTypes[effect.getPotionID()] != null) {
             if (isBadEffect(Potion.potionTypes[effect.getPotionID()])) return effect.getPotionID();
 
@@ -80,26 +81,22 @@ public class ItemRosehipSyrup extends Item {
     }
 
     public static boolean isBadEffect(Potion p) {
-        return p != null
-                && (p == Potion.blindness
-                        || p == Potion.confusion
-                        || p == Potion.digSlowdown
-                        || p == Potion.hunger
-                        || p == Potion.moveSlowdown
-                        || p == Potion.poison
-                        || p == Potion.weakness
-                        || p == Potion.wither);
+        return p != null && (p == Potion.blindness || p == Potion.confusion
+                || p == Potion.digSlowdown
+                || p == Potion.hunger
+                || p == Potion.moveSlowdown
+                || p == Potion.poison
+                || p == Potion.weakness
+                || p == Potion.wither);
     }
 
     public static boolean canDecreaseLevel(Potion p) {
         int id = p.getId();
-        return p != null
-                && (id == Config.potionBlurredID
-                        || id == Config.potionInfVisExhaustID
-                        || id == Config.potionTaintPoisonID
-                        || id == Config.potionThaumarhiaID
-                        || id == Config.potionUnHungerID
-                        || id == Config.potionVisExhaustID);
+        return p != null && (id == Config.potionBlurredID || id == Config.potionInfVisExhaustID
+                || id == Config.potionTaintPoisonID
+                || id == Config.potionThaumarhiaID
+                || id == Config.potionUnHungerID
+                || id == Config.potionVisExhaustID);
     }
 
     public static void reflectPotionEffect(EntityPlayer p, PotionEffect effect) {

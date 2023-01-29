@@ -1,8 +1,8 @@
 package tb.common.block;
 
-import DummyCore.Utils.MathUtils;
 import java.util.List;
 import java.util.Random;
+
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
@@ -12,7 +12,9 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
 import tb.common.tile.TileCampfire;
+import DummyCore.Utils.MathUtils;
 
 public class BlockCampfire extends BlockContainer {
 
@@ -50,22 +52,21 @@ public class BlockCampfire extends BlockContainer {
                     0,
                     0.04D,
                     0);
-            for (int i = 0; i < 10; ++i)
-                w.spawnParticle(
-                        "smoke",
-                        x + 0.5D + MathUtils.randomDouble(r) / 4,
-                        y + 0.1D,
-                        z + 0.5D + MathUtils.randomDouble(r) / 4,
-                        0,
-                        r.nextDouble() / 20,
-                        0);
+            for (int i = 0; i < 10; ++i) w.spawnParticle(
+                    "smoke",
+                    x + 0.5D + MathUtils.randomDouble(r) / 4,
+                    y + 0.1D,
+                    z + 0.5D + MathUtils.randomDouble(r) / 4,
+                    0,
+                    r.nextDouble() / 20,
+                    0);
 
             w.playSound(x + 0.5D, y + 0.5D, z + 0.5D, "thaumicbases:fire.loop", 0.1F, 0.1F, false);
         }
     }
 
-    public boolean onBlockActivated(
-            World w, int x, int y, int z, EntityPlayer p, int side, float vecX, float vecY, float vecZ) {
+    public boolean onBlockActivated(World w, int x, int y, int z, EntityPlayer p, int side, float vecX, float vecY,
+            float vecZ) {
         if (w.isRemote) return true;
 
         TileCampfire fire = (TileCampfire) w.getTileEntity(x, y, z);
@@ -83,14 +84,8 @@ public class BlockCampfire extends BlockContainer {
         return false;
     }
 
-    public void addCollisionBoxesToList(
-            final World world,
-            final int i,
-            final int j,
-            final int k,
-            final AxisAlignedBB axisalignedbb,
-            final List arraylist,
-            final Entity par7Entity) {
+    public void addCollisionBoxesToList(final World world, final int i, final int j, final int k,
+            final AxisAlignedBB axisalignedbb, final List arraylist, final Entity par7Entity) {
         this.setBlockBounds(0.0625f, 0.0f, 0.0625f, 0.9375f, 0.5f, 0.9375f);
         super.addCollisionBoxesToList(world, i, j, k, axisalignedbb, arraylist, par7Entity);
     }

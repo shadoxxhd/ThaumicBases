@@ -1,10 +1,9 @@
 package tb.common.item;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,12 +12,15 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.IIcon;
+
 import tb.api.ITobacco;
 import tb.core.TBCore;
 import tb.utils.TBUtils;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.common.config.Config;
 import thaumcraft.common.entities.monster.EntityWisp;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class TBTobacco extends Item implements ITobacco {
 
@@ -26,17 +28,9 @@ public class TBTobacco extends Item implements ITobacco {
         this.setHasSubtypes(true);
     }
 
-    public static final String names[] = new String[] {
-        "tobacco_pile",
-        "tobacco_eldritch",
-        "tobacco_fighting",
-        "tobacco_hunger",
-        "tobacco_knowledge",
-        "tobacco_mining",
-        "tobacco_sanity",
-        "tobacco_tainted",
-        "tobacco_wispy"
-    };
+    public static final String names[] = new String[] { "tobacco_pile", "tobacco_eldritch", "tobacco_fighting",
+            "tobacco_hunger", "tobacco_knowledge", "tobacco_mining", "tobacco_sanity", "tobacco_tainted",
+            "tobacco_wispy" };
 
     public void performTobaccoEffect(EntityPlayer smoker, int metadata, boolean isSilverwood) {
         switch (metadata) {
@@ -133,8 +127,7 @@ public class TBTobacco extends Item implements ITobacco {
                 EntityWisp wisp = new EntityWisp(smoker.worldObj);
                 wisp.setPositionAndRotation(smoker.posX, smoker.posY, smoker.posZ, 0, 0);
                 if (!smoker.worldObj.isRemote) {
-                    wisp.setType(aspects.get(smoker.worldObj.rand.nextInt(aspects.size()))
-                            .getTag());
+                    wisp.setType(aspects.get(smoker.worldObj.rand.nextInt(aspects.size())).getTag());
                     smoker.worldObj.spawnEntityInWorld(wisp);
                 }
                 break;
@@ -162,7 +155,7 @@ public class TBTobacco extends Item implements ITobacco {
         for (int i = 0; i < names.length; ++i) icons[i] = reg.registerIcon(TBCore.modid + ":" + names[i]);
     }
 
-    @SuppressWarnings({"rawtypes", "unchecked"})
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     @SideOnly(Side.CLIENT)
     public void getSubItems(Item itm, CreativeTabs tab, List lst) {
         for (int i = 0; i < names.length; ++i) lst.add(new ItemStack(itm, 1, i));

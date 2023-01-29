@@ -1,12 +1,13 @@
 package tb.common.tile;
 
-import DummyCore.Utils.MiscUtils;
 import java.util.Hashtable;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.nodes.INode;
 import thaumcraft.api.nodes.NodeModifier;
@@ -14,8 +15,10 @@ import thaumcraft.api.nodes.NodeType;
 import thaumcraft.api.wands.IWandable;
 import thaumcraft.common.Thaumcraft;
 import thaumcraft.common.entities.EntityAspectOrb;
+import DummyCore.Utils.MiscUtils;
 
 public class TileNodeManipulator extends TileEntity implements IWandable {
+
     public int workTime = 0;
     public Hashtable<String, Integer> nodeAspects = new Hashtable<String, Integer>();
     public Hashtable<String, Integer> newNodeAspects = new Hashtable<String, Integer>();
@@ -81,20 +84,19 @@ public class TileNodeManipulator extends TileEntity implements IWandable {
                     break;
                 }
             }
-            if (!firstTick && this.worldObj.isRemote)
-                Thaumcraft.proxy.beam(
-                        this.worldObj,
-                        xCoord + 0.5D,
-                        yCoord + 0.5D,
-                        zCoord + 0.5D,
-                        xCoord + 0.5D,
-                        yCoord - 0.5D,
-                        zCoord + 0.5D,
-                        2,
-                        color,
-                        false,
-                        0.5F,
-                        2);
+            if (!firstTick && this.worldObj.isRemote) Thaumcraft.proxy.beam(
+                    this.worldObj,
+                    xCoord + 0.5D,
+                    yCoord + 0.5D,
+                    zCoord + 0.5D,
+                    xCoord + 0.5D,
+                    yCoord - 0.5D,
+                    zCoord + 0.5D,
+                    2,
+                    color,
+                    false,
+                    0.5F,
+                    2);
 
             if (!firstTick) {
                 if (effect == 7) {
@@ -113,9 +115,7 @@ public class TileNodeManipulator extends TileEntity implements IWandable {
                         if (isNodeChanged) {
                             MiscUtils.sendPacketToAllAround(
                                     worldObj,
-                                    this.worldObj
-                                            .getTileEntity(xCoord, yCoord - 1, zCoord)
-                                            .getDescriptionPacket(),
+                                    this.worldObj.getTileEntity(xCoord, yCoord - 1, zCoord).getDescriptionPacket(),
                                     xCoord,
                                     yCoord,
                                     zCoord,
@@ -125,10 +125,8 @@ public class TileNodeManipulator extends TileEntity implements IWandable {
                     }
                 }
                 if (effect == 1) {
-                    int maxTimeRequired = node.getNodeModifier() == NodeModifier.BRIGHT
-                            ? 1 * 60 * 20
-                            : node.getNodeModifier() == NodeModifier.PALE
-                                    ? 3 * 60 * 20
+                    int maxTimeRequired = node.getNodeModifier() == NodeModifier.BRIGHT ? 1 * 60 * 20
+                            : node.getNodeModifier() == NodeModifier.PALE ? 3 * 60 * 20
                                     : node.getNodeModifier() == NodeModifier.FADING ? 6 * 60 * 20 : 2 * 60 * 20;
                     if (workTime >= maxTimeRequired) {
                         workTime = 0;
@@ -137,22 +135,23 @@ public class TileNodeManipulator extends TileEntity implements IWandable {
                             return;
                         }
                         node.setNodeModifier(
-                                node.getNodeModifier() == NodeModifier.BRIGHT
-                                        ? null
-                                        : node.getNodeModifier() == NodeModifier.PALE
-                                                ? NodeModifier.FADING
-                                                : node.getNodeModifier() == NodeModifier.FADING
-                                                        ? NodeModifier.FADING
+                                node.getNodeModifier() == NodeModifier.BRIGHT ? null
+                                        : node.getNodeModifier() == NodeModifier.PALE ? NodeModifier.FADING
+                                                : node.getNodeModifier() == NodeModifier.FADING ? NodeModifier.FADING
                                                         : NodeModifier.PALE);
 
                     } else {
                         ++workTime;
                         if (this.worldObj.getTotalWorldTime() % 10 == 0) {
-                            Aspect a = node.getAspects()
-                                    .getAspects()[
-                                    this.worldObj.rand.nextInt(node.getAspects().getAspects().length)];
-                            EntityAspectOrb aspect =
-                                    new EntityAspectOrb(worldObj, xCoord + 0.5D, yCoord - 0.5D, zCoord + 0.5D, a, 1);
+                            Aspect a = node.getAspects().getAspects()[this.worldObj.rand
+                                    .nextInt(node.getAspects().getAspects().length)];
+                            EntityAspectOrb aspect = new EntityAspectOrb(
+                                    worldObj,
+                                    xCoord + 0.5D,
+                                    yCoord - 0.5D,
+                                    zCoord + 0.5D,
+                                    a,
+                                    1);
                             if (!this.worldObj.isRemote) {
                                 this.worldObj.spawnEntityInWorld(aspect);
                             }
@@ -197,12 +196,12 @@ public class TileNodeManipulator extends TileEntity implements IWandable {
                         if (workTime > 3 * 60 * 20) {
                             workTime = 0;
                             node.setNodeType(NodeType.PURE);
-                        } else ++workTime;
+                        } else++workTime;
                     } else if (node.getNodeType() == NodeType.TAINTED) {
                         if (workTime > 33 * 60 * 20) {
                             workTime = 0;
                             node.setNodeType(NodeType.PURE);
-                        } else ++workTime;
+                        } else++workTime;
                     }
                 }
                 if (effect == 6) {
@@ -254,8 +253,7 @@ public class TileNodeManipulator extends TileEntity implements IWandable {
                             return;
                         }
 
-                        if (node.getNodeType() == NodeType.DARK
-                                || node.getNodeType() == NodeType.HUNGRY
+                        if (node.getNodeType() == NodeType.DARK || node.getNodeType() == NodeType.HUNGRY
                                 || node.getNodeType() == NodeType.UNSTABLE
                                 || node.getNodeType() == NodeType.TAINTED
                                 || node.getNodeType() == NodeType.PURE) {
@@ -318,8 +316,8 @@ public class TileNodeManipulator extends TileEntity implements IWandable {
     }
 
     @Override
-    public int onWandRightClick(
-            World world, ItemStack wandstack, EntityPlayer player, int x, int y, int z, int side, int md) {
+    public int onWandRightClick(World world, ItemStack wandstack, EntityPlayer player, int x, int y, int z, int side,
+            int md) {
         return 0;
     }
 
