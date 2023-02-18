@@ -14,8 +14,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
 
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import gregtech.api.enums.ItemList;
 
 public class BlockRainbowCactus extends BlockCactus {
 
@@ -41,13 +43,31 @@ public class BlockRainbowCactus extends BlockCactus {
             return ret;
         }
 
-        for (int i = 0; i < 3 + world.rand.nextInt(8); ++i)
-            ret.add(new ItemStack(Items.dye, 1, allowedDyes[world.rand.nextInt(allowedDyes.length)]));
-
+        for (int i = 0; i < 3 + world.rand.nextInt(8); ++i) {
+            ret.add(allowedDyes[world.rand.nextInt(allowedDyes.length)].copy());
+        }
         return ret;
     }
 
-    public static final int[] allowedDyes = new int[] { 1, 2, 5, 2, 6, 7, 2, 8, 9, 10, 2, 11, 12, 13, 14, 2 };
+    public static ItemStack[] allowedDyes;
+
+    public static void loadColors() {
+        if (Loader.isModLoaded("gregtech")) {
+            allowedDyes = new ItemStack[] { ItemList.Color_00.get(1), ItemList.Color_01.get(1),
+                    ItemList.Color_02.get(1), ItemList.Color_03.get(1), ItemList.Color_04.get(1),
+                    ItemList.Color_05.get(1), ItemList.Color_06.get(1), ItemList.Color_07.get(1),
+                    ItemList.Color_08.get(1), ItemList.Color_09.get(1), ItemList.Color_10.get(1),
+                    ItemList.Color_11.get(1), ItemList.Color_12.get(1), ItemList.Color_13.get(1),
+                    ItemList.Color_14.get(1), ItemList.Color_15.get(1), };
+        } else {
+            allowedDyes = new ItemStack[] { new ItemStack(Items.dye, 1, 1), new ItemStack(Items.dye, 1, 2),
+                    new ItemStack(Items.dye, 1, 5), new ItemStack(Items.dye, 1, 2), new ItemStack(Items.dye, 1, 6),
+                    new ItemStack(Items.dye, 1, 7), new ItemStack(Items.dye, 1, 2), new ItemStack(Items.dye, 1, 8),
+                    new ItemStack(Items.dye, 1, 9), new ItemStack(Items.dye, 1, 10), new ItemStack(Items.dye, 1, 2),
+                    new ItemStack(Items.dye, 1, 11), new ItemStack(Items.dye, 1, 12), new ItemStack(Items.dye, 1, 13),
+                    new ItemStack(Items.dye, 1, 14), new ItemStack(Items.dye, 1, 2) };
+        }
+    }
 
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister p_149651_1_) {
