@@ -7,6 +7,18 @@ import java.util.ArrayList;
 
 import net.minecraftforge.common.MinecraftForge;
 
+import DummyCore.Core.Core;
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.ModMetadata;
+import cpw.mods.fml.common.SidedProxy;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import cpw.mods.fml.common.registry.EntityRegistry;
+import cpw.mods.fml.relauncher.Side;
 import tb.api.RevolverUpgrade;
 import tb.common.enchantment.EnchantmentHandler;
 import tb.common.entity.EntityRevolverBullet;
@@ -21,18 +33,6 @@ import tb.network.proxy.PacketTB;
 import tb.network.proxy.TBNetworkManager;
 import tb.network.proxy.TBServer;
 import tb.utils.TBConfig;
-import DummyCore.Core.Core;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.ModMetadata;
-import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.network.NetworkRegistry;
-import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
-import cpw.mods.fml.common.registry.EntityRegistry;
-import cpw.mods.fml.relauncher.Side;
 
 @Mod(modid = modid, version = version, name = name, dependencies = dependencies)
 public class TBCore {
@@ -42,7 +42,7 @@ public class TBCore {
     public static final String name = "Thaumic Bases";
     public static final String serverProxy = "tb.network.proxy.TBServer";
     public static final String clientProxy = "tb.network.proxy.TBClient";
-    public static final String dependencies = "required-after:Thaumcraft@[4.2.3.5,);required-after:Baubles@[1.0.1.10,);required-after:DummyCore@[1.6,);";
+    public static final String dependencies = "required-after:Thaumcraft@[4.2.3.5,);required-after:Baubles@[1.0.1.10,);required-after:DummyCore@[1.2,);";
 
     public static final TBConfig cfg = new TBConfig();
 
