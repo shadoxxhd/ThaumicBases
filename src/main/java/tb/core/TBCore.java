@@ -1,6 +1,9 @@
 package tb.core;
 
-import static tb.core.TBCore.*;
+import static tb.core.TBCore.dependencies;
+import static tb.core.TBCore.modid;
+import static tb.core.TBCore.name;
+import static tb.core.TBCore.version;
 
 import java.util.ArrayList;
 
