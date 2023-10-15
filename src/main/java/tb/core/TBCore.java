@@ -2,7 +2,6 @@ package tb.core;
 
 import static tb.core.TBCore.*;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import net.minecraftforge.common.MinecraftForge;
@@ -57,8 +56,13 @@ public class TBCore {
     public void preInit(FMLPreInitializationEvent event) {
         instance = this;
         try {
-            Core.registerModAbsolute(getClass(), name, event.getModConfigurationDirectory().getAbsolutePath(), cfg);
-        } catch (IOException e) {
+            Core.registerModAbsolute(
+                getClass(),
+                name,
+                event.getModConfigurationDirectory()
+                    .getAbsolutePath(),
+                cfg);
+        } catch (Exception e) {
             e.printStackTrace();
         }
         setupModInfo(event.getModMetadata());
