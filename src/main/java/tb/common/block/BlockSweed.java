@@ -51,11 +51,12 @@ public class BlockSweed extends BlockTBPlant {
         ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
 
         if (metadata >= growthStages - 1) {
-            if (world.rand.nextInt(growthStages) <= metadata) if (dropSeed != null) ret.add(dropSeed.copy());
-
+            for (int i = 0; i < 1 + fortune; ++i)
+                if (world.rand.nextInt(growthStages) <= metadata)
+                	if(dropSeed != null)
+                		ret.add(dropSeed.copy());
+            
             for (int i = 0; i < 3 + fortune; ++i) if (world.rand.nextBoolean()) ret.add(new ItemStack(Items.sugar));
-
-            if (world.rand.nextBoolean()) ret.add(new ItemStack(Items.reeds));
 
         } else if (dropSeed != null) ret.add(dropSeed.copy());
 
