@@ -160,12 +160,15 @@ public class BlockTBPlant extends BlockBush implements IGrowable {
         ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
 
         if (metadata >= growthStages - 1) {
-            for (int i = 0; i < (world.rand.nextDouble()*world.rand.nextDouble()*(fortune) > 0.9D ? 2 : 1); ++i) // Fix for the seed duplication
+            for (int i = 0; i < (world.rand.nextDouble() * world.rand.nextDouble() * (fortune) > 0.9D ? 2 : 1); ++i) // Fix
+                                                                                                                     // for
+                                                                                                                     // the
+                                                                                                                     // seed
+                                                                                                                     // duplication
             {
-                if (world.rand.nextInt(growthStages) <= metadata)
-                	if(dropSeed != null) ret.add(dropSeed.copy());
+                if (world.rand.nextInt(growthStages) <= metadata) if (dropSeed != null) ret.add(dropSeed.copy());
             }
-            
+
             for (int i = 0; i < 1 + world.rand.nextInt(fortune + 1); ++i) // Change for the resource drop
             {
                 if (world.rand.nextInt(growthStages) <= metadata) {
