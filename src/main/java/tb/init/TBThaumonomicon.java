@@ -655,10 +655,9 @@ public class TBThaumonomicon {
 
         for (int i = 0; i < oldRec.length; ++i) oldRec[i] = new ShapedArcaneRecipe(
             "TB.DecoBlocks",
-            new ItemStack(recResult[i], 8, 0),
+            new ItemStack(recResult[i], 6, 0),
             new AspectList().add(Aspect.ENTROPY, 5),
-            new Object[] { "###", "#@#", "###", '#', recBlocks[i], '@',
-                new ItemStack(ConfigBlocks.blockCrystal, 1, 5) });
+            new Object[] { "# #", "# #", "# #", '#', recBlocks[i] });
 
         ShapedArcaneRecipe advFurnaceRecipe = new ShapedArcaneRecipe(
             "TB.AdvAlc",
