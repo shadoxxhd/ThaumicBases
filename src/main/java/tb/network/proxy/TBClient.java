@@ -20,6 +20,7 @@ import tb.client.render.block.CampfireRenderer;
 import tb.client.render.block.ThaumicRelocatorRenderer;
 import tb.client.render.entity.RenderBullet;
 import tb.client.render.item.CastingBraceletRenderer;
+import tb.client.render.item.HerobrinesScytheRenderer;
 import tb.client.render.item.NodeFociRenderer;
 import tb.client.render.item.NodeLinkerItemRenderer;
 import tb.client.render.item.NodeManipulatorItemRenderer;

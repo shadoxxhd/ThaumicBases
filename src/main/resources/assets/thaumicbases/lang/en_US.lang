@@ -178,6 +178,7 @@ item.nodeFoci.purity.name=§eNode Manipulator Focus: Purity
 item.nodeFoci.sinister.name=§eNode Manipulator Focus: Sinister
 item.nodeFoci.stability.name=§eNode Manipulator Focus: Stability
 item.nodeFoci.taint.name=§eNode Manipulator Focus: Taint
+item.herobrinesScythe.name=Scythe Of The White-Eyed One
 
 item.tb.voidShears.name=Void Shears
 item.tb.voidFAS.name=Flint and Void Steel
@@ -486,7 +487,10 @@ tc.research_text.TB.EntityDecAdv=Even better decomposing!
 tb.rec.eDeca.page.0=You have managed to advance in your researches of the entity deconstruction. You have discovered, that the basic deconstructor is rather limited. It seems you are simply able to socket crystal blocks into the frame of the device - increasing its stability and magical resonance. All primal aspects can be used.
 tb.rec.eDeca.page.1=Each crystal increases the maximum range of knowledge transfer of the device by 8 blocks, and will also make the device faster. When all six primal crystals are installed, it will gain the ability to decompose items above it the same way it decomposes mobs. The items will not always produce knowledge, but they will do it with a better chance than the deconstruction table. Deconstructed items will only produce primal aspects though.
 
-
+tc.research_name.TB.HerobrinesScythe=Scythe Of The White-Eyed One
+tc.research_text.TB.HerobrinesScythe=Your worst nightmare...
+tb.rec.hScythe.page.0=You have seen this thing in your nightmares. Possessed by it's image you have made an exact copy - it feels unreal, this thing does not belong to this world. How much further can you go with your insanity - you don't even know. Anyway, this thing is extremely hard to create, yet it is very promising. All knowledge of the death will be required to create this beast.
+tb.rec.hScythe.page.1=This weapon is extremely powerfull - not only it does insane damage - it is kinda not a part of this world, and it creates a tiny energy pulse every time it tears flesh. This pulse will then bounce infinitely to the nearby enemies - from one to another, untill there is noone left. The pulse deals the same damage as the scythe. It will also be affected by things like Strength potions or enchantments. This weapon, alike the Void Hoe it is made from can repare itself. Other thaumaturges got really scared of you since you've made that thing - they whisper about your eyes, completely blank white eyes. Sure it is just them being jealous and foolish, is it?..
 
 tc.research_name.TB.Relocator=Thaumic Relocation
 tc.research_text.TB.Relocator=Back and forward
