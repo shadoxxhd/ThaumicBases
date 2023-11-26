@@ -150,7 +150,8 @@ public class TBItems {
 
     public static Item nodeFoci = new ItemNodeFoci().setUnlocalizedName("nodeFoci.");
 
-    public static Item herobrinesScythe = new ItemHerobrinesScythe().setUnlocalizedName("herobrinesScythe").setTextureName("thaumicbases:herobrinesScythe");
+    public static Item herobrinesScythe = new ItemHerobrinesScythe().setUnlocalizedName("herobrinesScythe")
+        .setTextureName("thaumicbases:herobrinesScythe");
 
     public static Item voidShears = new ItemVoidShears().setTextureName("thaumicbases:shears")
         .setUnlocalizedName("tb.voidShears")
