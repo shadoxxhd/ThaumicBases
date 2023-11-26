@@ -72,6 +72,7 @@ public class TBClient extends TBServer {
         ClientRegistry.bindTileEntitySpecialRenderer(TileNodeLinker.class, new RenderNodeLinker());
 
         MinecraftForgeClient.registerItemRenderer(TBItems.nodeFoci, new NodeFociRenderer());
+        MinecraftForgeClient.registerItemRenderer(TBItems.herobrinesScythe, new HerobrinesScytheRenderer());
         MinecraftForgeClient
             .registerItemRenderer(Item.getItemFromBlock(TBBlocks.nodeManipulator), new NodeManipulatorItemRenderer());
         MinecraftForgeClient.registerItemRenderer(TBItems.revolver, new RenderRevolver());

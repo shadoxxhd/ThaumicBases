@@ -697,6 +697,13 @@ public class TBThaumonomicon {
                 new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 4),
                 new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 4) });
 
+        InfusionRecipe herobrinesScytheRec = new InfusionRecipe("TB.HerobrinesScythe",new ItemStack(TBItems.herobrinesScythe,1,0),7,new AspectList().add(Aspect.WEAPON, 128).add(Aspect.ENERGY, 64).add(Aspect.AURA, 12).add(Aspect.ELDRITCH, 32).add(Aspect.DEATH, 64),new ItemStack(ConfigItems.itemHoeVoid),new ItemStack[]{
+            new ItemStack(Items.nether_star),
+            new ItemStack(ConfigItems.itemBucketDeath),
+            new ItemStack(ConfigItems.itemWandRod,1,100),
+            new ItemStack(ConfigItems.itemBucketDeath)
+        });
+
         ShapedArcaneRecipe relocatorRec = new ShapedArcaneRecipe(
             "TB.Relocator",
             new ItemStack(TBBlocks.relocator, 1, 0),
@@ -1343,6 +1350,16 @@ public class TBThaumonomicon {
                     new ResearchPage("tb.rec.overchanter.page.2"),
                     new ResearchPage(overchanterRec))
                 .registerResearchItem();
+
+        new ResearchItem("TB.HerobrinesScythe",catName,new AspectList().add(Aspect.ELDRITCH, 16).add(Aspect.DEATH, 16).add(Aspect.WEAPON, 16).add(Aspect.AURA, 8).add(Aspect.ENERGY, 6),15,1,4,new ItemStack(TBItems.herobrinesScythe,1,0))
+        .setParents("TB.VOIDMETAL")
+        .setConcealed()
+        .setSpecial()
+        .setPages(
+            new ResearchPage("tb.rec.hScythe.page.0"),
+            new ResearchPage("tb.rec.hScythe.page.1"),
+            new ResearchPage(herobrinesScytheRec)
+            ).registerResearchItem();
 
         new ResearchItem(
             "TB.Relocator",
@@ -3966,6 +3983,8 @@ public class TBThaumonomicon {
         ThaumcraftApi.getCraftingRecipes()
             .add(overchanterRec);
 
+        ThaumcraftApi.getCraftingRecipes()
+            .add(herobrinesScytheRec);
         ThaumcraftApi.getCraftingRecipes()
             .add(relocatorRec);
         ThaumcraftApi.getCraftingRecipes()
