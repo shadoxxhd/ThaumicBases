@@ -1365,8 +1365,8 @@ public class TBThaumonomicon {
                 .add(Aspect.WEAPON, 16)
                 .add(Aspect.AURA, 8)
                 .add(Aspect.ENERGY, 6),
-            15,
-            1,
+            17,
+            0,
             4,
             new ItemStack(TBItems.herobrinesScythe, 1, 0)).setParents("TB.VOIDMETAL")
                 .setConcealed()
